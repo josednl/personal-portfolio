@@ -1,0 +1,20 @@
+{
+  "name": "John Doe",
+  "role": "Full Stack Developer",
+  "location": "Remote",
+  "about": [
+    "I'm a passionate software developer who enjoys building clean, efficient, and user-focused digital experiences.",
+    "I specialize in modern JavaScript technologies such as React, TypeScript, and Node.js.",
+    "I love learning new tools, contributing to open-source projects, and collaborating with teams to turn ideas into real products.",
+    "Outside of coding, I enjoy reading, exploring technology trends, and working on personal projects."
+  ],
+  "skills": [
+    "React",
+    "TypeScript",
+    "Node.js",
+    "TailwindCSS",
+    "REST APIs",
+    "Git",
+    "SQL & NoSQL Databases"
+  ]
+}
