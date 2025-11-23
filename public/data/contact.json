@@ -1,0 +1,10 @@
+{
+  "email": "johndoe@example.com",
+  "phone": "+1 (555) 123-4567",
+  "location": "Remote",
+  "links": {
+    "github": "https://github.com/johndoe",
+    "linkedin": "https://www.linkedin.com/in/johndoe/",
+    "website": "https://johndoe.dev"
+  }
+}

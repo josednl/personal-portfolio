@@ -2,6 +2,7 @@ import { PageContainer } from "@/components/layout/PageContainer";
 import { About } from '@/components/sections/About';
 import { Projects } from '@/components/sections/Projects';
 import { Education } from "@/components/sections/Education";
+import { Contact } from '@/components/sections/Contact';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <About />
       <Projects />
       <Education />
+      <Contact />
     </PageContainer>
   )
 }
