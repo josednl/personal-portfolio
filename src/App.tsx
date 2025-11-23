@@ -5,6 +5,7 @@ import { Education } from "@/components/sections/Education";
 import { Contact } from '@/components/sections/Contact';
 import { WorkExperience } from "@/components/sections/WorkExperience";
 import { Skills } from "@/components/sections/Skills";
+import AccessibilityMenu from "./components/ui/AccessibilityMenu";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       {/* <WorkExperience /> */}
       <Education />
       <Contact />
+
+      <AccessibilityMenu />
     </PageContainer>
   )
 }
