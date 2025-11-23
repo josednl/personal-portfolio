@@ -1,0 +1,29 @@
+[
+  {
+    "id": "project-1",
+    "title": "Portfolio Website",
+    "description": "A modern personal portfolio built with React, TypeScript, and TailwindCSS.",
+    "images": [
+      "/projects/portfolio-1.png",
+      "/projects/portfolio-2.png"
+    ],
+    "demoUrl": "https://example.com/portfolio",
+    "githubUrl": "https://github.com/johndoe/portfolio"
+  },
+  {
+    "id": "project-2",
+    "title": "Task Manager App",
+    "description": "A full-stack task manager with real-time sync and drag-and-drop tasks.",
+    "images": [
+      "/projects/taskapp.png"
+    ],
+    "githubUrl": "https://github.com/johndoe/task-manager"
+  },
+  {
+    "id": "project-3",
+    "title": "Weather Dashboard",
+    "description": "Weather dashboard using real-time OpenWeather API data.",
+    "images": [],
+    "demoUrl": "https://example.com/weather"
+  }
+]

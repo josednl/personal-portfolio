@@ -1,4 +1,4 @@
-import { Section } from "../layout/Section";
+import { Section } from "@/components/layout/Section";
 import { useFetchSection } from "@/lib/hooks/useFetchSection";
 import { AboutSkeleton } from "@/components/skeleton/AboutSkeleton";
 
