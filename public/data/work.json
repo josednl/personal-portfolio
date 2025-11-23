@@ -1,0 +1,20 @@
+[
+  {
+    "id": "work-1",
+    "company": "Tech Solutions Inc.",
+    "role": "Frontend Developer",
+    "startDate": "Jan 2023",
+    "endDate": "Present",
+    "description": "Building modern UI components using React, TypeScript, and TailwindCSS. Collaborating with designers and backend engineers to deliver scalable products.",
+    "tech": ["React", "TypeScript", "TailwindCSS"]
+  },
+  {
+    "id": "work-2",
+    "company": "Creative Dev Studio",
+    "role": "Web Developer",
+    "startDate": "Aug 2021",
+    "endDate": "Dec 2022",
+    "description": "Developed responsive websites and landing pages for clients. Improved page performance and accessibility.",
+    "tech": ["JavaScript", "CSS", "Next.js"]
+  }
+]
