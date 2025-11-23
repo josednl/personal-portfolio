@@ -1,0 +1,18 @@
+[
+  {
+    "id": "edu-1",
+    "school": "University of Technology",
+    "degree": "Bachelor of Computer Science",
+    "startYear": "2018",
+    "endYear": "2022",
+    "description": "Studied core computer science topics including software engineering, algorithms, web development, and database systems."
+  },
+  {
+    "id": "edu-2",
+    "school": "Online Certification",
+    "degree": "Full Stack Web Development",
+    "startYear": "2023",
+    "endYear": null,
+    "description": "Completed hands-on projects using React, Node.js, TypeScript, and cloud services."
+  }
+]
