@@ -1,20 +1,42 @@
 {
-  "name": "John Doe",
-  "role": "Full Stack Developer",
-  "location": "Remote",
-  "about": [
-    "I'm a passionate software developer who enjoys building clean, efficient, and user-focused digital experiences.",
-    "I specialize in modern JavaScript technologies such as React, TypeScript, and Node.js.",
-    "I love learning new tools, contributing to open-source projects, and collaborating with teams to turn ideas into real products.",
-    "Outside of coding, I enjoy reading, exploring technology trends, and working on personal projects."
-  ],
-  "skills": [
-    "React",
-    "TypeScript",
-    "Node.js",
-    "TailwindCSS",
-    "REST APIs",
-    "Git",
-    "SQL & NoSQL Databases"
-  ]
+  "en": {
+    "name": "John Doe",
+    "role": "Full Stack Developer",
+    "location": "Remote",
+    "about": [
+      "I'm a passionate software developer who enjoys building clean, efficient, and user-focused digital experiences.",
+      "I specialize in modern JavaScript technologies such as React, TypeScript, and Node.js.",
+      "I love learning new tools, contributing to open-source projects, and collaborating with teams to turn ideas into real products.",
+      "Outside of coding, I enjoy reading, exploring technology trends, and working on personal projects."
+    ],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "TailwindCSS",
+      "REST APIs",
+      "Git",
+      "SQL & NoSQL Databases"
+    ]
+  },
+  "es": {
+    "name": "John Doe",
+    "role": "Desarrollador Full Stack",
+    "location": "Remoto",
+    "about": [
+      "Soy un desarrollador de software apasionado que disfruta creando experiencias digitales limpias, eficientes y centradas en el usuario.",
+      "Me especializo en tecnologías modernas de JavaScript como React, TypeScript y Node.js.",
+      "Me encanta aprender nuevas herramientas, contribuir a proyectos open-source y colaborar con equipos para convertir ideas en productos reales.",
+      "Fuera del código, disfruto leer, explorar tendencias tecnológicas y trabajar en proyectos personales."
+    ],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "TailwindCSS",
+      "APIs REST",
+      "Git",
+      "Bases de datos SQL y NoSQL"
+    ]
+  }
 }

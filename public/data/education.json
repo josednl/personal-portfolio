@@ -1,18 +1,38 @@
-[
-  {
-    "id": "edu-1",
-    "school": "University of Technology",
-    "degree": "Bachelor of Computer Science",
-    "startYear": "2018",
-    "endYear": "2022",
-    "description": "Studied core computer science topics including software engineering, algorithms, web development, and database systems."
-  },
-  {
-    "id": "edu-2",
-    "school": "Online Certification",
-    "degree": "Full Stack Web Development",
-    "startYear": "2023",
-    "endYear": null,
-    "description": "Completed hands-on projects using React, Node.js, TypeScript, and cloud services."
-  }
-]
+{
+  "en": [
+    {
+      "id": "edu-1",
+      "school": "University of Technology",
+      "degree": "Bachelor of Computer Science",
+      "startYear": "2018",
+      "endYear": "2022",
+      "description": "Studied core computer science topics including software engineering, algorithms, web development, and database systems."
+    },
+    {
+      "id": "edu-2",
+      "school": "Online Certification",
+      "degree": "Full Stack Web Development",
+      "startYear": "2023",
+      "endYear": null,
+      "description": "Completed hands-on projects using React, Node.js, TypeScript, and cloud services."
+    }
+  ],
+  "es": [
+    {
+      "id": "edu-1",
+      "school": "Universidad de Tecnología",
+      "degree": "Licenciatura en Ciencias de la Computación",
+      "startYear": "2018",
+      "endYear": "2022",
+      "description": "Estudié temas fundamentales de ciencias de la computación, incluyendo ingeniería de software, algoritmos, desarrollo web y sistemas de bases de datos."
+    },
+    {
+      "id": "edu-2",
+      "school": "Certificación Online",
+      "degree": "Desarrollo Web Full Stack",
+      "startYear": "2023",
+      "endYear": null,
+      "description": "Completé proyectos prácticos utilizando React, Node.js, TypeScript y servicios en la nube."
+    }
+  ]
+}
