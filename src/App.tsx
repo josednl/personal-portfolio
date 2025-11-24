@@ -1,4 +1,5 @@
 import { PageContainer } from "@/components/layout/PageContainer";
+import { AppSettingsProvider } from "@/lib/context/AppSettingsContext";
 import { About } from '@/components/sections/About';
 import { Projects } from '@/components/sections/Projects';
 import { Education } from "@/components/sections/Education";
@@ -9,16 +10,18 @@ import AccessibilityMenu from "./components/ui/AccessibilityMenu";
 
 function App() {
   return (
-    <PageContainer>
-      <About />
-      {/* <Skills /> */}
-      <Projects />
-      {/* <WorkExperience /> */}
-      <Education />
-      <Contact />
+    <AppSettingsProvider>
+      <PageContainer>
+        <About />
+        {/* <Skills /> */}
+        <Projects />
+        {/* <WorkExperience /> */}
+        <Education />
+        <Contact />
 
-      <AccessibilityMenu />
-    </PageContainer>
+        <AccessibilityMenu />
+      </PageContainer>
+    </AppSettingsProvider>
   )
 }
 

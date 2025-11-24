@@ -17,14 +17,14 @@ export const About = () => {
     <Section id="about" title="About me">
       {loading && <AboutSkeleton />}
       {!loading && data && (
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold">{data.name}</h3>
-          <p className="text-sm text-gray-600">{data.role}</p>
-          <p className="text-sm text-gray-500">{data.location}</p>
+        <div className="space-y-4 text-gray-800 dark:text-gray-200">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{data.name}</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">{data.role}</p>
+          <p className="text-sm text-gray-500 dark:text-gray-500">{data.location}</p>
 
           <div className="space-y-2">
             {data.about.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
+              <p key={i} className="text-gray-700 dark:text-gray-300">{paragraph}</p>
             ))}
           </div>
 
@@ -32,7 +32,7 @@ export const About = () => {
             {data.skills.map((skill) => (
               <span
                 key={skill}
-                className="px-2 py-1 text-xs bg-gray-200 rounded"
+                className="px-2 py-1 text-xs bg-gray-200 rounded text-gray-800 dark:bg-gray-700 dark:text-gray-100"
               >
                 {skill}
               </span>

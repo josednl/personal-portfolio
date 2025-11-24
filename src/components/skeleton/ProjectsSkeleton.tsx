@@ -4,12 +4,12 @@ export const ProjectsSkeleton = () => {
       {[1, 2, 3].map((i) => (
         <div
           key={i}
-          className="border rounded-lg p-4 shadow-sm bg-white"
+          className="border rounded-lg p-4 shadow-sm bg-white dark:bg-gray-800"
         >
-          <div className="h-40 bg-gray-300 rounded mb-4" />
-          <div className="h-6 w-40 bg-gray-300 rounded mb-2" />
-          <div className="h-4 w-full bg-gray-300 rounded mb-1" />
-          <div className="h-4 w-5/6 bg-gray-300 rounded" />
+          <div className="h-40 rounded mb-4 bg-gray-300 dark:bg-gray-700" />
+          <div className="h-6 w-40 rounded mb-2 bg-gray-300 dark:bg-gray-700" />
+          <div className="h-4 w-full rounded mb-1 bg-gray-300 dark:bg-gray-700" />
+          <div className="h-4 w-5/6 rounded bg-gray-300 dark:bg-gray-700" />
         </div>
       ))}
     </div>
