@@ -45,7 +45,7 @@ export const AppSettingsProvider = ({ children }: { children: React.ReactNode })
 
   // apply font size
   useEffect(() => {
-    document.body.style.fontSize = `${fontSize}px`;
+    document.documentElement.style.setProperty("font-size", `${fontSize}px`);
     localStorage.setItem("fontSize", fontSize.toString());
   }, [fontSize]);
 

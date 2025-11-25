@@ -1,5 +1,7 @@
 export const translations = {
   en: {
+    portfolioOwner: "José",
+    portfolioTitle: "Portfolio",
     aboutTitle: "About Me",
     contactTitle: "Contact",
     educationTitle: "Education",
@@ -10,7 +12,7 @@ export const translations = {
     contactInformation: "Contact Information",
     connectOnline: "Connect Online",
     message: "Let's collaborate and create meaningful digital experiences together.",
-    rights: "José. All rights reserved.",
+    rights: "",
     accessibilityTitle: "Accessibility Options",
     lightMode: "Light Mode",
     darkMode: "Dark Mode",
@@ -20,6 +22,8 @@ export const translations = {
     resetSettings: "Reset All Settings",
   },
   es: {
+    portfolioOwner: "José",
+    portfolioTitle: "Portafolio",
     aboutTitle: "Sobre Mí",
     contactTitle: "Contacto",
     educationTitle: "Educación",
@@ -30,7 +34,7 @@ export const translations = {
     contactInformation: "Información de contacto",
     connectOnline: "Conectar en línea",
     message: "Colaboremos y creemos experiencias digitales significativas juntos.",
-    rights: "José. Todos los derechos reservados.",
+    rights: "",
     accessibilityTitle: "Opciones de Accesibilidad",
     lightMode: "Modo Claro",
     darkMode: "Modo Oscuro",

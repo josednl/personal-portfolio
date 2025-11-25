@@ -17,6 +17,7 @@
     "name": "John Doe",
     "role": "Desarrollador Full Stack",
     "location": "Remoto",
+    "image": "",
     "about": [
       "Soy un desarrollador de software apasionado que disfruta creando experiencias digitales limpias, eficientes y centradas en el usuario.",
       "Me especializo en tecnologías modernas de JavaScript como React, TypeScript y Node.js.",

@@ -12,7 +12,7 @@ interface AboutData {
 }
 
 export const About = () => {
-  const { data, loading } = useFetchSection<AboutData>("data/about.json");
+  const { data, loading } = useFetchSection<AboutData>("/data/about.json");
 
   return (
     <Section id="about">
