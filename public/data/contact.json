@@ -1,5 +1,6 @@
 {
   "en": {
+    "title": "Contact",
     "email": "johndoe@example.com",
     "phone": "+1 (555) 123-4567",
     "location": "Remote",
@@ -10,6 +11,7 @@
     }
   },
   "es": {
+    "title": "Contacto",
     "email": "johndoe@example.com",
     "phone": "+1 (555) 123-4567",
     "location": "Remoto",

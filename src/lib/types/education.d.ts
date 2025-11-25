@@ -6,3 +6,8 @@ export interface EducationItem {
   endYear: string | null;
   description: string | null;
 }
+
+export interface EducationData {
+  title: string;
+  items: EducationItem[];
+}

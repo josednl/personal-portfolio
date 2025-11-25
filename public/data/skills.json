@@ -1,64 +1,70 @@
 {
   "en": {
-    "Frontend": [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "TailwindCSS",
-      "HTML",
-      "CSS"
-    ],
-    "Backend": [
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "PostgreSQL",
-      "Prisma",
-      "REST APIs"
-    ],
-    "Tools": [
-      "Git",
-      "Docker",
-      "Figma",
-      "VS Code",
-      "Webpack",
-      "Vite"
-    ],
-    "Languages": [
-      "JavaScript",
-      "TypeScript",
-      "Python"
-    ]
+    "title": "Skills",
+    "items": {
+      "Frontend": [
+        "React",
+        "TypeScript",
+        "Next.js",
+        "TailwindCSS",
+        "HTML",
+        "CSS"
+      ],
+      "Backend": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "PostgreSQL",
+        "Prisma",
+        "REST APIs"
+      ],
+      "Tools": [
+        "Git",
+        "Docker",
+        "Figma",
+        "VS Code",
+        "Webpack",
+        "Vite"
+      ],
+      "Languages": [
+        "JavaScript",
+        "TypeScript",
+        "Python"
+      ]
+    }
   },
   "es": {
-    "Frontend": [
-      "React",
-      "TypeScript",
-      "Next.js",
-      "TailwindCSS",
-      "HTML",
-      "CSS"
-    ],
-    "Backend": [
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "PostgreSQL",
-      "Prisma",
-      "REST APIs"
-    ],
-    "Tools": [
-      "Git",
-      "Docker",
-      "Figma",
-      "VS Code",
-      "Webpack",
-      "Vite"
-    ],
-    "Languages": [
-      "JavaScript",
-      "TypeScript",
-      "Python"
-    ]
+    "title": "Conocimientos en",
+    "items": {
+      "Frontend": [
+        "React",
+        "TypeScript",
+        "Next.js",
+        "TailwindCSS",
+        "HTML",
+        "CSS"
+      ],
+      "Backend": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "PostgreSQL",
+        "Prisma",
+        "REST APIs"
+      ],
+      "Tools": [
+        "Git",
+        "Docker",
+        "Figma",
+        "VS Code",
+        "Webpack",
+        "Vite"
+      ],
+      "Languages": [
+        "JavaScript",
+        "TypeScript",
+        "Python"
+      ]
+    }
   }
 }

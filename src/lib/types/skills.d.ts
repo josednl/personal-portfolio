@@ -1,3 +1,6 @@
 export interface SkillsData {
-  [category: string]: string[];
+  title: string;
+  items: {
+    [category: string]: string[];
+  };
 }

@@ -1,60 +1,56 @@
 {
-  "en": [
-    {
-      "id": "project-1",
-      "title": "Portfolio Website",
-      "description": "A modern personal portfolio built with React, TypeScript, and TailwindCSS.",
-      "images": [
-        "/projects/portfolio-1.png",
-        "/projects/portfolio-2.png"
-      ],
-      "demoUrl": "https://example.com/portfolio",
-      "githubUrl": "https://github.com/johndoe/portfolio"
-    },
-    {
-      "id": "project-2",
-      "title": "Task Manager App",
-      "description": "A full-stack task manager with real-time sync and drag-and-drop tasks.",
-      "images": [
-        "/projects/taskapp.png"
-      ],
-      "githubUrl": "https://github.com/johndoe/task-manager"
-    },
-    {
-      "id": "project-3",
-      "title": "Weather Dashboard",
-      "description": "Weather dashboard using real-time OpenWeather API data.",
-      "images": [],
-      "demoUrl": "https://example.com/weather"
-    }
-  ],
-  "es": [
-    {
-      "id": "project-1",
-      "title": "Sitio Web de Portafolio",
-      "description": "Un portafolio personal moderno construido con React, TypeScript y TailwindCSS.",
-      "images": [
-        "/projects/portfolio-1.png",
-        "/projects/portfolio-2.png"
-      ],
-      "demoUrl": "https://example.com/portfolio",
-      "githubUrl": "https://github.com/johndoe/portfolio"
-    },
-    {
-      "id": "project-2",
-      "title": "Aplicación de Gestión de Tareas",
-      "description": "Un gestor de tareas full-stack con sincronización en tiempo real y arrastrar y soltar tareas.",
-      "images": [
-        "/projects/taskapp.png"
-      ],
-      "githubUrl": "https://github.com/johndoe/task-manager"
-    },
-    {
-      "id": "project-3",
-      "title": "Panel del Clima",
-      "description": "Panel del clima usando datos en tiempo real de la API OpenWeather.",
-      "images": [],
-      "demoUrl": "https://example.com/weather"
-    }
-  ]
+  "en": {
+    "title": "Projects",
+    "items": [
+      {
+        "id": "project-1",
+        "title": "Portfolio Website",
+        "description": "A modern personal portfolio built with React, TypeScript, and TailwindCSS.",
+        "images": ["/projects/portfolio-1.png", "/projects/portfolio-2.png"],
+        "demoUrl": "https://example.com/portfolio",
+        "githubUrl": "https://github.com/johndoe/portfolio"
+      },
+      {
+        "id": "project-2",
+        "title": "Task Manager App",
+        "description": "A full-stack task manager with real-time sync and drag-and-drop tasks.",
+        "images": ["/projects/taskapp.png"],
+        "githubUrl": "https://github.com/johndoe/task-manager"
+      },
+      {
+        "id": "project-3",
+        "title": "Weather Dashboard",
+        "description": "Weather dashboard using real-time OpenWeather API data.",
+        "images": [],
+        "demoUrl": "https://example.com/weather"
+      }
+    ]
+  },
+  "es": {
+    "title": "Proyectos",
+    "items": [
+      {
+        "id": "project-1",
+        "title": "Sitio Web de Portafolio",
+        "description": "Un portafolio personal moderno construido con React, TypeScript y TailwindCSS.",
+        "images": ["/projects/portfolio-1.png", "/projects/portfolio-2.png"],
+        "demoUrl": "https://example.com/portfolio",
+        "githubUrl": "https://github.com/johndoe/portfolio"
+      },
+      {
+        "id": "project-2",
+        "title": "Aplicación de Gestión de Tareas",
+        "description": "Un gestor de tareas full-stack con sincronización en tiempo real y arrastrar y soltar tareas.",
+        "images": ["/projects/taskapp.png"],
+        "githubUrl": "https://github.com/johndoe/task-manager"
+      },
+      {
+        "id": "project-3",
+        "title": "Panel del Clima",
+        "description": "Panel del clima usando datos en tiempo real de la API OpenWeather.",
+        "images": [],
+        "demoUrl": "https://example.com/weather"
+      }
+    ]
+  }
 }

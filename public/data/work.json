@@ -1,58 +1,64 @@
 {
-  "en": [
-    {
-      "id": "work-1",
-      "company": "Tech Solutions Inc.",
-      "role": "Frontend Developer",
-      "startDate": "Jan 2023",
-      "endDate": "Present",
-      "description": "Building modern UI components using React, TypeScript, and TailwindCSS. Collaborating with designers and backend engineers to deliver scalable products.",
-      "tech": [
-        "React",
-        "TypeScript",
-        "TailwindCSS"
-      ]
-    },
-    {
-      "id": "work-2",
-      "company": "Creative Dev Studio",
-      "role": "Web Developer",
-      "startDate": "Aug 2021",
-      "endDate": "Dec 2022",
-      "description": "Developed responsive websites and landing pages for clients. Improved page performance and accessibility.",
-      "tech": [
-        "JavaScript",
-        "CSS",
-        "Next.js"
-      ]
-    }
-  ],
-  "es": [
-    {
-      "id": "work-1",
-      "company": "Tech Solutions Inc.",
-      "role": "Desarrollador Frontend",
-      "startDate": "Ene 2023",
-      "endDate": "Actualidad",
-      "description": "Construcción de componentes de interfaz modernos usando React, TypeScript y TailwindCSS. Colaboración con diseñadores e ingenieros backend para entregar productos escalables.",
-      "tech": [
-        "React",
-        "TypeScript",
-        "TailwindCSS"
-      ]
-    },
-    {
-      "id": "work-2",
-      "company": "Creative Dev Studio",
-      "role": "Desarrollador Web",
-      "startDate": "Ago 2021",
-      "endDate": "Dic 2022",
-      "description": "Desarrollo de sitios web y landing pages responsivas para clientes. Mejora del rendimiento de carga y accesibilidad.",
-      "tech": [
-        "JavaScript",
-        "CSS",
-        "Next.js"
-      ]
-    }
-  ]
+  "en": {
+    "title": "Work Experience",
+    "items": [
+      {
+        "id": "work-1",
+        "company": "Tech Solutions Inc.",
+        "role": "Frontend Developer",
+        "startDate": "Jan 2023",
+        "endDate": "Present",
+        "description": "Building modern UI components using React, TypeScript, and TailwindCSS. Collaborating with designers and backend engineers to deliver scalable products.",
+        "tech": [
+          "React",
+          "TypeScript",
+          "TailwindCSS"
+        ]
+      },
+      {
+        "id": "work-2",
+        "company": "Creative Dev Studio",
+        "role": "Web Developer",
+        "startDate": "Aug 2021",
+        "endDate": "Dec 2022",
+        "description": "Developed responsive websites and landing pages for clients. Improved page performance and accessibility.",
+        "tech": [
+          "JavaScript",
+          "CSS",
+          "Next.js"
+        ]
+      }
+    ]
+  },
+  "es": {
+    "title": "Experiencia",
+    "items": [
+      {
+        "id": "work-1",
+        "company": "Tech Solutions Inc.",
+        "role": "Desarrollador Frontend",
+        "startDate": "Ene 2023",
+        "endDate": "Actualidad",
+        "description": "Construcción de componentes de interfaz modernos usando React, TypeScript y TailwindCSS. Colaboración con diseñadores e ingenieros backend para entregar productos escalables.",
+        "tech": [
+          "React",
+          "TypeScript",
+          "TailwindCSS"
+        ]
+      },
+      {
+        "id": "work-2",
+        "company": "Creative Dev Studio",
+        "role": "Desarrollador Web",
+        "startDate": "Ago 2021",
+        "endDate": "Dic 2022",
+        "description": "Desarrollo de sitios web y landing pages responsivas para clientes. Mejora del rendimiento de carga y accesibilidad.",
+        "tech": [
+          "JavaScript",
+          "CSS",
+          "Next.js"
+        ]
+      }
+    ]
+  }
 }

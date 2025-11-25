@@ -7,3 +7,8 @@ export interface WorkItem {
   description: string;
   tech?: string[];
 }
+
+export interface WorkData {
+  title: string;
+  items: WorkItem[];
+}

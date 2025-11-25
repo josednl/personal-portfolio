@@ -13,9 +13,9 @@ function App() {
     <AppSettingsProvider>
       <PageContainer>
         <About />
-        {/* <Skills /> */}
+        <Skills />
         <Projects />
-        {/* <WorkExperience /> */}
+        <WorkExperience />
         <Education />
         <Contact />
 
