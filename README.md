@@ -2,6 +2,8 @@
 
 ## Description
 
+![Project Screenshot](src/assets//Project_Screenshot.png)
+
 This project is a personal portfolio developed with React, TypeScript, and Vite, designed as a central space to showcase my projects, experience, and professional approach. The application is built with a modern stack that prioritizes performance, simplicity, and maintainability.
 
 ---
