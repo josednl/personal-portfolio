@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
 import { Section } from "../layout/Section";
 import { useFetchSection } from "@/lib/hooks/useFetchSection";
 import { SkillsSkeleton } from "@/components/skeleton/SkillsSkeleton";
 import { SkillsCategory } from "@/components/ui/SkillsCategory";
 import { SkillsData } from "@/lib/types/skills";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 export const Skills = () => {
+  const { t } = useTranslation();
   const { data, loading } = useFetchSection<SkillsData>("/data/skills.json");
-  const [title, setTitle] = useState('Skills');
-
-  useEffect(() => {
-    if (data && data.title) {
-      setTitle(data.title);
-    }
-  }, [data]);
 
   return (
-    <Section id="skills" title={title}>
+    <Section id="skills" title={data?.title || t("skillsTitle")}>
       {loading && <SkillsSkeleton />}
 
       {!loading && data && (

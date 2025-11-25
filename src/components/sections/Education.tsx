@@ -3,20 +3,14 @@ import { useFetchSection } from "@/lib/hooks/useFetchSection";
 import { EducationSkeleton } from "@/components/skeleton/EducationSkeleton";
 import { EducationCard } from "@/components/ui/EducationCard";
 import { EducationData } from "@/lib/types/education";
-import { useEffect, useState } from "react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 export const Education = () => {
+  const { t } = useTranslation();
   const { data, loading } = useFetchSection<EducationData>("/data/education.json");
-  const [title, setTitle] = useState('Education');
-
-  useEffect(() => {
-    if (data && data.title) {
-      setTitle(data.title);
-    }
-  }, [data]);
   
   return (
-    <Section id="education" title={title}>
+    <Section id="education" title={data?.title || t("educationTitle")}>
       {loading && <EducationSkeleton />}
 
       {!loading && data && (

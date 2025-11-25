@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Moon, Sun, Globe, ZoomIn, ZoomOut, RefreshCw, ChevronDown, Accessibility } from 'lucide-react';
 import { useAppSettings } from '@/lib/context/AppSettingsContext';
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const AccessibilityMenu: React.FC = () => {
   const {
@@ -13,6 +14,7 @@ const AccessibilityMenu: React.FC = () => {
     decreaseFont,
     resetSettings
   } = useAppSettings();
+  const { t } = useTranslation();
 
   const isDarkMode = theme === "dark";
 
@@ -65,7 +67,7 @@ const AccessibilityMenu: React.FC = () => {
           border border-gray-200 dark:border-gray-700`}
       >
         <h3 className="text-lg font-semibold mb-3 border-b pb-2 border-gray-200 dark:border-gray-700">
-          Accessibility Options
+          {t("accessibilityTitle")}
         </h3>
 
         <button
@@ -73,7 +75,7 @@ const AccessibilityMenu: React.FC = () => {
           onClick={toggleTheme}
         >
           {isDarkMode ? <Sun className="mr-3" size={20} /> : <Moon className="mr-3" size={20} />}
-          {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+          {isDarkMode ? t("lightMode") : t("darkMode")}
         </button>
 
         <div className="relative mb-1">
@@ -88,7 +90,7 @@ const AccessibilityMenu: React.FC = () => {
           >
             <span className="flex items-center">
               <Globe className="mr-3" size={20} />
-              {language === 'es' ? 'Spanish' : 'English'}
+              {language === 'es' ? t("spanish") : t("english")}
             </span>
             <ChevronDown
               className={`ml-2 transition-transform ${isLanguageMenuOpen ? 'rotate-180' : 'rotate-0'}`}
@@ -120,7 +122,7 @@ const AccessibilityMenu: React.FC = () => {
 
         <div className="flex items-center justify-between mt-2 py-2 px-3 rounded-lg bg-gray-50 dark:bg-gray-700/50 mb-1">
           <span className="flex items-center text-sm font-medium">
-            Font Size ({fontSize}px)
+            {t("fontSize")} ({fontSize}px)
           </span>
 
           <div className="flex space-x-2">
@@ -146,7 +148,7 @@ const AccessibilityMenu: React.FC = () => {
           onClick={resetSettings}
         >
           <RefreshCw className="mr-3" size={20} />
-          Reset All Settings
+          {t("resetSettings")}
         </button>
       </div>
     </div>

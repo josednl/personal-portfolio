@@ -1,16 +1,12 @@
 import { ContactData } from "@/lib/types/contact";
 import { Mail, Phone, MapPin, Github, Linkedin, Globe, Twitter } from "lucide-react";
 import { useFetchSection } from "@/lib/hooks/useFetchSection";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const accentColor = "text-blue-600";
 
 export const ContactFooter = ({ contact }: { contact: ContactData }) => {
-  const { data: footer } = useFetchSection<{
-    contactInformation: string;
-    connectOnline: string;
-    message: string;
-    rights: string;
-  }>("/data/footer.json");
+  const { t } = useTranslation();
 
   const { email, phone, location, links } = contact;
 
@@ -22,7 +18,7 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
 
           <div>
             <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
-              {footer?.contactInformation}
+              {t("contactInformation")}
             </h4>
 
             <div className="space-y-3 text-gray-700 dark:text-gray-200">
@@ -56,7 +52,7 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
           {links && (
             <div>
               <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
-                {footer?.connectOnline}
+                {t("connectOnline")}
               </h4>
               <div className="flex space-x-5">
                 {links.github && (
@@ -112,17 +108,16 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
 
           <div className="md:text-right">
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-xs md:ml-auto">
-              {footer?.message}
+              {t("message")}
             </p>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
           <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} José. {footer?.rights}
+            &copy; {new Date().getFullYear()} {t("rights")}
           </p>
         </div>
-
       </div>
     </footer>
   );
