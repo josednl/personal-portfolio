@@ -7,6 +7,7 @@
         "title": "Portfolio Website",
         "description": "A modern personal portfolio built with React, TypeScript, and TailwindCSS.",
         "images": ["/projects/portfolio-1.png", "/projects/portfolio-2.png"],
+        "technologies": ["React", "TypeScript", "TailwindCSS"],
         "demoUrl": "https://example.com/portfolio",
         "githubUrl": "https://github.com/johndoe/portfolio"
       },
@@ -34,6 +35,7 @@
         "title": "Sitio Web de Portafolio",
         "description": "Un portafolio personal moderno construido con React, TypeScript y TailwindCSS.",
         "images": ["/projects/portfolio-1.png", "/projects/portfolio-2.png"],
+        "technologies": ["React", "TypeScript", "TailwindCSS"],
         "demoUrl": "https://example.com/portfolio",
         "githubUrl": "https://github.com/johndoe/portfolio"
       },

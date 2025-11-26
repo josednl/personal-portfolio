@@ -5,6 +5,7 @@ export interface ProjectItem {
   images: string[];
   demoUrl?: string;
   githubUrl?: string;
+  technologies?: string[];
 }
 
 export interface ProjectsData {

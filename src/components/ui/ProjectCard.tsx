@@ -3,7 +3,7 @@ import { ImageCarousel } from "@/components/ui/ImageCarousel";
 import { ChevronsLeftRightEllipsis, Github } from "lucide-react";
 
 export const ProjectCard = ({ project }: { project: ProjectItem }) => {
-  const { title, description, images, demoUrl, githubUrl } = project;
+  const { title, description, images, demoUrl, githubUrl, technologies } = project;
 
   return (
     <div className="
@@ -18,6 +18,24 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
       <p className="text-gray-600 dark:text-gray-300 mt-2 leading-relaxed grow text-base line-clamp-3">
         {description}
       </p>
+
+      {technologies && technologies.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-3">
+          {technologies.map((tech) => (
+            <span
+              key={tech}
+              className="
+                px-2 py-1 text-sm font-medium 
+                bg-gray-100 dark:bg-gray-700 
+                text-gray-700 dark:text-gray-300
+                rounded-full shadow-sm
+              "
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
 
       <hr className="my-4 border-gray-100 dark:border-gray-700" /> 
 
