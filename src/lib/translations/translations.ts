@@ -20,6 +20,7 @@ export const translations = {
     english: "English",
     fontSize: "Font Size",
     resetSettings: "Reset All Settings",
+    downloadCV: "Download CV",
   },
   es: {
     portfolioOwner: "José",
@@ -42,5 +43,6 @@ export const translations = {
     english: "Inglés",
     fontSize: "Tamaño de Fuente",
     resetSettings: "Restablecer Configuraciones",
+    downloadCV: "Descargar CV",
   },
 };
