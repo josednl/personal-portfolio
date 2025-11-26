@@ -1,8 +1,8 @@
-import { Project } from "@/lib/types/project";
+import { ProjectItem } from "@/lib/types/project";
 import { ImageCarousel } from "@/components/ui/ImageCarousel";
 import { ChevronsLeftRightEllipsis, Github } from "lucide-react";
 
-export const ProjectCard = ({ project }: { project: Project }) => {
+export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   const { title, description, images, demoUrl, githubUrl } = project;
 
   return (
