@@ -4,8 +4,7 @@
     "items": {
       "Frontend": [
         "React",
-        "TypeScript",
-        "Next.js",
+        "TypeScript/JavaScript",
         "TailwindCSS",
         "HTML",
         "CSS"
@@ -13,23 +12,20 @@
       "Backend": [
         "Node.js",
         "Express",
-        "MongoDB",
         "PostgreSQL",
         "Prisma",
         "REST APIs"
       ],
       "Tools": [
         "Git",
-        "Docker",
         "Figma",
         "VS Code",
-        "Webpack",
         "Vite"
       ],
       "Languages": [
         "JavaScript",
         "TypeScript",
-        "Python"
+        "PHP"
       ]
     }
   },
@@ -38,8 +34,7 @@
     "items": {
       "Frontend": [
         "React",
-        "TypeScript",
-        "Next.js",
+        "TypeScript/JavaScript",
         "TailwindCSS",
         "HTML",
         "CSS"
@@ -47,23 +42,20 @@
       "Backend": [
         "Node.js",
         "Express",
-        "MongoDB",
         "PostgreSQL",
         "Prisma",
         "REST APIs"
       ],
       "Tools": [
         "Git",
-        "Docker",
         "Figma",
         "VS Code",
-        "Webpack",
         "Vite"
       ],
       "Languages": [
         "JavaScript",
         "TypeScript",
-        "Python"
+        "PHP"
       ]
     }
   }

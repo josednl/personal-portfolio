@@ -1,24 +1,24 @@
 {
   "en": {
     "title": "Contact",
-    "email": "johndoe@example.com",
-    "phone": "+1 (555) 123-4567",
+    "email": "agudelo.josed@gmail.com",
+    "phone": "",
     "location": "Remote",
     "links": {
-      "github": "https://github.com/johndoe",
-      "linkedin": "https://www.linkedin.com/in/johndoe/",
-      "website": "https://johndoe.dev"
+      "github": "https://github.com/josednl",
+      "linkedin": "https://www.linkedin.com/in/josé-daniel-agudelo-correa-05a567290",
+      "website": ""
     }
   },
   "es": {
     "title": "Contacto",
-    "email": "johndoe@example.com",
-    "phone": "+1 (555) 123-4567",
+    "email": "agudelo.josed@gmail.com",
+    "phone": "",
     "location": "Remoto",
     "links": {
-      "github": "https://github.com/johndoe",
-      "linkedin": "https://www.linkedin.com/in/johndoe/",
-      "website": "https://johndoe.dev"
+      "github": "https://github.com/josednl",
+      "linkedin": "https://www.linkedin.com/in/josé-daniel-agudelo-correa-05a567290",
+      "website": ""
     }
   }
 }

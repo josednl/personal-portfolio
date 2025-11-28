@@ -4,26 +4,107 @@
     "items": [
       {
         "id": "project-1",
-        "title": "Portfolio Website",
-        "description": "A modern personal portfolio built with React, TypeScript, and TailwindCSS.",
-        "images": ["/projects/portfolio-1.png", "/projects/portfolio-2.png"],
-        "technologies": ["React", "TypeScript", "TailwindCSS"],
-        "demoUrl": "https://example.com/portfolio",
-        "githubUrl": "https://github.com/johndoe/portfolio"
+        "title": "Blog API",
+        "description": "A full stack project with a back end API consumed by two front end applications. It has a user system, cookies to save preferences, and basic blog features (such as uploading images and comments).",
+        "images": [
+          "/projects-screenshots/project-1/project1-1.png",
+          "/projects-screenshots/project-1/project1-2.png",
+          "/projects-screenshots/project-1/project1-3.png"
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Node.js",
+          "Express",
+          "PostgreSQL"
+        ],
+        "demoUrl": "https://blog-by-josednl.netlify.app",
+        "githubUrl": "https://github.com/josednl/blog-backend"
       },
       {
         "id": "project-2",
-        "title": "Task Manager App",
-        "description": "A full-stack task manager with real-time sync and drag-and-drop tasks.",
-        "images": ["/projects/taskapp.png"],
-        "githubUrl": "https://github.com/johndoe/task-manager"
+        "title": "Find the Character App",
+        "description": "Full stack project inspired by the game Where's Waldo. It has several levels with assigned difficulty and the option to record times.",
+        "images": [
+          "/projects-screenshots/project-2/project2-1.png",
+          "/projects-screenshots/project-2/project2-2.png",
+          "/projects-screenshots/project-2/project2-3.png"
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Node.js",
+          "Express",
+          "PostgreSQL"
+        ],
+        "demoUrl": "https://find-the-character-by-josednl.netlify.app",
+        "githubUrl": "https://github.com/josednl/where-is-waldo-backend"
       },
       {
         "id": "project-3",
-        "title": "Weather Dashboard",
-        "description": "Weather dashboard using real-time OpenWeather API data.",
-        "images": [],
-        "demoUrl": "https://example.com/weather"
+        "title": "File Uploader",
+        "description": "Backend project for uploading files and organizing them into folders. It attempts to emulate services such as Google Drive or Microsoft OneDrive.",
+        "images": [
+          "/projects-screenshots/project-3/project3-1.png",
+          "/projects-screenshots/project-3/project3-2.png"
+        ],
+        "technologies": [
+          "TypeScript",
+          "TailwindCSS",
+          "Node.js",
+          "Express",
+          "PostgreSQL"
+        ],
+        "demoUrl": "https://file-uploader-6mxk.onrender.com/",
+        "githubUrl": "https://github.com/josednl/file-uploader"
+      },
+      {
+        "id": "project-4",
+        "title": "Inventory Application",
+        "description": "Simple application for inventory management (movie lists). Its purpose was to learn how to separate information from different users.",
+        "images": [
+          "/projects-screenshots/project-4/project4-1.png"
+        ],
+        "technologies": [
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "EJS",
+          "TailwindCSS"
+        ],
+        "githubUrl": "https://github.com/josednl/inventory-application"
+      },
+      {
+        "id": "project-5",
+        "title": "CV Builder",
+        "description": "A simple CV builder that allows users to create and download their CVs in PDF format.",
+        "images": [
+          "/projects-screenshots/project-5/project5-1.png"
+        ],
+        "technologies": [
+          "React",
+          "JavaScript"
+        ],
+        "demoUrl": "https://cvbuilder-by-josednl.netlify.app/",
+        "githubUrl": "https://github.com/josednl/cv_application"
+      },
+      {
+        "id": "project-6",
+        "title": "Memory Card Game",
+        "description": "Memory game that consists of selecting cards that have not been selected before.",
+        "images": [
+          "/projects-screenshots/project-6/project6-1.png",
+          "/projects-screenshots/project-6/project6-2.png"
+        ],
+        "technologies": [
+          "React",
+          "JavaScript",
+          "PokéAPI"
+        ],
+        "demoUrl": "https://memorycard-by-josednl.netlify.app/",
+        "githubUrl": "https://github.com/josednl/memory-card"
       }
     ]
   },
@@ -32,26 +113,107 @@
     "items": [
       {
         "id": "project-1",
-        "title": "Sitio Web de Portafolio",
-        "description": "Un portafolio personal moderno construido con React, TypeScript y TailwindCSS.",
-        "images": ["/projects/portfolio-1.png", "/projects/portfolio-2.png"],
-        "technologies": ["React", "TypeScript", "TailwindCSS"],
-        "demoUrl": "https://example.com/portfolio",
-        "githubUrl": "https://github.com/johndoe/portfolio"
+        "title": "API de Blog",
+        "description": "Un proyecto full stack con una API de backend consumida por dos aplicaciones frontend. Tiene un sistema de usuarios, cookies para guardar preferencias y funciones básicas de blog (como subir imágenes y comentarios).",
+        "images": [
+          "/projects-screenshots/project-1/project1-1.png",
+          "/projects-screenshots/project-1/project1-2.png",
+          "/projects-screenshots/project-1/project1-3.png"
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Node.js",
+          "Express",
+          "PostgreSQL"
+        ],
+        "demoUrl": "https://blog-by-josednl.netlify.app",
+        "githubUrl": "https://github.com/josednl/blog-backend"
       },
       {
         "id": "project-2",
-        "title": "Aplicación de Gestión de Tareas",
-        "description": "Un gestor de tareas full-stack con sincronización en tiempo real y arrastrar y soltar tareas.",
-        "images": ["/projects/taskapp.png"],
-        "githubUrl": "https://github.com/johndoe/task-manager"
+        "title": "Aplicación Find the Character",
+        "description": "Proyecto full stack inspirado en el juego ¿Dónde está Waldo?. Tiene varios niveles con dificultad asignada y la opción de registrar tiempos.",
+        "images": [
+          "/projects-screenshots/project-2/project2-1.png",
+          "/projects-screenshots/project-2/project2-2.png",
+          "/projects-screenshots/project-2/project2-3.png"
+        ],
+        "technologies": [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
+          "Node.js",
+          "Express",
+          "PostgreSQL"
+        ],
+        "demoUrl": "https://find-the-character-by-josednl.netlify.app",
+        "githubUrl": "https://github.com/josednl/where-is-waldo-backend"
       },
       {
         "id": "project-3",
-        "title": "Panel del Clima",
-        "description": "Panel del clima usando datos en tiempo real de la API OpenWeather.",
-        "images": [],
-        "demoUrl": "https://example.com/weather"
+        "title": "Cargador de Archivos",
+        "description": "Proyecto de backend para subir archivos y organizarlos en carpetas. Intenta emular servicios como Google Drive o Microsoft OneDrive.",
+        "images": [
+          "/projects-screenshots/project-3/project3-1.png",
+          "/projects-screenshots/project-3/project3-2.png"
+        ],
+        "technologies": [
+          "TypeScript",
+          "TailwindCSS",
+          "Node.js",
+          "Express",
+          "PostgreSQL"
+        ],
+        "demoUrl": "https://file-uploader-6mxk.onrender.com/",
+        "githubUrl": "https://github.com/josednl/file-uploader"
+      },
+      {
+        "id": "project-4",
+        "title": "Aplicación de Inventario",
+        "description": "Aplicación sencilla para gestionar inventarios (listas de películas). Su propósito fue aprender a separar la información de distintos usuarios.",
+        "images": [
+          "/projects-screenshots/project-4/project4-1.png"
+        ],
+        "technologies": [
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "EJS",
+          "TailwindCSS"
+        ],
+        "githubUrl": "https://github.com/josednl/inventory-application"
+      },
+      {
+        "id": "project-5",
+        "title": "Generador de CV",
+        "description": "Un generador de CV sencillo que permite a los usuarios crear y descargar sus CVs en formato PDF.",
+        "images": [
+          "/projects-screenshots/project-5/project5-1.png"
+        ],
+        "technologies": [
+          "React",
+          "JavaScript"
+        ],
+        "demoUrl": "https://cvbuilder-by-josednl.netlify.app/",
+        "githubUrl": "https://github.com/josednl/cv_application"
+      },
+      {
+        "id": "project-6",
+        "title": "Juego de Memoria",
+        "description": "Juego de memoria que consiste en seleccionar cartas que no hayan sido seleccionadas antes.",
+        "images": [
+          "/projects-screenshots/project-6/project6-1.png",
+          "/projects-screenshots/project-6/project6-2.png"
+        ],
+        "technologies": [
+          "React",
+          "JavaScript",
+          "PokéAPI"
+        ],
+        "demoUrl": "https://memorycard-by-josednl.netlify.app/",
+        "githubUrl": "https://github.com/josednl/memory-card"
       }
     ]
   }

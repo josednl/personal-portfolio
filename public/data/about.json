@@ -1,30 +1,30 @@
 {
   "en": {
     "title": "About Me",
-    "name": "John Doe",
+    "name": "José Daniel Agudelo",
     "role": "Full Stack Developer",
     "location": "Remote",
     "image": "",
     "cv": "",
     "about": [
-      "I'm a passionate software developer who enjoys building clean, efficient, and user-focused digital experiences.",
+      "I'm a software developer who enjoys building clean, efficient, and user-focused digital experiences.",
       "I specialize in modern JavaScript technologies such as React, TypeScript, and Node.js.",
-      "I love learning new tools, contributing to open-source projects, and collaborating with teams to turn ideas into real products.",
-      "Outside of coding, I enjoy reading, exploring technology trends, and working on personal projects."
+      "I love learning new tools, contributing to projects, and collaborating with teams to turn ideas into real products.",
+      "Outside of coding, I enjoy reading, playing games, working on personal projects, and learn anything and everything."
     ]
   },
   "es": {
     "title": "Sobre Mí",
-    "name": "John Doe",
+    "name": "José Daniel Agudelo",
     "role": "Desarrollador Full Stack",
     "location": "Remoto",
     "image": "",
     "cv": "",
     "about": [
-      "Soy un desarrollador de software apasionado que disfruta creando experiencias digitales limpias, eficientes y centradas en el usuario.",
-      "Me especializo en tecnologías modernas de JavaScript como React, TypeScript y Node.js.",
-      "Me encanta aprender nuevas herramientas, contribuir a proyectos open-source y colaborar con equipos para convertir ideas en productos reales.",
-      "Fuera del código, disfruto leer, explorar tendencias tecnológicas y trabajar en proyectos personales."
+      "Soy un desarrollador de software al que le gusta crear experiencias digitales limpias, eficientes y centradas en el usuario.",
+      "Me especializo en tecnologías JavaScript modernas como React, TypeScript y Node.js.",
+      "Me encanta aprender nuevas herramientas, contribuir a proyectos y colaborar con equipos para convertir ideas en productos reales.",
+      "Fuera del código, disfruto leer, explorar cualquier tema y trabajar en proyectos personales."
     ]
   }
 }
