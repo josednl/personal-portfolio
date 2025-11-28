@@ -115,7 +115,7 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
 
         <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
           <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} {t("portfolioOwner")}
+            &copy; {new Date().getFullYear()} {t("portfolioOwner")} . {t("rights")}
           </p>
         </div>
       </div>

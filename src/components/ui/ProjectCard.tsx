@@ -1,9 +1,30 @@
+import { useState, useRef, useEffect } from "react";
 import { ProjectItem } from "@/lib/types/project";
 import { ImageCarousel } from "@/components/ui/ImageCarousel";
 import { ChevronsLeftRightEllipsis, Github } from "lucide-react";
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   const { title, description, images, demoUrl, githubUrl, technologies } = project;
+  const { t } = useTranslation();
+  const [expanded, setExpanded] = useState(false);
+  const [needsCollapse, setNeedsCollapse] = useState(false);
+  const textRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const paragraph = textRef.current;
+    if (paragraph) {
+      paragraph.classList.add("line-clamp-3");
+
+      requestAnimationFrame(() => {
+        if (paragraph.scrollHeight > paragraph.clientHeight) {
+          setNeedsCollapse(true);
+        } else {
+          setNeedsCollapse(false);
+        }
+      });
+    }
+  }, [description]);
 
   return (
     <div className="
@@ -15,9 +36,25 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
       </div>
 
       <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-gray-100">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-300 mt-2 leading-relaxed grow text-base line-clamp-3">
+
+      <p
+        ref={textRef}
+        className={`
+          text-gray-600 dark:text-gray-300 mt-2 leading-relaxed grow text-base
+          ${expanded ? "" : "line-clamp-3"}
+        `}
+      >
         {description}
       </p>
+
+      {needsCollapse && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-blue-600 dark:text-blue-400 text-sm mt-2 hover:underline w-fit"
+        >
+          {expanded ? t("readLess") : t("readMore")}
+        </button>
+      )}
 
       {technologies && technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-3">
@@ -50,7 +87,6 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
               text-gray-700 dark:text-gray-200 text-sm rounded-lg
               hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm
             "
-            title="View repository on GitHub"
           >
             <Github className="w-4 h-4" />
           </a>
@@ -65,7 +101,6 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
               flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white text-sm
               rounded-lg hover:bg-blue-700 transition-colors shadow-md
             "
-            title="View live demo"
           >
             <ChevronsLeftRightEllipsis className="w-4 h-4" />
           </a>
