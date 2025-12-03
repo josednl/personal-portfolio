@@ -4,10 +4,7 @@
     "items": {
       "Frontend": [
         "React",
-        "TypeScript/JavaScript",
-        "TailwindCSS",
-        "HTML",
-        "CSS"
+        "TailwindCSS"
       ],
       "Backend": [
         "Node.js",
@@ -24,8 +21,7 @@
       ],
       "Languages": [
         "JavaScript",
-        "TypeScript",
-        "PHP"
+        "TypeScript"
       ]
     }
   },
@@ -34,10 +30,7 @@
     "items": {
       "Frontend": [
         "React",
-        "TypeScript/JavaScript",
-        "TailwindCSS",
-        "HTML",
-        "CSS"
+        "TailwindCSS"
       ],
       "Backend": [
         "Node.js",
@@ -54,8 +47,7 @@
       ],
       "Languages": [
         "JavaScript",
-        "TypeScript",
-        "PHP"
+        "TypeScript"
       ]
     }
   }

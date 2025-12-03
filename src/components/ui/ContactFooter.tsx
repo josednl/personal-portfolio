@@ -61,7 +61,7 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Profile"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                   >
                     <Github className="w-6 h-6" />
                   </a>
