@@ -8,61 +8,69 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   const { title, description, images, demoUrl, githubUrl, technologies } = project;
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
-  const [needsCollapse, setNeedsCollapse] = useState(false);
+  const [isTruncated, setIsTruncated] = useState(false);
   const textRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    const paragraph = textRef.current;
-    if (paragraph) {
-      paragraph.classList.add("line-clamp-3");
+    const element = textRef.current;
+    if (!element) return;
+    const checkTruncation = () => {
+      const isOverflowing = element.scrollHeight > element.clientHeight + 1;
+      setIsTruncated(isOverflowing);
+    };
 
-      requestAnimationFrame(() => {
-        if (paragraph.scrollHeight > paragraph.clientHeight) {
-          setNeedsCollapse(true);
-        } else {
-          setNeedsCollapse(false);
-        }
-      });
-    }
+    checkTruncation();
+
+    const resizeObserver = new ResizeObserver(() => {
+      checkTruncation();
+    });
+
+    resizeObserver.observe(element);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
   }, [description]);
 
   return (
     <div className="
       border rounded-xl p-5 shadow transition-all bg-white dark:bg-gray-800
-      hover:shadow-lg hover:-translate-y-1 duration-300 flex flex-col
+      hover:shadow-lg hover:-translate-y-1 duration-300 flex flex-col h-full
     ">
-      <div className="aspect-video w-full"> 
+      <div className="aspect-video w-full overflow-hidden rounded-lg"> 
         <ImageCarousel images={images} />
       </div>
 
       <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-gray-100">{title}</h3>
 
-      <p
-        ref={textRef}
-        className={`
-          text-gray-600 dark:text-gray-300 mt-2 leading-relaxed grow text-base
-          ${expanded ? "" : "line-clamp-3"}
-        `}
-      >
-        {description}
-      </p>
-
-      {needsCollapse && (
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="text-blue-600 dark:text-blue-400 text-sm mt-2 hover:underline w-fit"
+      <div className="grow flex flex-col">
+        <p
+          ref={textRef}
+          className={`
+            text-gray-600 dark:text-gray-300 mt-2 leading-relaxed text-base
+            ${expanded ? "" : "line-clamp-3"}
+          `}
         >
-          {expanded ? t("readLess") : t("readMore")}
-        </button>
-      )}
+          {description}
+        </p>
+
+        {(isTruncated || expanded) && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="text-blue-600 dark:text-blue-400 text-sm mt-2 hover:underline w-fit font-medium transition-colors"
+          >
+            {expanded ? t("readLess") : t("readMore")}
+          </button>
+        )}
+      </div>
 
       {technologies && technologies.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-3">
+        <div className="flex flex-wrap gap-2 mt-4 mb-2">
           {technologies.map((tech) => (
             <span
               key={tech}
               className="
-                px-2 py-1 text-sm font-medium 
+                px-2.5 py-1 text-xs font-medium 
                 bg-gray-100 dark:bg-gray-700 
                 text-gray-700 dark:text-gray-300
                 rounded-full shadow-sm
@@ -74,7 +82,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
         </div>
       )}
 
-      <hr className="my-4 border-gray-100 dark:border-gray-700" /> 
+      <hr className="mt-auto mb-4 border-gray-100 dark:border-gray-700 w-full" /> 
 
       <div className="flex gap-3 justify-end pt-2">
         {githubUrl && (
@@ -89,6 +97,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
             "
           >
             <Github className="w-4 h-4" />
+            <span className="hidden sm:inline">GitHub</span>
           </a>
         )}
         
@@ -103,6 +112,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
             "
           >
             <ChevronsLeftRightEllipsis className="w-4 h-4" />
+            <span>Demo</span>
           </a>
         )}
       </div>
