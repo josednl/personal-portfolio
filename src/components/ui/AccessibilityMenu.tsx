@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Moon, Sun, Globe, ZoomIn, ZoomOut, RefreshCw, ChevronDown, Accessibility } from 'lucide-react';
+import {
+  Moon,
+  Sun,
+  Globe,
+  ZoomIn,
+  ZoomOut,
+  RefreshCw,
+  ChevronDown,
+  Accessibility,
+} from 'lucide-react';
 import { useAppSettings } from '@/lib/context/AppSettingsContext';
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 const AccessibilityMenu: React.FC = () => {
   const {
@@ -12,11 +21,11 @@ const AccessibilityMenu: React.FC = () => {
     fontSize,
     increaseFont,
     decreaseFont,
-    resetSettings
+    resetSettings,
   } = useAppSettings();
   const { t } = useTranslation();
 
-  const isDarkMode = theme === "dark";
+  const isDarkMode = theme === 'dark';
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
@@ -36,7 +45,7 @@ const AccessibilityMenu: React.FC = () => {
   }, []);
 
   const toggleMenu = () => {
-    setIsMenuOpen(prev => !prev);
+    setIsMenuOpen((prev) => !prev);
     if (isMenuOpen) setIsLanguageMenuOpen(false);
   };
 
@@ -61,21 +70,27 @@ const AccessibilityMenu: React.FC = () => {
       <div
         id="accessibility-options"
         className={`${
-          isMenuOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+          isMenuOpen
+            ? 'opacity-100 scale-100'
+            : 'opacity-0 scale-95 pointer-events-none'
         } absolute bottom-full right-0 mb-4 w-64 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
           rounded-xl shadow-xl p-4 transition-all duration-300 ease-out transform origin-bottom-right
           border border-gray-200 dark:border-gray-700`}
       >
         <h3 className="text-lg font-semibold mb-3 border-b pb-2 border-gray-200 dark:border-gray-700">
-          {t("accessibilityTitle")}
+          {t('accessibilityTitle')}
         </h3>
 
         <button
           className="flex items-center w-full text-left py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors mb-1"
           onClick={toggleTheme}
         >
-          {isDarkMode ? <Sun className="mr-3" size={20} /> : <Moon className="mr-3" size={20} />}
-          {isDarkMode ? t("lightMode") : t("darkMode")}
+          {isDarkMode ? (
+            <Sun className="mr-3" size={20} />
+          ) : (
+            <Moon className="mr-3" size={20} />
+          )}
+          {isDarkMode ? t('lightMode') : t('darkMode')}
         </button>
 
         <div className="relative mb-1">
@@ -83,14 +98,14 @@ const AccessibilityMenu: React.FC = () => {
             className="flex items-center justify-between w-full text-left py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             onClick={(e) => {
               e.stopPropagation();
-              setIsLanguageMenuOpen(prev => !prev);
+              setIsLanguageMenuOpen((prev) => !prev);
             }}
             aria-expanded={isLanguageMenuOpen}
             aria-controls="language-menu"
           >
             <span className="flex items-center">
               <Globe className="mr-3" size={20} />
-              {language === 'es' ? t("spanish") : t("english")}
+              {language === 'es' ? t('spanish') : t('english')}
             </span>
             <ChevronDown
               className={`ml-2 transition-transform ${isLanguageMenuOpen ? 'rotate-180' : 'rotate-0'}`}
@@ -122,7 +137,7 @@ const AccessibilityMenu: React.FC = () => {
 
         <div className="flex items-center justify-between mt-2 py-2 px-3 rounded-lg bg-gray-50 dark:bg-gray-700/50 mb-1">
           <span className="flex items-center text-sm font-medium">
-            {t("fontSize")} ({fontSize}px)
+            {t('fontSize')} ({fontSize}px)
           </span>
 
           <div className="flex space-x-2">
@@ -148,7 +163,7 @@ const AccessibilityMenu: React.FC = () => {
           onClick={resetSettings}
         >
           <RefreshCw className="mr-3" size={20} />
-          {t("resetSettings")}
+          {t('resetSettings')}
         </button>
       </div>
     </div>

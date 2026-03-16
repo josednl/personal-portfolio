@@ -8,13 +8,18 @@ interface PortalProps {
 
 function createWrapperAndAppendToBody(wrapperId: string) {
   const wrapperElement = document.createElement('div');
-  wrapperElement.setAttribute("id", wrapperId);
+  wrapperElement.setAttribute('id', wrapperId);
   document.body.appendChild(wrapperElement);
   return wrapperElement;
 }
 
-export const Portal = ({ children, wrapperId = "portal-wrapper" }: PortalProps) => {
-  const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(null);
+export const Portal = ({
+  children,
+  wrapperId = 'portal-wrapper',
+}: PortalProps) => {
+  const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(
+    null,
+  );
 
   useEffect(() => {
     let element = document.getElementById(wrapperId);
@@ -30,7 +35,7 @@ export const Portal = ({ children, wrapperId = "portal-wrapper" }: PortalProps) 
       if (systemCreated && element?.parentNode) {
         element.parentNode.removeChild(element);
       }
-    }
+    };
   }, [wrapperId]);
 
   if (wrapperElement === null) return null;

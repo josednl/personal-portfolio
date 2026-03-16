@@ -1,16 +1,18 @@
-import { Section } from "@/components/layout/Section";
-import { useFetchSection } from "@/lib/hooks/useFetchSection";
-import { ProjectsSkeleton } from "@/components/skeleton/ProjectsSkeleton";
-import { ProjectCard } from "@/components/ui/ProjectCard";
-import { ProjectsData } from "@/lib/types/project";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import { Section } from '@/components/layout/Section';
+import { useFetchSection } from '@/lib/hooks/useFetchSection';
+import { ProjectsSkeleton } from '@/components/skeleton/ProjectsSkeleton';
+import { ProjectCard } from '@/components/ui/ProjectCard';
+import { ProjectsData } from '@/lib/types/project';
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 export const Projects = () => {
   const { t } = useTranslation();
-  const { data, loading } = useFetchSection<ProjectsData>("/data/projects.json");
+  const { data, loading } = useFetchSection<ProjectsData>(
+    '/data/projects.json',
+  );
 
   return (
-    <Section id="projects" title={data?.title || t("projectsTitle")}>
+    <Section id="projects" title={data?.title || t('projectsTitle')}>
       {loading && <ProjectsSkeleton />}
 
       {!loading && data && (

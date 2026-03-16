@@ -1,11 +1,12 @@
-import { useState, useRef, useEffect } from "react";
-import { ProjectItem } from "@/lib/types/project";
-import { ImageCarousel } from "@/components/ui/ImageCarousel";
-import { ChevronsLeftRightEllipsis, Github } from "lucide-react";
+import { useState, useRef, useEffect } from 'react';
+import { ProjectItem } from '@/lib/types/project';
+import { ImageCarousel } from '@/components/ui/ImageCarousel';
+import { ChevronsLeftRightEllipsis, Github } from 'lucide-react';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
 export const ProjectCard = ({ project }: { project: ProjectItem }) => {
-  const { title, description, images, demoUrl, githubUrl, technologies } = project;
+  const { title, description, images, demoUrl, githubUrl, technologies } =
+    project;
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
@@ -33,22 +34,26 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   }, [description]);
 
   return (
-    <div className="
+    <div
+      className="
       border rounded-xl p-5 shadow transition-all bg-white dark:bg-gray-800
       hover:shadow-lg hover:-translate-y-1 duration-300 flex flex-col h-full
-    ">
-      <div className="aspect-video w-full overflow-hidden rounded-lg"> 
+    "
+    >
+      <div className="aspect-video w-full overflow-hidden rounded-lg">
         <ImageCarousel images={images} />
       </div>
 
-      <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-gray-100">{title}</h3>
+      <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-gray-100">
+        {title}
+      </h3>
 
       <div className="grow flex flex-col">
         <p
           ref={textRef}
           className={`
             text-gray-600 dark:text-gray-300 mt-2 leading-relaxed text-base
-            ${expanded ? "" : "line-clamp-3"}
+            ${expanded ? '' : 'line-clamp-3'}
           `}
         >
           {description}
@@ -59,7 +64,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
             onClick={() => setExpanded(!expanded)}
             className="text-blue-600 dark:text-blue-400 text-sm mt-2 hover:underline w-fit font-medium transition-colors"
           >
-            {expanded ? t("readLess") : t("readMore")}
+            {expanded ? t('readLess') : t('readMore')}
           </button>
         )}
       </div>
@@ -82,7 +87,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
         </div>
       )}
 
-      <hr className="mt-auto mb-4 border-gray-100 dark:border-gray-700 w-full" /> 
+      <hr className="mt-auto mb-4 border-gray-100 dark:border-gray-700 w-full" />
 
       <div className="flex gap-3 justify-end pt-2">
         {githubUrl && (
@@ -100,7 +105,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
             <span className="hidden sm:inline">GitHub</span>
           </a>
         )}
-        
+
         {demoUrl && (
           <a
             href={demoUrl}

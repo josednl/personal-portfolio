@@ -1,5 +1,5 @@
-import { useAppSettings } from "@/lib/context/AppSettingsContext";
-import { useState, useEffect } from "react";
+import { useAppSettings } from '@/lib/context/AppSettingsContext';
+import { useState, useEffect } from 'react';
 
 export const useFetchSection = <T>(path: string) => {
   const { language } = useAppSettings();
@@ -9,8 +9,8 @@ export const useFetchSection = <T>(path: string) => {
   const fetchData = async () => {
     // await new Promise((res) => setTimeout(res, 5000)); // Simulate delay
     fetch(path)
-      .then(res => res.json())
-      .then(json => {
+      .then((res) => res.json())
+      .then((json) => {
         setData(json[language]);
         setLoading(false);
       })

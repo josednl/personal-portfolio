@@ -1,7 +1,7 @@
-import { Section } from "@/components/layout/Section";
-import { useFetchSection } from "@/lib/hooks/useFetchSection";
-import { AboutSkeleton } from "@/components/skeleton/AboutSkeleton";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import { Section } from '@/components/layout/Section';
+import { useFetchSection } from '@/lib/hooks/useFetchSection';
+import { AboutSkeleton } from '@/components/skeleton/AboutSkeleton';
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 interface AboutData {
   name: string;
@@ -15,7 +15,7 @@ interface AboutData {
 
 export const About = () => {
   const { t } = useTranslation();
-  const { data, loading } = useFetchSection<AboutData>("/data/about.json");
+  const { data, loading } = useFetchSection<AboutData>('/data/about.json');
 
   return (
     <Section id="about">
@@ -29,7 +29,6 @@ export const About = () => {
           "
         >
           <div className="flex flex-col md:flex-row gap-8 lg:gap-12 pb-8 border-b border-gray-200 dark:border-gray-700">
-
             {data.image && (
               <div className="shrink-0 mx-auto md:mx-0 pt-2">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-gray-400 dark:border-gray-600">
@@ -44,7 +43,6 @@ export const About = () => {
             )}
 
             <div className="grow space-y-5">
-
               <div>
                 <h3 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-0">
                   {data.name}
@@ -59,7 +57,10 @@ export const About = () => {
 
               <div className="space-y-4">
                 {data.about.map((paragraph, i) => (
-                  <p key={i} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <p
+                    key={i}
+                    className="text-base text-gray-700 dark:text-gray-300 leading-relaxed"
+                  >
                     {paragraph}
                   </p>
                 ))}
@@ -67,8 +68,9 @@ export const About = () => {
                   <a
                     href={data.cv}
                     download
-                    className="inline-block mt-4 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition">
-                    {t("downloadCV")}
+                    className="inline-block mt-4 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition"
+                  >
+                    {t('downloadCV')}
                   </a>
                 )}
               </div>

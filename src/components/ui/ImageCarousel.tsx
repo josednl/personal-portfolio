@@ -1,6 +1,6 @@
-import { useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { Portal } from "@/components/ui/Portal";
+import { useState, useCallback } from 'react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { Portal } from '@/components/ui/Portal';
 
 interface ImageCarouselProps {
   images: string[];
@@ -90,8 +90,14 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
 
   const hasMultiple = images.length > 1;
 
-  const next = useCallback(() => setIndex((i) => (i + 1) % images.length), [images.length]);
-  const prev = useCallback(() => setIndex((i) => (i - 1 + images.length) % images.length), [images.length]);
+  const next = useCallback(
+    () => setIndex((i) => (i + 1) % images.length),
+    [images.length],
+  );
+  const prev = useCallback(
+    () => setIndex((i) => (i - 1 + images.length) % images.length),
+    [images.length],
+  );
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -113,7 +119,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
               src={src}
               alt={`Image ${i + 1} of ${images.length} in the project. Click to enlarge.`}
               className="w-full h-full object-cover shrink-0 cursor-pointer"
-              loading={i === 0 ? "eager" : "lazy"} 
+              loading={i === 0 ? 'eager' : 'lazy'}
               onClick={openModal}
             />
           ))}
@@ -122,7 +128,10 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
         {hasMultiple && (
           <>
             <button
-              onClick={(e) => { e.stopPropagation(); prev(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                prev();
+              }}
               aria-label="Previous image"
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/20 text-white dark:text-gray-900 p-2 rounded-full hover:bg-black/75 dark:hover:bg-white/30 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 z-10"
             >
@@ -130,7 +139,10 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
             </button>
 
             <button
-              onClick={(e) => { e.stopPropagation(); next(); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                next();
+              }}
               aria-label="Next image"
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 dark:bg-white/20 text-white dark:text-gray-900 p-2 rounded-full hover:bg-black/75 dark:hover:bg-white/30 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 z-10"
             >
@@ -141,12 +153,15 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
               {images.map((_, i) => (
                 <button
                   key={i}
-                  onClick={(e) => { e.stopPropagation(); setIndex(i); }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIndex(i);
+                  }}
                   aria-label={`Go to image ${i + 1}`}
                   className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
                     i === index
-                      ? "bg-white dark:bg-gray-200 scale-125 ring-2 ring-blue-500"
-                      : "bg-white/60 dark:bg-gray-400/60 hover:bg-white dark:hover:bg-gray-200"
+                      ? 'bg-white dark:bg-gray-200 scale-125 ring-2 ring-blue-500'
+                      : 'bg-white/60 dark:bg-gray-400/60 hover:bg-white dark:hover:bg-gray-200'
                   }`}
                 />
               ))}

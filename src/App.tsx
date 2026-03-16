@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { PageContainer } from "@/components/layout/PageContainer";
-import { AppSettingsProvider } from "@/lib/context/AppSettingsContext";
+import { useEffect } from 'react';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { AppSettingsProvider } from '@/lib/context/AppSettingsContext';
 import { About } from '@/components/sections/About';
 import { Projects } from '@/components/sections/Projects';
-import { Education } from "@/components/sections/Education";
+import { Education } from '@/components/sections/Education';
 import { Contact } from '@/components/sections/Contact';
-import { WorkExperience } from "@/components/sections/WorkExperience";
-import { Skills } from "@/components/sections/Skills";
-import AccessibilityMenu from "./components/ui/AccessibilityMenu";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import { WorkExperience } from '@/components/sections/WorkExperience';
+import { Skills } from '@/components/sections/Skills';
+import AccessibilityMenu from './components/ui/AccessibilityMenu';
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 function App() {
   return (
