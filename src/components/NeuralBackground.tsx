@@ -29,8 +29,8 @@ const NeuralBackground: React.FC = () => {
     const config = {
       particleCount: Math.min(140, Math.floor((window.innerWidth * window.innerHeight) / 15000)),
       connectionDist: 150,
-      getColor: () => isDarkMode() ? '100, 180, 255' : '71, 85, 105',
-      getLineOpacity: () => isDarkMode() ? 0.35 : 0.15,
+      getColor: () => (isDarkMode() ? '100, 180, 255' : '71, 85, 105'),
+      getLineOpacity: () => (isDarkMode() ? 0.35 : 0.15),
     };
 
     const handleScroll = () => {
@@ -121,7 +121,7 @@ const NeuralBackground: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none bg-gray-50 dark:bg-gray-900 transition-colors duration-500"
+      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none bg-transparent"
     />
   );
 };
