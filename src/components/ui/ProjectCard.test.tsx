@@ -11,8 +11,7 @@ describe('ProjectCard', () => {
     technologies: ['React', 'TypeScript'],
     githubUrl: 'https://github.com/test/test',
     demoUrl: 'https://test.com',
-    images: ['/test-image.jpg'],
-    featured: false,
+    images: ['/test-image.jpg']
   };
 
   test('renders project name and description', () => {
@@ -35,7 +34,7 @@ describe('ProjectCard', () => {
       </TestWrapper>,
     );
 
-    mockProject.technologies.forEach((tech) => {
+    mockProject.technologies!.forEach((tech) => {
       expect(screen.getByText(tech)).toBeInTheDocument();
     });
   });

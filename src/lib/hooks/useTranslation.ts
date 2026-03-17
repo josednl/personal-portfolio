@@ -4,12 +4,8 @@ import { translations } from '@/lib/translations/translations';
 export const useTranslation = () => {
   const { language } = useAppSettings();
 
-  const t = (key: string): string => {
-    return (
-      translations[language]?.[
-        key as keyof (typeof translations)[typeof language]
-      ] || key
-    );
+  const t = <T extends keyof typeof translations.en>(key: T): string => {
+    return translations[language]?.[key] || translations.en?.[key] || key;
   };
 
   return { t, language };
