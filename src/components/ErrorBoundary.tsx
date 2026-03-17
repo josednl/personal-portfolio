@@ -29,7 +29,7 @@ export class ErrorBoundary extends Component<Props, State> {
         <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-6">
           <h2 className="text-2xl font-bold mb-4">Something went wrong.</h2>
           <p className="mb-6">
-            Please try again later or contact support if the problem persists.
+            Reload the page or try again later if the problem persists.
           </p>
           <button
             onClick={() => window.location.reload()}
