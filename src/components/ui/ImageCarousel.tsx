@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Portal } from '@/components/ui/Portal';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 
 interface ImageCarouselProps {
   images: string[];
@@ -47,9 +48,11 @@ const ImageModal = ({
         </button>
 
         <div className="h-full w-full flex items-center justify-center">
-          <img
+          <OptimizedImage
             src={imageSrc}
             alt={`Large image ${currentIndex + 1} of ${images.length}`}
+            width={1600}
+            height={900}
             className="object-contain max-h-[90vh] max-w-full rounded-lg shadow-2xl"
           />
         </div>
@@ -114,10 +117,12 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {images.map((src, i) => (
-            <img
+            <OptimizedImage
               key={i}
               src={src}
               alt={`Image ${i + 1} of ${images.length} in the project. Click to enlarge.`}
+              width={800}
+              height={450}
               className="w-full h-full object-cover shrink-0 cursor-pointer"
               loading={i === 0 ? 'eager' : 'lazy'}
               onClick={openModal}
