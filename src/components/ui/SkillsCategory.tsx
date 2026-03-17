@@ -9,8 +9,8 @@ export const SkillsCategory = ({ category, skills }: SkillsCategoryProps) => {
   return (
     <div className="mb-6">
       <div className="flex items-center gap-2 mb-3">
-        <Code2 className="text-blue-600 dark:text-blue-300" size={20} />
-        <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
+        <Code2 className="text-primary dark:text-primary/80" size={20} />
+        <h3 className="text-xl font-semibold text-text dark:text-white/70">
           {category}
         </h3>
       </div>

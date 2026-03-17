@@ -58,13 +58,20 @@ const AccessibilityMenu: React.FC = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50" ref={menuRef}>
       <button
-        className="bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
+        className="bg-primary text-white rounded-sm p-3 shadow-lg hover:bg-primary/90 transition-all duration-200 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 relative overflow-hidden group"
         onClick={toggleMenu}
         aria-expanded={isMenuOpen}
         aria-controls="accessibility-options"
         title="Accessibility Settings"
       >
-        <Accessibility size={24} />
+        <Accessibility
+          size={24}
+          className="transition-transform duration-200 group-hover:rotate-12"
+        />
+        <span
+          className="absolute inset-0 animate-pulse opacity-25"
+          aria-hidden="true"
+        />
       </button>
 
       <div
@@ -74,15 +81,15 @@ const AccessibilityMenu: React.FC = () => {
             ? 'opacity-100 scale-100'
             : 'opacity-0 scale-95 pointer-events-none'
         } absolute bottom-full right-0 mb-4 w-64 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
-          rounded-xl shadow-xl p-4 transition-all duration-300 ease-out transform origin-bottom-right
-          border border-gray-200 dark:border-gray-700`}
+           rounded-xl shadow-xl p-6 transition-all duration-250 ease-out transform origin-bottom-right
+           border border-gray-200 dark:border-gray-700`}
       >
-        <h3 className="text-lg font-semibold mb-3 border-b pb-2 border-gray-200 dark:border-gray-700">
+        <h3 className="text-lg font-semibold mb-4 border-b pb-2 border-text/20 dark:border-text/10">
           {t('accessibilityTitle')}
         </h3>
 
         <button
-          className="flex items-center w-full text-left py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors mb-1"
+          className="flex items-center w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 mb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           onClick={toggleTheme}
         >
           {isDarkMode ? (
@@ -95,7 +102,7 @@ const AccessibilityMenu: React.FC = () => {
 
         <div className="relative mb-1">
           <button
-            className="flex items-center justify-between w-full text-left py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="flex items-center justify-between w-full text-left py-3 px-4 rounded-lg hover:bg-text/5 dark:hover:bg-gray-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             onClick={(e) => {
               e.stopPropagation();
               setIsLanguageMenuOpen((prev) => !prev);
@@ -113,43 +120,43 @@ const AccessibilityMenu: React.FC = () => {
             />
           </button>
 
-          {isLanguageMenuOpen && (
-            <div
-              id="language-menu"
-              className="absolute left-0 bottom-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 
-                rounded-lg p-2 w-full shadow-md z-10 origin-bottom scale-y-100"
-            >
-              <button
-                className="w-full text-left py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
-                onClick={(e) => handleLanguageChange('es', e)}
-              >
-                Spanish
-              </button>
-              <button
-                className="w-full text-left py-2 px-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
-                onClick={(e) => handleLanguageChange('en', e)}
-              >
-                English
-              </button>
-            </div>
-          )}
+           {isLanguageMenuOpen && (
+             <div
+               id="language-menu"
+               className="absolute left-0 bottom-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+                rounded-lg p-4 w-full shadow-lg z-10 origin-bottom scale-y-100"
+             >
+               <button
+                 className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 mb-2"
+                 onClick={(e) => handleLanguageChange('es', e)}
+               >
+                 Spanish
+               </button>
+               <button
+                 className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                 onClick={(e) => handleLanguageChange('en', e)}
+               >
+                 English
+               </button>
+             </div>
+           )}
         </div>
 
-        <div className="flex items-center justify-between mt-2 py-2 px-3 rounded-lg bg-gray-50 dark:bg-gray-700/50 mb-1">
-          <span className="flex items-center text-sm font-medium">
+        <div className="flex items-center justify-between mt-4 py-3 px-4 rounded-lg bg-text/5 dark:bg-text/10 mb-2">
+          <span className="flex items-center text-sm font-medium text-text/80 dark:text-gray-100">
             {t('fontSize')} ({fontSize}px)
           </span>
 
           <div className="flex space-x-2">
             <button
-              className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="p-1 rounded-full hover:bg-text/10 dark:hover:bg-gray-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               onClick={decreaseFont}
               title="Decrease Font Size"
             >
               <ZoomOut size={18} />
             </button>
             <button
-              className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="p-1 rounded-full hover:bg-text/10 dark:hover:bg-gray-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               onClick={increaseFont}
               title="Increase Font Size"
             >
@@ -159,7 +166,7 @@ const AccessibilityMenu: React.FC = () => {
         </div>
 
         <button
-          className="flex items-center w-full text-left py-2 px-3 rounded-lg hover:bg-red-100 dark:hover:bg-red-800/50 text-red-600 dark:text-red-400 transition-colors mt-3"
+          className="flex items-center w-full text-left py-3 px-4 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 mt-4"
           onClick={resetSettings}
         >
           <RefreshCw className="mr-3" size={20} />

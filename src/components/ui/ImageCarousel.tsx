@@ -166,7 +166,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
                   className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
                     i === index
                       ? 'bg-white dark:bg-gray-200 scale-125 ring-2 ring-blue-500'
-                      : 'bg-white/60 dark:bg-gray-400/60 hover:bg-white dark:hover:bg-gray-200'
+                      : 'bg-gray-400 dark:bg-gray-400/60 hover:bg-gray-200 dark:hover:bg-gray-200'
                   }`}
                 />
               ))}

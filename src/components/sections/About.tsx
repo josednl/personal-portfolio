@@ -23,12 +23,12 @@ export const About = () => {
       {!loading && data && (
         <div
           className="
-            p-0 md:p-0 
-            bg-transparent 
-            text-gray-800 dark:text-gray-200
-          "
+           p-0 md:p-0 
+           bg-transparent 
+           text-text dark:text-text/80
+         "
         >
-          <div className="flex flex-col md:flex-row gap-8 lg:gap-12 pb-8 border-b border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col md:flex-row gap-6 lg:gap-8 pb-6 border-b border-text/20 dark:border-text/10">
             {data.image && (
               <div className="shrink-0 mx-auto md:mx-0 pt-2">
                 <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-gray-400 dark:border-gray-600">
@@ -68,7 +68,7 @@ export const About = () => {
                   <a
                     href={data.cv}
                     download
-                    className="inline-block mt-4 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition"
+                    className="inline-block mt-4 px-5 py-2 bg-primary text-white font-semibold rounded-lg shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200"
                   >
                     {t('downloadCV')}
                   </a>

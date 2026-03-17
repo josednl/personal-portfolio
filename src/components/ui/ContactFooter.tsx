@@ -11,7 +11,7 @@ import {
 import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
-const accentColor = 'text-blue-600';
+const accentColor = 'text-primary';
 
 export const ContactFooter = ({ contact }: { contact: ContactData }) => {
   const { t } = useTranslation();
@@ -33,7 +33,7 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
                   <Mail className={`w-4 h-4 mr-2 ${accentColor}`} />
                   <a
                     href={`mailto:${email}`}
-                    className="hover:underline transition"
+                    className="hover:underline transition-200"
                   >
                     {email}
                   </a>
@@ -45,7 +45,7 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
                   <Phone className={`w-4 h-4 mr-2 ${accentColor}`} />
                   <a
                     href={`tel:${phone}`}
-                    className="hover:underline transition"
+                    className="hover:underline transition-200"
                   >
                     {phone}
                   </a>
