@@ -32,53 +32,52 @@ const ImageModal = ({
 
   return (
     <div
-      className="fixed inset-0 z-100 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/50 backdrop-blur-lg"
       onClick={onClose}
     >
-      <div
-        className="relative max-w-5xl w-full flex items-center justify-center"
-        onClick={(e) => e.stopPropagation()}
+      <button
+        onClick={onClose}
+        aria-label="Close view"
+        className="fixed top-6 right-6 z-130 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-all border border-white/20 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
       >
-        <div className="relative overflow-hidden rounded-lg shadow-2xl flex items-center justify-center bg-black/20 border border-white/5">
-          
+        <X className="w-6 h-6" />
+      </button>
+
+      {hasMultiple && (
+        <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-130 flex items-center gap-4 animate-in fade-in zoom-in duration-300">
           <button
-            onClick={onClose}
-            aria-label="Cerrar vista"
-            className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/70 text-white hover:bg-black/90 transition-all border border-white/20 shadow-xl hover:scale-110 active:scale-95"
+            onClick={(e) => { e.stopPropagation(); onPrev(); }}
+            className="p-3 rounded-full bg-black/60 text-white hover:bg-blue-600 transition-all border border-white/10 shadow-xl backdrop-blur-md active:scale-90"
           >
-            <X className="w-6 h-6" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
 
-          <OptimizedImage
-            src={imageSrc}
-            alt={`Imagen expandida ${currentIndex + 1}`}
-            width={1600}
-            height={900}
-            className="object-contain max-h-[85vh] w-auto block select-none"
-          />
+          <div className="px-6 py-2.5 rounded-full bg-black/60 text-white text-sm font-medium border border-white/10 backdrop-blur-md shadow-2xl min-w-[100px] text-center">
+            <span className="text-white/90">{currentIndex + 1}</span>
+            <span className="mx-2 text-white/30">/</span>
+            <span className="text-white/90">{images.length}</span>
+          </div>
 
-          {hasMultiple && (
-            <>
-              <button
-                onClick={onPrev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-black/70 text-white hover:bg-black/90 transition-all border border-white/20 shadow-xl hover:scale-110 active:scale-95"
-              >
-                <ChevronLeft className="w-8 h-8" />
-              </button>
-
-              <button
-                onClick={onNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-black/70 text-white hover:bg-black/90 transition-all border border-white/20 shadow-xl hover:scale-110 active:scale-95"
-              >
-                <ChevronRight className="w-8 h-8" />
-              </button>
-
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 px-4 py-1.5 rounded-full bg-black/70 text-white text-sm font-bold border border-white/20 backdrop-blur-md shadow-lg">
-                {currentIndex + 1} / {images.length}
-              </div>
-            </>
-          )}
+          <button
+            onClick={(e) => { e.stopPropagation(); onNext(); }}
+            className="p-3 rounded-full bg-black/60 text-white hover:bg-blue-600 transition-all border border-white/10 shadow-xl backdrop-blur-md active:scale-90"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </div>
+      )}
+
+      <div 
+        className="relative w-full h-full flex items-center justify-center p-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <OptimizedImage
+          src={imageSrc}
+          alt={`Expanded image ${currentIndex + 1}`}
+          width={1600}
+          height={900}
+          className="object-contain max-h-[70vh] md:max-h-[80vh] w-auto h-auto select-none rounded-sm shadow-2xl transition-all duration-500"
+        />
       </div>
     </div>
   );
@@ -90,7 +89,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
 
   if (!images || images.length === 0)
     return (
-      <div className="h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded-lg text-gray-400">
+      <div className="h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded-lg text-gray-400 italic">
         No images available
       </div>
     );
@@ -111,7 +110,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
             <OptimizedImage
               key={i}
               src={src}
-              alt={`Miniatura ${i + 1}`}
+              alt={`Thumbnail ${i + 1}`}
               width={800}
               height={450}
               className="w-full h-full object-cover shrink-0 cursor-zoom-in"
@@ -124,14 +123,14 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
           <>
             <button
               onClick={(e) => { e.stopPropagation(); prev(); }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-black/70 text-black dark:text-white p-2 rounded-full shadow-lg transition-opacity duration-300 hover:bg-white dark:hover:bg-black"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-black/70 text-black dark:text-white p-2 rounded-full shadow-lg transition-opacity duration-300 hover:bg-white dark:hover:bg-black z-10"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
 
             <button
               onClick={(e) => { e.stopPropagation(); next(); }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-black/70 text-black dark:text-white p-2 rounded-full shadow-lg transition-opacity duration-300 hover:bg-white dark:hover:bg-black"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-black/70 text-black dark:text-white p-2 rounded-full shadow-lg transition-opacity duration-300 hover:bg-white dark:hover:bg-black z-10"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -146,7 +145,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
                       ? 'w-6 bg-blue-500'
                       : 'w-2 bg-white/80 dark:bg-gray-400/70 hover:bg-white'
                   }`}
-                  aria-label={`Ir a imagen ${i + 1}`}
+                  aria-label={`Go to image ${i + 1}`}
                 />
               ))}
             </div>
