@@ -49,6 +49,14 @@ const AccessibilityMenu: React.FC = () => {
     if (isMenuOpen) setIsLanguageMenuOpen(false);
   };
 
+  // Update theme-color meta tag when theme changes
+  useEffect(() => {
+    const meta = document.getElementById('theme-color-meta');
+    if (meta) {
+      meta.setAttribute('content', theme === 'dark' ? '#18173f' : '#ebdaff');
+    }
+  }, [theme]);
+
   const handleLanguageChange = (lang: 'en' | 'es', event: React.MouseEvent) => {
     event.stopPropagation();
     setLanguage(lang);
@@ -120,26 +128,26 @@ const AccessibilityMenu: React.FC = () => {
             />
           </button>
 
-           {isLanguageMenuOpen && (
-             <div
-               id="language-menu"
-               className="absolute left-0 bottom-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+          {isLanguageMenuOpen && (
+            <div
+              id="language-menu"
+              className="absolute left-0 bottom-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
                 rounded-lg p-4 w-full shadow-lg z-10 origin-bottom scale-y-100"
-             >
-               <button
-                 className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 mb-2"
-                 onClick={(e) => handleLanguageChange('es', e)}
-               >
-                 Spanish
-               </button>
-               <button
-                 className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-                 onClick={(e) => handleLanguageChange('en', e)}
-               >
-                 English
-               </button>
-             </div>
-           )}
+            >
+              <button
+                className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 mb-2"
+                onClick={(e) => handleLanguageChange('es', e)}
+              >
+                Spanish
+              </button>
+              <button
+                className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                onClick={(e) => handleLanguageChange('en', e)}
+              >
+                English
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="flex items-center justify-between mt-4 py-3 px-4 rounded-lg dark:bg-text/10 mb-2">
