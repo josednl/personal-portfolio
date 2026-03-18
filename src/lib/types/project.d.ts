@@ -6,6 +6,12 @@ export interface ProjectItem {
   demoUrl?: string;
   githubUrl?: string;
   technologies?: string[];
+  // Extended details for expandable section
+  architecture?: string;
+  techDecisions?: string;
+  metrics?: string;
+  problemsSolved?: string;
+  learnings?: string;
 }
 
 export interface ProjectsData {

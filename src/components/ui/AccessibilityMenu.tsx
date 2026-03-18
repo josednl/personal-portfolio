@@ -142,7 +142,7 @@ const AccessibilityMenu: React.FC = () => {
            )}
         </div>
 
-        <div className="flex items-center justify-between mt-4 py-3 px-4 rounded-lg bg-text/5 dark:bg-text/10 mb-2">
+        <div className="flex items-center justify-between mt-4 py-3 px-4 rounded-lg dark:bg-text/10 mb-2">
           <span className="flex items-center text-sm font-medium text-text/80 dark:text-gray-100">
             {t('fontSize')} ({fontSize}px)
           </span>

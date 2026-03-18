@@ -1,137 +1,193 @@
 import { useState, useRef, useEffect } from 'react';
 import { ProjectItem } from '@/lib/types/project';
 import { ImageCarousel } from '@/components/ui/ImageCarousel';
-import { ChevronsLeftRightEllipsis, Github, BookOpen } from 'lucide-react';
+import { ChevronsLeftRightEllipsis, Github, RotateCw } from 'lucide-react';
 import { useTranslation } from '@/lib/hooks/useTranslation';
+import { DetailSection } from '@/components/ui/DetailSection';
 
 export const ProjectCard = ({ project }: { project: ProjectItem }) => {
-  const { title, description, images, demoUrl, githubUrl, technologies } =
-    project;
+  const {
+    title,
+    description,
+    images,
+    demoUrl,
+    githubUrl,
+    technologies,
+    architecture,
+    techDecisions,
+    metrics,
+    problemsSolved,
+    learnings,
+  } = project;
   const { t } = useTranslation();
   const [expanded, setExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
+  const [flipped, setFlipped] = useState(false);
   const textRef = useRef<HTMLParagraphElement>(null);
+  const hasExtendedDetails = !!(
+    architecture ||
+    techDecisions ||
+    metrics ||
+    problemsSolved ||
+    learnings
+  );
 
   useEffect(() => {
     const element = textRef.current;
     if (!element) return;
     const checkTruncation = () => {
-      const isOverflowing = element.scrollHeight > element.clientHeight + 1;
-      setIsTruncated(isOverflowing);
+      setIsTruncated(element.scrollHeight > element.offsetHeight);
     };
-
     checkTruncation();
-
-    const resizeObserver = new ResizeObserver(() => {
-      checkTruncation();
-    });
-
+    const resizeObserver = new ResizeObserver(checkTruncation);
     resizeObserver.observe(element);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
+    return () => resizeObserver.disconnect();
   }, [description]);
 
   return (
-    <div
-      className="
-        border border-text/10 rounded-xl p-5 shadow bg-white dark:bg-gray-800
-        hover:shadow-xl hover:-translate-y-2 duration-300 flex flex-col h-full
-        transition-all duration-300 ease-out
-        hover:border-blue-500 dark:hover:border-blue-400
-      "
-    >
-      <div className="aspect-video w-full overflow-hidden rounded-lg">
-        <ImageCarousel images={images} />
-      </div>
-
-      <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
-        {title}
-      </h3>
-
-      <div className="grow flex flex-col">
-        <p
-          ref={textRef}
-          className={`
-            text-gray-600 dark:text-gray-300 mt-2 leading-relaxed text-base
-            ${expanded ? '' : 'line-clamp-3'}
-          `}
+    <div className="group perspective-1000 w-full h-[600px]">
+      <div
+        className={`relative w-full h-full transition-transform duration-700 preserve-3d ${flipped ? 'rotate-y-180' : ''}`}
+      >
+        <div
+          className={`absolute inset-0 backface-hidden border border-transparent rounded-xl p-6 shadow-lg bg-white dark:bg-gray-800 flex flex-col h-full bg-linear-to-b from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 ${flipped ? 'z-0' : 'z-10'}`}
+          style={{ transform: 'translateZ(0px)' }}
         >
-          {description}
-        </p>
+          <div className="aspect-video w-full overflow-hidden rounded-lg shrink-0">
+            <ImageCarousel images={images} />
+          </div>
 
-        {(isTruncated || expanded) && (
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className={`
-              text-blue-600 dark:text-blue-400 text-sm mt-2 hover:underline w-fit font-medium transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
-              hover:bg-blue-50 dark:hover:bg-blue-800
-            `}
-          >
-            {expanded ? t('readLess') : t('readMore')}
-          </button>
-        )}
-      </div>
+          <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-gray-100 shrink-0 italic">
+            {title}
+          </h3>
 
-      {technologies && technologies.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-4 mb-2">
-          {technologies.map((tech) => (
-            <span
-              key={tech}
-              className={`
-                px-3 py-1.5 text-xs font-medium 
-                bg-gray-100 dark:bg-gray-700 
-                text-gray-700 dark:text-gray-300
-                rounded-full shadow-sm
-                hover:bg-blue-50 dark:hover:bg-blue-800
-                hover:text-blue-800 dark:hover:text-blue-200
-                transition-all duration-200
-              `}
-            >
-              {tech}
-            </span>
-          ))}
+          <div className="grow mt-2 overflow-hidden flex flex-col">
+            <div className="overflow-y-auto pr-2 custom-scrollbar">
+              <p
+                ref={textRef}
+                className={`text-gray-600 dark:text-gray-300 leading-relaxed ${expanded ? '' : 'line-clamp-4'}`}
+              >
+                {description}
+              </p>
+            </div>
+
+            {isTruncated && !expanded && (
+              <button
+                onClick={() => setExpanded(true)}
+                className="text-blue-600 text-sm mt-1 hover:underline w-fit font-medium shrink-0"
+              >
+                {t('readMore')}
+              </button>
+            )}
+            {expanded && (
+              <button
+                onClick={() => setExpanded(false)}
+                className="text-blue-600 text-sm mt-1 hover:underline w-fit font-medium shrink-0"
+              >
+                {t('readLess')}
+              </button>
+            )}
+          </div>
+
+          {technologies && (
+            <div className="flex flex-wrap gap-2 mt-4 shrink-0">
+              {technologies.slice(0, 4).map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2 py-1 text-[10px] font-medium text-text dark:text-gray-200 bg-gray-100 dark:bg-gray-700 rounded-full"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div className="flex gap-3 justify-end pt-4 mt-auto shrink-0">
+            <ActionButtons
+              flipped={flipped}
+              setFlipped={setFlipped}
+              hasExtendedDetails={hasExtendedDetails}
+              githubUrl={githubUrl}
+              demoUrl={demoUrl}
+              t={t}
+            />
+          </div>
         </div>
-      )}
 
-      <hr className="mt-auto mb-4 border-gray-100 dark:border-gray-700 w-full" />
+        <div
+          className={`absolute inset-0 backface-hidden border border-transparent rounded-xl p-6 shadow-lg flex flex-col h-full bg-linear-to-b from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-900/20 dark:via-purple-900/20 dark:to-pink-900/20 ${flipped ? 'z-10' : 'z-0'}`}
+          style={{ transform: 'rotateY(180deg) translateZ(0px)' }}
+        >
+          <div className="flex items-center justify-between mb-6 shrink-0">
+            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-300">
+              {t('showDetails')}
+            </h3>
+            <button
+              onClick={() => setFlipped(false)}
+              className="p-2 border border-blue-200 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+            >
+              <RotateCw className="w-5 h-5 text-blue-600 dark:text-blue-300" />
+            </button>
+          </div>
 
-      <div className="flex gap-3 justify-end pt-2">
-        {githubUrl && (
-          <a
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              flex items-center gap-1.5 px-3 py-2 border border-gray-300 dark:border-gray-600
-              text-gray-700 dark:text-gray-200 text-sm rounded-lg
-              hover:bg-gray-50 dark:hover:bg-gray-700
-              transition-colors duration-200 shadow-sm
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
-            `}
-          >
-            <Github className="w-4 h-4" />
-            <span className="hidden sm:inline">GitHub</span>
-          </a>
-        )}
-
-        {demoUrl && (
-          <a
-            href={demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`
-              flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white text-sm
-              rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md
-              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2
-            `}
-          >
-            <ChevronsLeftRightEllipsis className="w-4 h-4" />
-            <span>Demo</span>
-          </a>
-        )}
+          <div className="grow overflow-y-auto space-y-6 pr-2 custom-scrollbar">
+            {architecture && (
+              <DetailSection title={t('architecture')} text={architecture} />
+            )}
+            {techDecisions && (
+              <DetailSection title={t('techDecisions')} text={techDecisions} />
+            )}
+            {metrics && <DetailSection title={t('metrics')} text={metrics} />}
+            {problemsSolved && (
+              <DetailSection
+                title={t('problemsSolved')}
+                text={problemsSolved}
+              />
+            )}
+            {learnings && (
+              <DetailSection title={t('learnings')} text={learnings} />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
+
+const ActionButtons = ({
+  flipped,
+  setFlipped,
+  hasExtendedDetails,
+  githubUrl,
+  demoUrl,
+  t,
+}: any) => (
+  <>
+    {hasExtendedDetails && (
+      <button
+        onClick={() => setFlipped(!flipped)}
+        className="p-2 border border-blue-200 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+      >
+        <RotateCw className="w-5 h-5 text-blue-600 dark:text-blue-300" />
+      </button>
+    )}
+    {githubUrl && (
+      <a
+        href={githubUrl}
+        target="_blank"
+        className="p-2 border border-gray-300 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+      >
+        <Github className="w-5 h-5" />
+      </a>
+    )}
+    {demoUrl && (
+      <a
+        href={demoUrl}
+        target="_blank"
+        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 shadow-md transition-all"
+      >
+        <ChevronsLeftRightEllipsis className="w-4 h-4" /> Demo
+      </a>
+    )}
+  </>
+);

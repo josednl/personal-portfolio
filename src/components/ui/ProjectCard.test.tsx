@@ -11,7 +11,7 @@ describe('ProjectCard', () => {
     technologies: ['React', 'TypeScript'],
     githubUrl: 'https://github.com/test/test',
     demoUrl: 'https://test.com',
-    images: ['/test-image.jpg']
+    images: ['/test-image.jpg'],
   };
 
   test('renders project name and description', () => {
@@ -21,10 +21,12 @@ describe('ProjectCard', () => {
       </TestWrapper>,
     );
 
-    // Check if the project name is rendered
-    expect(screen.getByText(mockProject.title)).toBeInTheDocument();
-    // Check if the project description is rendered
-    expect(screen.getByText(mockProject.description)).toBeInTheDocument();
+    // Check if the project name is rendered (at least one instance)
+    const titleElements = screen.getAllByText(mockProject.title);
+    expect(titleElements.length).toBeGreaterThan(0);
+    // Check if the project description is rendered (at least one instance)
+    const descriptionElements = screen.getAllByText(mockProject.description);
+    expect(descriptionElements.length).toBeGreaterThan(0);
   });
 
   test('renders technologies', () => {
