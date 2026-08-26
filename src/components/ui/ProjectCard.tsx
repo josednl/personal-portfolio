@@ -175,6 +175,7 @@ const ActionButtons = ({
       <a
         href={githubUrl}
         target="_blank"
+        rel="noopener noreferrer"
         className="p-2 border border-gray-300 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
       >
         <Github className="w-5 h-5" />
@@ -184,9 +185,10 @@ const ActionButtons = ({
       <a
         href={demoUrl}
         target="_blank"
+        rel="noopener noreferrer"
         className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 shadow-md transition-all"
       >
-        <ChevronsLeftRightEllipsis className="w-4 h-4" /> Demo
+        <ChevronsLeftRightEllipsis className="w-4 h-4" /> {t('demo')}
       </a>
     )}
   </>

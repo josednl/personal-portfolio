@@ -5,16 +5,20 @@ export const useFetchSection = <T>(path: string) => {
   const { language } = useAppSettings();
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const fetchData = async () => {
-    // await new Promise((res) => setTimeout(res, 5000)); // Simulate delay
+    setError(false);
     fetch(path)
       .then((res) => res.json())
       .then((json) => {
         setData(json[language]);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        setError(true);
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -22,5 +26,5 @@ export const useFetchSection = <T>(path: string) => {
     fetchData();
   }, [path, language]);
 
-  return { data, loading };
+  return { data, loading, error };
 };

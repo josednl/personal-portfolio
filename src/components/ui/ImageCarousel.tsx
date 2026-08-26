@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Portal } from '@/components/ui/Portal';
 import { OptimizedImage } from '@/components/ui/OptimizedImage';
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 interface ImageCarouselProps {
   images: string[];
@@ -26,6 +27,7 @@ const ImageModal = ({
   onNext,
   onPrev,
 }: ImageModalProps) => {
+  const { t } = useTranslation();
   if (!isOpen) return null;
 
   const hasMultiple = images.length > 1;
@@ -37,7 +39,7 @@ const ImageModal = ({
     >
       <button
         onClick={onClose}
-        aria-label="Close view"
+        aria-label={t('closeView')}
         className="fixed top-6 right-6 z-130 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-all border border-white/20 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
       >
         <X className="w-6 h-6" />
@@ -73,7 +75,7 @@ const ImageModal = ({
       >
         <OptimizedImage
           src={imageSrc}
-          alt={`Expanded image ${currentIndex + 1}`}
+          alt={`${t('expandedImage')} ${currentIndex + 1}`}
           width={1600}
           height={900}
           className="object-contain max-h-[70vh] md:max-h-[80vh] w-auto h-auto select-none rounded-sm shadow-2xl transition-all duration-500"
@@ -86,11 +88,12 @@ const ImageModal = ({
 export const ImageCarousel = ({ images }: ImageCarouselProps) => {
   const [index, setIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   if (!images || images.length === 0)
     return (
       <div className="h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded-lg text-gray-400 italic">
-        No images available
+        {t('noImagesAvailable')}
       </div>
     );
 
@@ -110,7 +113,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
             <OptimizedImage
               key={i}
               src={src}
-              alt={`Thumbnail ${i + 1}`}
+              alt={`${t('imageThumbnail')} ${i + 1}`}
               width={800}
               height={450}
               className="w-full h-full object-cover shrink-0 cursor-zoom-in"

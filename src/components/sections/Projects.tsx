@@ -1,13 +1,14 @@
 import { Section } from '@/components/layout/Section';
 import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { ProjectsSkeleton } from '@/components/skeleton/ProjectsSkeleton';
+import { SectionError } from '@/components/ui/SectionError';
 import { ProjectCard } from '@/components/ui/ProjectCard';
 import { ProjectsData } from '@/lib/types/project';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
 export const Projects = () => {
   const { t } = useTranslation();
-  const { data, loading } = useFetchSection<ProjectsData>(
+  const { data, loading, error } = useFetchSection<ProjectsData>(
     '/data/projects.json',
   );
 
@@ -15,7 +16,9 @@ export const Projects = () => {
     <Section id="projects" title={data?.title || t('projectsTitle')}>
       {loading && <ProjectsSkeleton />}
 
-      {!loading && data && (
+      {error && !loading && <SectionError />}
+
+      {!loading && !error && data && (
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {data.items.map((project) => (
             <ProjectCard key={project.id} project={project} />

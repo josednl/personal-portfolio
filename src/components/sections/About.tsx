@@ -1,6 +1,7 @@
 import { Section } from '@/components/layout/Section';
 import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { AboutSkeleton } from '@/components/skeleton/AboutSkeleton';
+import { SectionError } from '@/components/ui/SectionError';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
 interface AboutData {
@@ -15,12 +16,13 @@ interface AboutData {
 
 export const About = () => {
   const { t } = useTranslation();
-  const { data, loading } = useFetchSection<AboutData>('/data/about.json');
+  const { data, loading, error } = useFetchSection<AboutData>('/data/about.json');
 
   return (
     <Section id="about">
       {loading && <AboutSkeleton />}
-      {!loading && data && (
+      {error && !loading && <SectionError />}
+      {!loading && !error && data && (
         <div
           className="
            p-0 md:p-0 
@@ -80,7 +82,7 @@ export const About = () => {
           {data.skills && data.skills.length > 0 && (
             <div className="pt-8 mt-4">
               <h4 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-                Tech Stack
+                {t('techStack')}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {data.skills.map((skill) => (
