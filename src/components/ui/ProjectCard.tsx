@@ -45,9 +45,9 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   }, [description]);
 
   return (
-    <div className="group perspective-1000 w-full h-[600px]">
+    <div className="group perspective-1000 w-full min-h-[500px]">
       <div
-        className={`relative w-full h-full transition-transform duration-700 preserve-3d ${flipped ? 'rotate-y-180' : ''}`}
+        className={`relative w-full h-full transition-transform duration-700 motion-reduce:transition-none preserve-3d ${flipped ? 'rotate-y-180' : ''}`}
       >
         <div
           className={`absolute inset-0 backface-hidden border border-transparent rounded-xl p-6 shadow-lg bg-white dark:bg-gray-800 flex flex-col h-full bg-linear-to-b from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 ${flipped ? 'z-0' : 'z-10'}`}
@@ -57,7 +57,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
             <ImageCarousel images={images} />
           </div>
 
-          <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-gray-100 shrink-0 italic">
+          <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-gray-100 shrink-0 italic font-archivo">
             {title}
           </h3>
 

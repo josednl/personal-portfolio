@@ -53,6 +53,20 @@ export const AppSettingsProvider = ({
     localStorage.setItem('fontSize', fontSize.toString());
   }, [fontSize]);
 
+  // apply prefers-reduced-motion
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = () => {
+      document.documentElement.classList.toggle(
+        'prefers-reduced-motion',
+        mq.matches,
+      );
+    };
+    handleChange();
+    mq.addEventListener('change', handleChange);
+    return () => mq.removeEventListener('change', handleChange);
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };

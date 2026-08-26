@@ -1,6 +1,6 @@
 export const EducationSkeleton = () => {
   return (
-    <div className="space-y-8 animate-pulse">
+    <div className="space-y-8 animate-pulse motion-reduce:animate-none">
       {[1, 2].map((i) => (
         <div
           key={i}

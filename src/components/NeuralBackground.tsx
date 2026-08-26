@@ -18,6 +18,9 @@ const NeuralBackground: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq.matches) return;
+
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 

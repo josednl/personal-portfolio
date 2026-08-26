@@ -77,7 +77,7 @@ const AccessibilityMenu: React.FC = () => {
           className="transition-transform duration-200 group-hover:rotate-12"
         />
         <span
-          className="absolute inset-0 animate-pulse opacity-25"
+          className="absolute inset-0 animate-pulse motion-reduce:animate-none opacity-25"
           aria-hidden="true"
         />
       </button>

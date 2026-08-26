@@ -44,6 +44,7 @@ export const translations = {
     techStack: 'Tech Stack',
     retry: 'Retry',
     loadError: 'Failed to load content.',
+    skipToContent: 'Skip to content',
   },
   es: {
     portfolioOwner: 'José',
@@ -90,5 +91,6 @@ export const translations = {
     techStack: 'Stack Tecnológico',
     retry: 'Reintentar',
     loadError: 'Error al cargar el contenido.',
+    skipToContent: 'Saltar al contenido',
   },
 };

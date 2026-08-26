@@ -106,7 +106,7 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
     <>
       <div className="relative group w-full h-full overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-900 shadow-sm border border-black/5 dark:border-white/5">
         <div
-          className="flex h-full transition-transform duration-500 ease-out"
+          className="flex h-full transition-transform duration-500 ease-out motion-reduce:transition-none"
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {images.map((src, i) => (

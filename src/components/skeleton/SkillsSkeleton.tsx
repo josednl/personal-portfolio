@@ -1,6 +1,6 @@
 export const SkillsSkeleton = () => {
   return (
-    <div className="animate-pulse space-y-8">
+    <div className="animate-pulse motion-reduce:animate-none space-y-8">
       {[1, 2, 3].map((i) => (
         <div key={i}>
           <div className="h-5 w-32 rounded mb-3 bg-gray-300 dark:bg-gray-700" />

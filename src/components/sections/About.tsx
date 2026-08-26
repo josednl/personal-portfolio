@@ -46,10 +46,10 @@ export const About = () => {
 
             <div className="grow space-y-5">
               <div>
-                <h3 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-0">
+                <h3 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-0 font-archivo">
                   {data.name}
                 </h3>
-                <p className="text-xl font-light text-gray-600 dark:text-gray-400 mb-1">
+                <p className="text-xl font-light text-gray-600 dark:text-gray-400 mb-1 font-space">
                   {data.role}
                 </p>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-500 flex items-center">

@@ -1,8 +1,17 @@
 import NeuralBackground from '@/components/NeuralBackground';
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 export const PageContainer = ({ children }: { children: React.ReactNode }) => {
+  const { t } = useTranslation();
+
   return (
     <main className="w-full min-h-screen relative">
+      <a
+        href="#about"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      >
+        {t('skipToContent')}
+      </a>
       <div
         className="absolute inset-0 -z-10 
         bg-linear-to-tr 
