@@ -8,6 +8,7 @@ import { Contact } from '@/components/sections/Contact';
 import { WorkExperience } from '@/components/sections/WorkExperience';
 import { Skills } from '@/components/sections/Skills';
 import AccessibilityMenu from './components/ui/AccessibilityMenu';
+import { SideNav } from './components/ui/SideNav';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
 function App() {
@@ -35,6 +36,7 @@ function AppContent() {
       <Contact />
 
       <AccessibilityMenu />
+      <SideNav />
     </PageContainer>
   );
 }
