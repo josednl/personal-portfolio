@@ -48,7 +48,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   }, [description]);
 
   return (
-    <div className="group perspective-1000 w-full min-h-[500px]">
+    <div className="group perspective-1000 w-full min-h-125">
       <div
         className={`relative w-full h-full transition-transform duration-700 motion-reduce:transition-none preserve-3d ${flipped ? 'rotate-y-180' : ''}`}
       >
