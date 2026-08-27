@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
 const SECTIONS = [
@@ -13,38 +13,61 @@ const SECTIONS = [
 export const SideNav = () => {
   const [activeSection, setActiveSection] = useState('about');
   const { t } = useTranslation();
+  const isProgrammaticScroll = useRef(false);
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const sections = SECTIONS.map(({ id }) => ({
+      id,
+      el: document.getElementById(id),
+    })).filter((s): s is { id: string; el: HTMLElement } => s.el !== null);
 
-    SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    if (sections.length === 0) return;
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        {
-          rootMargin: '-50% 0px -50% 0px',
-          threshold: 0,
-        },
-      );
+    const handleScroll = () => {
+      if (isProgrammaticScroll.current) return;
 
-      observer.observe(el);
-      observers.push(observer);
-    });
+      const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      const center = scrollY + viewportHeight / 2;
+      const atBottom =
+        scrollY + viewportHeight >=
+        document.documentElement.scrollHeight - 10;
 
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
+      if (atBottom) {
+        setActiveSection(sections[sections.length - 1].id);
+        return;
+      }
+
+      let best = sections[0].id;
+      let bestDist = Infinity;
+
+      for (const { id, el } of sections) {
+        const rect = el.getBoundingClientRect();
+        const sectionCenter = scrollY + rect.top + rect.height / 2;
+        const dist = Math.abs(center - sectionCenter);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = id;
+        }
+      }
+
+      setActiveSection(best);
     };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    isProgrammaticScroll.current = true;
+    setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      isProgrammaticScroll.current = false;
+    }, 800);
   };
 
   return (
