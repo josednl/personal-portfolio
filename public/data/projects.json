@@ -71,49 +71,31 @@
       },
       {
         "id": "project-4",
-        "title": "Inventory Application",
-        "description": "Simple application for inventory management (movie lists). Its purpose was to learn how to separate information from different users.",
+        "title": "Messaging App",
+        "description": "A full-stack messaging application where users can authenticate, manage profiles, and exchange messages in direct and group conversations. Built as a pnpm-workspace monorepo with a clean-architecture Express API, a React/Vite client, and shared validation and types.",
         "images": [
-          "/projects-screenshots/project-4/project4-1.png"
+          "/projects-screenshots/project-4/project4-1.png",
+          "/projects-screenshots/project-4/project4-2.png",
+          "/projects-screenshots/project-4/project4-3.png",
+          "/projects-screenshots/project-4/project4-4.png"
         ],
         "technologies": [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
           "Node.js",
           "Express",
+          "Socket.IO",
           "PostgreSQL",
-          "EJS",
-          "TailwindCSS"
+          "Prisma"
         ],
-        "githubUrl": "https://github.com/josednl/inventory-application"
-      },
-      {
-        "id": "project-5",
-        "title": "CV Builder",
-        "description": "A simple CV builder that allows users to create and download their CVs in PDF format.",
-        "images": [
-          "/projects-screenshots/project-5/project5-1.png"
-        ],
-        "technologies": [
-          "React",
-          "JavaScript"
-        ],
-        "demoUrl": "https://cvbuilder-by-josednl.netlify.app/",
-        "githubUrl": "https://github.com/josednl/cv_application"
-      },
-      {
-        "id": "project-6",
-        "title": "Memory Card Game",
-        "description": "Memory game that consists of selecting cards that have not been selected before.",
-        "images": [
-          "/projects-screenshots/project-6/project6-1.png",
-          "/projects-screenshots/project-6/project6-2.png"
-        ],
-        "technologies": [
-          "React",
-          "JavaScript",
-          "PokéAPI"
-        ],
-        "demoUrl": "https://memorycard-by-josednl.netlify.app/",
-        "githubUrl": "https://github.com/josednl/memory-card"
+        "demoUrl": "https://messaging-app-by-josednl.vercel.app",
+        "githubUrl": "https://github.com/josednl/messaging-app",
+        "architecture": "The project is organized as a pnpm workspace monorepo with three packages: apps/server (Express 5 API following clean architecture with clearly separated presentation, application, domain, and infrastructure layers), apps/client (React + Vite frontend), and packages/shared (zod schemas, TypeScript types, and API route constants shared between both). Realtime features are implemented with Socket.IO, while PostgreSQL with Prisma ORM handles persistence.",
+        "techDecisions": "A monorepo was chosen so the client and server share the same validation schemas and types, keeping the API contract consistent across the stack. Clean architecture keeps business rules decoupled from frameworks and infrastructure, which makes the API testable and maintainable. Socket.IO powers realtime messaging with typing indicators, online presence, and read receipts. zod adds runtime validation aligned with the static types, and JWT in an httpOnly cookie keeps sessions stateless and XSS-resistant. A guest mode creates a disposable account that is fully wiped on logout, and multer plus sharp processes file attachments server-side.",
+        "metrics": "Load tested with k6 against a PostgreSQL database seeded with 2,000 users, 1,500 conversations, and 150,000 messages: 0% errors and p95 under 500 ms across ramp (1→200 VU), read-heavy (100 VU), and write-heavy (50 VU) scenarios, plus a login p95 of 1.31 s under a 200-session authentication spike.",
+        "problemsSolved": "The project solves the challenges of building a secure realtime multi-user chat. Membership is enforced on every conversation and message access, so clients can never read or write outside their conversations. Cursor-based pagination keeps message lists fast as conversations grow, and file attachments are validated and processed server-side. Soft-deletes preserve user data, and profiling real failures under load drove fixes such as moving password hashing to async scrypt and transaction-scoped locking to eliminate concurrency errors.",
+        "learnings": "Gained hands-on experience building a pnpm-workspace monorepo with a shared package, structuring an Express API with clean architecture, and integrating Socket.IO for typing indicators, presence, and read receipts. Strengthened knowledge of JWT authentication with httpOnly cookies, cursor pagination, and file uploads with multer and sharp, and built a testing strategy spanning unit tests, Supertest integration tests, and k6 load tests that exposed and fixed real concurrency and performance issues."
       }
     ]
   },
@@ -189,49 +171,31 @@
       },
       {
         "id": "project-4",
-        "title": "Aplicación de Inventario",
-        "description": "Aplicación sencilla para gestionar inventarios (listas de películas). Su propósito fue aprender a separar la información de distintos usuarios.",
+        "title": "Aplicación de Mensajería",
+        "description": "Una aplicación de mensajería full stack donde los usuarios pueden autenticarse, gestionar sus perfiles e intercambiar mensajes en conversaciones directas y grupales. Construida como un monorepo de pnpm workspaces con una API Express de arquitectura limpia, un cliente React/Vite y validación y tipos compartidos.",
         "images": [
-          "/projects-screenshots/project-4/project4-1.png"
+          "/projects-screenshots/project-4/project4-1.png",
+          "/projects-screenshots/project-4/project4-2.png",
+          "/projects-screenshots/project-4/project4-3.png",
+          "/projects-screenshots/project-4/project4-4.png"
         ],
         "technologies": [
+          "React",
+          "TypeScript",
+          "TailwindCSS",
           "Node.js",
           "Express",
+          "Socket.IO",
           "PostgreSQL",
-          "EJS",
-          "TailwindCSS"
+          "Prisma"
         ],
-        "githubUrl": "https://github.com/josednl/inventory-application"
-      },
-      {
-        "id": "project-5",
-        "title": "Generador de CV",
-        "description": "Un generador de CV sencillo que permite a los usuarios crear y descargar sus CVs en formato PDF.",
-        "images": [
-          "/projects-screenshots/project-5/project5-1.png"
-        ],
-        "technologies": [
-          "React",
-          "JavaScript"
-        ],
-        "demoUrl": "https://cvbuilder-by-josednl.netlify.app/",
-        "githubUrl": "https://github.com/josednl/cv_application"
-      },
-      {
-        "id": "project-6",
-        "title": "Juego de Memoria",
-        "description": "Juego de memoria que consiste en seleccionar cartas que no hayan sido seleccionadas antes.",
-        "images": [
-          "/projects-screenshots/project-6/project6-1.png",
-          "/projects-screenshots/project-6/project6-2.png"
-        ],
-        "technologies": [
-          "React",
-          "JavaScript",
-          "PokéAPI"
-        ],
-        "demoUrl": "https://memorycard-by-josednl.netlify.app/",
-        "githubUrl": "https://github.com/josednl/memory-card"
+        "demoUrl": "https://messaging-app-by-josednl.vercel.app",
+        "githubUrl": "https://github.com/josednl/messaging-app",
+        "architecture": "El proyecto se organiza como un monorepo de pnpm workspaces con tres paquetes: apps/server (API Express 5 con arquitectura limpia y capas de presentación, aplicación, dominio e infraestructura claramente separadas), apps/client (frontend React + Vite) y packages/shared (esquemas de zod, tipos de TypeScript y constantes de rutas de la API compartidos entre ambos). Las funciones en tiempo real se implementan con Socket.IO, mientras que PostgreSQL con el ORM Prisma se encarga de la persistencia.",
+        "techDecisions": "Se eligió un monorepo para que el cliente y el servidor compartan los mismos esquemas de validación y tipos, manteniendo el contrato de la API consistente en toda la pila. La arquitectura limpia mantiene las reglas de negocio desacopladas de frameworks e infraestructura, lo que hace la API testeable y mantenible. Socket.IO impulsa la mensajería en tiempo real con indicadores de escritura, presencia en línea y recibos de lectura. zod añade validación en tiempo de ejecución alineada con los tipos estáticos, y JWT en una cookie httpOnly mantiene las sesiones sin estado y resistente a XSS. El modo invitado crea una cuenta desechable que se elimina por completo al cerrar sesión, y multer junto con sharp procesan los archivos adjuntos en el servidor.",
+        "metrics": "Probado con k6 contra una base de datos PostgreSQL con 2.000 usuarios, 1.500 conversaciones y 150.000 mensajes: 0% de errores y p95 por debajo de 500 ms en los escenarios ramp (1→200 VU), read-heavy (100 VU) y write-heavy (50 VU), y un p95 de inicio de sesión de 1,31 s ante un pico de autenticación de 200 sesiones.",
+        "problemsSolved": "El proyecto resuelve los retos de construir un chat multiusuario seguro y en tiempo real. La membresía se verifica en cada acceso a conversaciones y mensajes, de modo que los clientes nunca pueden leer ni escribir fuera de sus conversaciones. La paginación basada en cursores mantiene las listas de mensajes rápidas a medida que crecen las conversaciones, y los archivos adjuntos se validan y procesan en el servidor. Los borrados lógicos preservan los datos de los usuarios, y el análisis de fallos reales bajo carga impulsó correcciones como mover el hash de contraseñas a scrypt asíncrono y el bloqueo con ámbito de transacción para eliminar errores de concurrencia.",
+        "learnings": "Adquirí experiencia práctica construyendo un monorepo de pnpm workspaces con un paquete compartido, estructurando una API Express con arquitectura limpia e integrando Socket.IO para indicadores de escritura, presencia y recibos de lectura. Fortalecí conocimientos de autenticación JWT con cookies httpOnly, paginación por cursores y carga de archivos con multer y sharp, y construí una estrategia de pruebas que abarca pruebas unitarias, de integración con Supertest y de carga con k6, que revelaron y corrigieron problemas reales de concurrencia y rendimiento."
       }
     ]
   }
