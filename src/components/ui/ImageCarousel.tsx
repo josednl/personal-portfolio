@@ -90,17 +90,25 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
 
-  if (!images || images.length === 0)
+  const imageCount = images?.length ?? 0;
+  const hasImages = imageCount > 0;
+  const hasMultiple = imageCount > 1;
+
+  const next = useCallback(
+    () => setIndex((i) => (i + 1) % imageCount),
+    [imageCount],
+  );
+  const prev = useCallback(
+    () => setIndex((i) => (i - 1 + imageCount) % imageCount),
+    [imageCount],
+  );
+
+  if (!hasImages)
     return (
       <div className="h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded-lg text-gray-400 italic">
         {t('noImagesAvailable')}
       </div>
     );
-
-  const hasMultiple = images.length > 1;
-
-  const next = useCallback(() => setIndex((i) => (i + 1) % images.length), [images.length]);
-  const prev = useCallback(() => setIndex((i) => (i - 1 + images.length) % images.length), [images.length]);
 
   return (
     <>

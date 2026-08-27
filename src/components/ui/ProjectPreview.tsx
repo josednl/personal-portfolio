@@ -41,7 +41,7 @@ export const ProjectPreview = ({ project }: ProjectPreviewProps) => {
   return (
     <div className="flex flex-col h-full">
       <div className="aspect-video w-full overflow-hidden rounded-xl mb-6">
-        <ImageCarousel images={images} />
+        <ImageCarousel key={project.id} images={images} />
       </div>
 
       <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 font-archivo mb-3">
