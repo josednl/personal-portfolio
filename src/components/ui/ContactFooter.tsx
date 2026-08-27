@@ -8,7 +8,6 @@ import {
   Globe,
   Twitter,
 } from 'lucide-react';
-import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
 const accentColor = 'text-primary';

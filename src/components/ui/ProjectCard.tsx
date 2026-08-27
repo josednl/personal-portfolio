@@ -4,6 +4,9 @@ import { ImageCarousel } from '@/components/ui/ImageCarousel';
 import { ChevronsLeftRightEllipsis, Github, RotateCw } from 'lucide-react';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 import { DetailSection } from '@/components/ui/DetailSection';
+import { translations } from '@/lib/translations/translations';
+
+type TranslationKey = keyof typeof translations.en;
 
 export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   const {
@@ -154,6 +157,15 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
   );
 };
 
+interface ActionButtonsProps {
+  flipped: boolean;
+  setFlipped: (value: boolean) => void;
+  hasExtendedDetails: boolean;
+  githubUrl?: string;
+  demoUrl?: string;
+  t: (key: TranslationKey) => string;
+}
+
 const ActionButtons = ({
   flipped,
   setFlipped,
@@ -161,7 +173,7 @@ const ActionButtons = ({
   githubUrl,
   demoUrl,
   t,
-}: any) => (
+}: ActionButtonsProps) => (
   <>
     {hasExtendedDetails && (
       <button

@@ -21,6 +21,8 @@ const AccessibilityMenu: React.FC = () => {
     fontSize,
     increaseFont,
     decreaseFont,
+    optimizedAnimations,
+    toggleOptimizedAnimations,
     resetSettings,
   } = useAppSettings();
   const { t } = useTranslation();
@@ -172,6 +174,24 @@ const AccessibilityMenu: React.FC = () => {
             </button>
           </div>
         </div>
+
+        <button
+          className="flex items-center w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          onClick={toggleOptimizedAnimations}
+        >
+          <div
+            className={`mr-3 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
+              optimizedAnimations
+                ? 'border-primary bg-primary'
+                : 'border-gray-400 dark:border-gray-500'
+            }`}
+          >
+            {optimizedAnimations && (
+              <div className="w-2 h-2 bg-white rounded-full" />
+            )}
+          </div>
+          {t('optimizedAnimations')}
+        </button>
 
         <button
           className="flex items-center w-full text-left py-3 px-4 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 mt-4"

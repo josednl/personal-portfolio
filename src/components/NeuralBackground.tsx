@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useAppSettings } from '@/lib/context/AppSettingsContext';
 
 interface Neuron {
   x: number;
@@ -10,9 +11,31 @@ interface Neuron {
   parallaxFactor: number;
 }
 
+interface NeuronWithY extends Neuron {
+  displayY: number;
+}
+
+const buildGrid = (neurons: NeuronWithY[], cellSize: number) => {
+  const grid = new Map<string, NeuronWithY[]>();
+  for (const n of neurons) {
+    const key = `${Math.floor(n.x / cellSize)},${Math.floor(n.displayY / cellSize)}`;
+    const cell = grid.get(key);
+    if (cell) cell.push(n);
+    else grid.set(key, [n]);
+  }
+  return grid;
+};
+
 const NeuralBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scrollRef = useRef(0);
+  const neuronsRef = useRef<Neuron[]>([]);
+  const { optimizedAnimations } = useAppSettings();
+  const optimizedRef = useRef(optimizedAnimations);
+
+  useEffect(() => {
+    optimizedRef.current = optimizedAnimations;
+  }, [optimizedAnimations]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,7 +48,6 @@ const NeuralBackground: React.FC = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
-    let neurons: Neuron[] = [];
 
     const isDarkMode = () => document.documentElement.classList.contains('dark');
 
@@ -51,7 +73,7 @@ const NeuralBackground: React.FC = () => {
     };
 
     const initNeurons = () => {
-      neurons = Array.from({ length: config.particleCount }, () => ({
+      neuronsRef.current = Array.from({ length: config.particleCount }, () => ({
         x: Math.random() * window.innerWidth,
         y: Math.random() * (window.innerHeight + 500),
         vx: (Math.random() - 0.5) * 0.3,
@@ -64,47 +86,101 @@ const NeuralBackground: React.FC = () => {
 
     const animate = (time: number) => {
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      
+
       const activeColor = config.getColor();
       const lineMaxOpacity = config.getLineOpacity();
       const currentScroll = scrollRef.current;
+      const frozen = optimizedRef.current;
 
-      neurons.forEach((n, i) => {
-        n.x += n.vx;
-        n.y += n.vy;
+      const neuronsWithY: NeuronWithY[] = neuronsRef.current.map((n) => {
+        if (!frozen) {
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > window.innerWidth) n.vx *= -1;
+        }
 
-        const displayY = (n.y - currentScroll * n.parallaxFactor) % (window.innerHeight + 200);
-        const finalY = displayY < -100 ? displayY + (window.innerHeight + 200) : displayY;
+        const displayY =
+          (n.y - currentScroll * n.parallaxFactor) % (window.innerHeight + 200);
+        return {
+          ...n,
+          displayY: displayY < -100 ? displayY + (window.innerHeight + 200) : displayY,
+        };
+      });
 
-        if (n.x < 0 || n.x > window.innerWidth) n.vx *= -1;
-
+      // Draw particles
+      for (const n of neuronsWithY) {
         const pulse = Math.sin(time * 0.002 + n.phase) * 0.3 + 0.7;
 
         ctx.beginPath();
-        ctx.arc(n.x, finalY, n.radius * pulse, 0, Math.PI * 2);
+        ctx.arc(n.x, n.displayY, n.radius * pulse, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${activeColor}, ${0.4 * pulse})`;
         ctx.fill();
+      }
 
-        for (let j = i + 1; j < neurons.length; j++) {
-          const n2 = neurons[j];
-          const finalY2 = (n2.y - currentScroll * n2.parallaxFactor) % (window.innerHeight + 200);
-          const displayY2 = finalY2 < -100 ? finalY2 + (window.innerHeight + 200) : finalY2;
+      // Draw connections
+      if (frozen) {
+        const grid = buildGrid(neuronsWithY, config.connectionDist);
+        const drawn = new Set<string>();
 
-          const dx = n.x - n2.x;
-          const dy = finalY - displayY2;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+        for (const n of neuronsWithY) {
+          const cx = Math.floor(n.x / config.connectionDist);
+          const cy = Math.floor(n.displayY / config.connectionDist);
 
-          if (dist < config.connectionDist) {
-            const opacity = (1 - dist / config.connectionDist) * lineMaxOpacity;
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(${activeColor}, ${opacity})`;
-            ctx.lineWidth = 0.5;
-            ctx.moveTo(n.x, finalY);
-            ctx.lineTo(n2.x, displayY2);
-            ctx.stroke();
+          for (let dx = -1; dx <= 1; dx++) {
+            for (let dy = -1; dy <= 1; dy++) {
+              const key = `${cx + dx},${cy + dy}`;
+              const cell = grid.get(key);
+              if (!cell) continue;
+
+              for (const n2 of cell) {
+                if (n === n2) continue;
+                const pairKey =
+                  n.x < n2.x || (n.x === n2.x && n.displayY < n2.displayY)
+                    ? `${n.x}:${n.displayY}-${n2.x}:${n2.displayY}`
+                    : `${n2.x}:${n2.displayY}-${n.x}:${n.displayY}`;
+
+                if (drawn.has(pairKey)) continue;
+                drawn.add(pairKey);
+
+                const ddx = n.x - n2.x;
+                const ddy = n.displayY - n2.displayY;
+                const dist = Math.sqrt(ddx * ddx + ddy * ddy);
+
+                if (dist < config.connectionDist) {
+                  const opacity = (1 - dist / config.connectionDist) * lineMaxOpacity;
+                  ctx.beginPath();
+                  ctx.strokeStyle = `rgba(${activeColor}, ${opacity})`;
+                  ctx.lineWidth = 0.5;
+                  ctx.moveTo(n.x, n.displayY);
+                  ctx.lineTo(n2.x, n2.displayY);
+                  ctx.stroke();
+                }
+              }
+            }
           }
         }
-      });
+      } else {
+        for (let i = 0; i < neuronsWithY.length; i++) {
+          for (let j = i + 1; j < neuronsWithY.length; j++) {
+            const n = neuronsWithY[i];
+            const n2 = neuronsWithY[j];
+
+            const dx = n.x - n2.x;
+            const dy = n.displayY - n2.displayY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < config.connectionDist) {
+              const opacity = (1 - dist / config.connectionDist) * lineMaxOpacity;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(${activeColor}, ${opacity})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(n.x, n.displayY);
+              ctx.lineTo(n2.x, n2.displayY);
+              ctx.stroke();
+            }
+          }
+        }
+      }
 
       animationFrameId = requestAnimationFrame(animate);
     };

@@ -45,6 +45,7 @@ export const translations = {
     retry: 'Retry',
     loadError: 'Failed to load content.',
     skipToContent: 'Skip to content',
+    optimizedAnimations: 'Optimized Animations',
   },
   es: {
     portfolioOwner: 'José',
@@ -92,5 +93,6 @@ export const translations = {
     retry: 'Reintentar',
     loadError: 'Error al cargar el contenido.',
     skipToContent: 'Saltar al contenido',
+    optimizedAnimations: 'Animaciones Optimizadas',
   },
 };

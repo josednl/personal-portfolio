@@ -13,6 +13,10 @@ interface AppSettingsContextProps {
   fontSize: number;
   increaseFont: () => void;
   decreaseFont: () => void;
+
+  optimizedAnimations: boolean;
+  toggleOptimizedAnimations: () => void;
+
   resetSettings: () => void;
 }
 
@@ -34,6 +38,10 @@ export const AppSettingsProvider = ({
   const [fontSize, setFontSize] = useState(() => {
     const saved = localStorage.getItem('fontSize');
     return saved ? parseInt(saved, 10) : 16;
+  });
+
+  const [optimizedAnimations, setOptimizedAnimations] = useState(() => {
+    return localStorage.getItem('optimizedAnimations') === 'true';
   });
 
   // apply theme
@@ -78,10 +86,19 @@ export const AppSettingsProvider = ({
   const increaseFont = () => setFontSize((prev) => prev + 2);
   const decreaseFont = () => setFontSize((prev) => Math.max(prev - 2, 12));
 
+  const toggleOptimizedAnimations = () => {
+    setOptimizedAnimations((prev) => {
+      localStorage.setItem('optimizedAnimations', (!prev).toString());
+      return !prev;
+    });
+  };
+
   const resetSettings = () => {
     setTheme('light');
     setLanguage('en');
     setFontSize(16);
+    setOptimizedAnimations(false);
+    localStorage.setItem('optimizedAnimations', 'false');
   };
 
   return (
@@ -94,6 +111,8 @@ export const AppSettingsProvider = ({
         fontSize,
         increaseFont,
         decreaseFont,
+        optimizedAnimations,
+        toggleOptimizedAnimations,
         resetSettings,
       }}
     >

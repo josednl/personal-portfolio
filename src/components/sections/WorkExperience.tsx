@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Section } from '@/components/layout/Section';
 import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { WorkSkeleton } from '@/components/skeleton/WorkSkeleton';
