@@ -2,6 +2,7 @@ import { Section } from '@/components/layout/Section';
 import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { AboutSkeleton } from '@/components/skeleton/AboutSkeleton';
 import { SectionError } from '@/components/ui/SectionError';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
 interface AboutData {
@@ -30,21 +31,21 @@ export const About = () => {
            text-text dark:text-text/80
          "
         >
-          <div className="flex flex-col md:flex-row gap-6 lg:gap-8 pb-6 border-b border-text/20 dark:border-text/10">
+          <div className="pb-6 border-b border-text/20 dark:border-text/10">
             {data.image && (
-              <div className="shrink-0 mx-auto md:mx-0 pt-2">
-                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-gray-400 dark:border-gray-600">
-                  <img
-                    src={data.image}
-                    alt={data.name}
-                    loading="lazy"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
+              <div className="mb-4">
+                <OptimizedImage
+                  src={data.image}
+                  alt={data.name}
+                  width={56}
+                  height={56}
+                  loading="eager"
+                  className="w-14 h-14 rounded-full object-cover"
+                />
               </div>
             )}
 
-            <div className="grow space-y-5">
+            <div className="space-y-5">
               <div>
                 <h3 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-0 font-archivo">
                   {data.name}
