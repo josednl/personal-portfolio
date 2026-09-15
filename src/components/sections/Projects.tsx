@@ -4,6 +4,7 @@ import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { ProjectsSkeleton } from '@/components/skeleton/ProjectsSkeleton';
 import { SectionError } from '@/components/ui/SectionError';
 import { ProjectListItem } from '@/components/ui/ProjectListItem';
+import { ProjectDropdown } from '@/components/ui/ProjectDropdown';
 import { ProjectPreview } from '@/components/ui/ProjectPreview';
 import { ProjectsData } from '@/lib/types/project';
 import { useTranslation } from '@/lib/hooks/useTranslation';
@@ -24,7 +25,7 @@ export const Projects = () => {
       {!loading && !error && data && (
         <div className="flex flex-col lg:flex-row gap-8">
           <nav
-            className="lg:w-72 shrink-0 space-y-1 lg:sticky lg:top-24 lg:self-start"
+            className="hidden lg:block lg:w-72 shrink-0 space-y-1 lg:sticky lg:top-24 lg:self-start"
             aria-label="Project list"
           >
             {data.items.map((project, index) => (
@@ -36,6 +37,14 @@ export const Projects = () => {
               />
             ))}
           </nav>
+
+          <div className="lg:hidden">
+            <ProjectDropdown
+              projects={data.items}
+              selectedIndex={selectedIndex}
+              onSelect={setSelectedIndex}
+            />
+          </div>
 
           <div className="flex-1 min-w-0">
             <ProjectPreview
