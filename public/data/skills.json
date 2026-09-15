@@ -1,54 +1,40 @@
 {
   "en": {
-    "title": "Skills",
-    "items": {
-      "Frontend": [
-        "React",
-        "TailwindCSS"
-      ],
-      "Backend": [
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-        "Prisma",
-        "REST APIs"
-      ],
-      "Tools": [
-        "Git",
-        "Figma",
-        "VS Code",
-        "Vite"
-      ],
-      "Languages": [
-        "JavaScript",
-        "TypeScript"
-      ]
-    }
+    "title": "Tech Stack",
+    "description": "The tech stack I use for my work.",
+    "items": [
+      "React",
+      "TailwindCSS",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+      "Git",
+      "Figma",
+      "VS Code",
+      "Vite",
+      "JavaScript",
+      "TypeScript",
+      "OpenCode"
+    ]
   },
   "es": {
-    "title": "Conocimientos en",
-    "items": {
-      "Frontend": [
-        "React",
-        "TailwindCSS"
-      ],
-      "Backend": [
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-        "Prisma",
-        "REST APIs"
-      ],
-      "Tools": [
-        "Git",
-        "Figma",
-        "VS Code",
-        "Vite"
-      ],
-      "Languages": [
-        "JavaScript",
-        "TypeScript"
-      ]
-    }
+    "title": "Stack Tecnológico",
+    "description": "El stack tecnológico que utilizo para mis proyectos.",
+    "items": [
+      "React",
+      "TailwindCSS",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+      "Git",
+      "Figma",
+      "VS Code",
+      "Vite",
+      "JavaScript",
+      "TypeScript",
+      "OpenCode"
+    ]
   }
 }

@@ -2,7 +2,7 @@ import { Section } from '../layout/Section';
 import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { SkillsSkeleton } from '@/components/skeleton/SkillsSkeleton';
 import { SectionError } from '@/components/ui/SectionError';
-import { SkillsCategory } from '@/components/ui/SkillsCategory';
+import { SkillsTag } from '@/components/ui/SkillsTag';
 import { SkillsData } from '@/lib/types/skills';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
@@ -17,15 +17,18 @@ export const Skills = () => {
       {error && !loading && <SectionError />}
 
       {!loading && !error && data && (
-        <div className="space-y-10">
-          {Object.entries(data.items).map(([category, skills]) => (
-            <SkillsCategory
-              key={category}
-              category={category}
-              skills={skills}
-            />
-          ))}
-        </div>
+        <>
+          {data.description && (
+            <p className="mt-3 mb-6 text-sm text-text-light dark:text-text-light/90">
+              {data.description}
+            </p>
+          )}
+          <ul className="flex flex-wrap items-center gap-2.5">
+            {data.items.map((technology) => (
+              <SkillsTag key={technology} technology={technology} />
+            ))}
+          </ul>
+        </>
       )}
     </Section>
   );
