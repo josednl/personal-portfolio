@@ -1,26 +1,9 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-
-type Theme = 'light' | 'dark';
-type Language = 'en' | 'es';
-
-interface AppSettingsContextProps {
-  theme: Theme;
-  toggleTheme: () => void;
-
-  language: Language;
-  setLanguage: (lang: Language) => void;
-
-  fontSize: number;
-  increaseFont: () => void;
-  decreaseFont: () => void;
-
-  optimizedAnimations: boolean;
-  toggleOptimizedAnimations: () => void;
-
-  resetSettings: () => void;
-}
-
-const AppSettingsContext = createContext<AppSettingsContextProps | null>(null);
+import { useEffect, useState } from 'react';
+import {
+  AppSettingsContext,
+  Language,
+  Theme,
+} from '@/lib/context/settingsContext';
 
 export const AppSettingsProvider = ({
   children,
@@ -119,11 +102,4 @@ export const AppSettingsProvider = ({
       {children}
     </AppSettingsContext.Provider>
   );
-};
-
-export const useAppSettings = () => {
-  const ctx = useContext(AppSettingsContext);
-  if (!ctx)
-    throw new Error('useAppSettings must be used within AppSettingsProvider');
-  return ctx;
 };

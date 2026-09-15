@@ -29,7 +29,10 @@ export const Portal = ({
       systemCreated = true;
       element = createWrapperAndAppendToBody(wrapperId);
     }
-    setWrapperElement(element);
+
+    Promise.resolve().then(() => {
+      if (element) setWrapperElement(element);
+    });
 
     return () => {
       if (systemCreated && element?.parentNode) {

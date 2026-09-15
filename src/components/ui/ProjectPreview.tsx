@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ProjectItem } from '@/lib/types/project';
 import { ImageCarousel } from '@/components/ui/ImageCarousel';
 import { Github, ExternalLink, ChevronDown } from 'lucide-react';
@@ -25,10 +25,6 @@ export const ProjectPreview = ({ project }: ProjectPreviewProps) => {
     learnings,
   } = project;
   const { t } = useTranslation();
-
-  useEffect(() => {
-    setDetailsOpen(false);
-  }, [project.id]);
 
   const hasExtendedDetails = !!(
     architecture ||

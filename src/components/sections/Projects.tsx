@@ -38,7 +38,10 @@ export const Projects = () => {
           </nav>
 
           <div className="flex-1 min-w-0">
-            <ProjectPreview project={data.items[selectedIndex]} />
+            <ProjectPreview
+              key={data.items[selectedIndex].id}
+              project={data.items[selectedIndex]}
+            />
           </div>
         </div>
       )}

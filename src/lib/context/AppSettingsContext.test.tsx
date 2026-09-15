@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { useAppSettings } from '@/lib/context/AppSettingsContext';
+import { useAppSettings } from '@/lib/context/settingsContext';
 import { AppSettingsProvider } from '@/lib/context/AppSettingsContext';
 import { act } from 'react-dom/test-utils';
 

@@ -4,32 +4,31 @@ import {
   BarChart3,
   ShieldCheck,
   BookOpen,
-  LucideIcon,
 } from 'lucide-react';
+import { ReactNode } from 'react';
 
 interface DetailSectionProps {
   title: string;
   text: string;
 }
 
-const getIcon = (title: string): LucideIcon => {
+const getIcon = (title: string): ReactNode => {
+  const cls = 'w-3.5 h-3.5 text-primary';
   const t = title.toLowerCase();
-  if (t.includes('arch') || t.includes('arquitectura')) return Cpu;
-  if (t.includes('decis') || t.includes('tech')) return Lightbulb;
-  if (t.includes('metr') || t.includes('metric')) return BarChart3;
-  if (t.includes('prob') || t.includes('solv')) return ShieldCheck;
-  return BookOpen;
+  if (t.includes('arch') || t.includes('arquitectura')) return <Cpu className={cls} />;
+  if (t.includes('decis') || t.includes('tech')) return <Lightbulb className={cls} />;
+  if (t.includes('metr') || t.includes('metric')) return <BarChart3 className={cls} />;
+  if (t.includes('prob') || t.includes('solv')) return <ShieldCheck className={cls} />;
+  return <BookOpen className={cls} />;
 };
 
 export const DetailSection = ({ title, text }: DetailSectionProps) => {
-  const Icon = getIcon(title);
-
   return (
     <div className="group/section relative pl-8 pb-2">
-      <div className="absolute left-[11px] top-7 bottom-0 w-0.5 bg-primary/10 dark:bg-primary/30 group-last/section:bg-transparent" />
+      <div className="absolute left-2.75 top-7 bottom-0 w-0.5 bg-primary/10 dark:bg-primary/30 group-last/section:bg-transparent" />
 
       <div className="absolute left-0 top-0 p-1.5 rounded-lg bg-white dark:bg-gray-800 border border-primary/20 dark:border-primary/30 shadow-sm transition-transform">
-        <Icon className="w-3.5 h-3.5 text-primary" />
+        {getIcon(title)}
       </div>
 
       <div className="flex flex-col gap-1">

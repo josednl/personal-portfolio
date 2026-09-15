@@ -1,4 +1,4 @@
-import { useAppSettings } from '@/lib/context/AppSettingsContext';
+import { useAppSettings } from '@/lib/context/settingsContext';
 import { useState, useEffect } from 'react';
 
 export const useFetchSection = <T>(path: string) => {
@@ -7,23 +7,40 @@ export const useFetchSection = <T>(path: string) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const fetchData = async () => {
+  const [prevLanguage, setPrevLanguage] = useState(language);
+  if (language !== prevLanguage) {
+    setPrevLanguage(language);
+    setLoading(true);
     setError(false);
-    fetch(path)
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json[language]);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setLoading(false);
-      });
-  };
+    setData(null);
+  }
 
   useEffect(() => {
-    setLoading(true);
-    fetchData();
+    let cancelled = false;
+
+    async function load() {
+      try {
+        const res = await fetch(path);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = await res.json();
+        if (!cancelled) {
+          setData(json[language]);
+        }
+      } catch {
+        if (!cancelled) {
+          setError(true);
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
   }, [path, language]);
 
   return { data, loading, error };

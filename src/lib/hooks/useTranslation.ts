@@ -1,4 +1,4 @@
-import { useAppSettings } from '@/lib/context/AppSettingsContext';
+import { useAppSettings } from '@/lib/context/settingsContext';
 import { translations } from '@/lib/translations/translations';
 
 export const useTranslation = () => {

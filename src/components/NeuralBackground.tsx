@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useAppSettings } from '@/lib/context/AppSettingsContext';
+import { useAppSettings } from '@/lib/context/settingsContext';
 
 interface Neuron {
   x: number;

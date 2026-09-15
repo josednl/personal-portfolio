@@ -9,7 +9,7 @@ import {
   ChevronDown,
   Accessibility,
 } from 'lucide-react';
-import { useAppSettings } from '@/lib/context/AppSettingsContext';
+import { useAppSettings } from '@/lib/context/settingsContext';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
 const AccessibilityMenu: React.FC = () => {
