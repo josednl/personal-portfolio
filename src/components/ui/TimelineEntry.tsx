@@ -1,3 +1,5 @@
+import { TechTag } from '@/components/ui/TechTag';
+
 interface TimelineEntryProps {
   heading: string;
   subtitle: string;
@@ -31,12 +33,7 @@ export const TimelineEntry = ({
       {tags && tags.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-1 text-xs bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded"
-            >
-              {tag}
-            </span>
+            <TechTag key={tag} name={tag} />
           ))}
         </div>
       )}

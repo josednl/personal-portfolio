@@ -4,6 +4,7 @@ import { ImageCarousel } from '@/components/ui/ImageCarousel';
 import { Github, ExternalLink, ChevronDown } from 'lucide-react';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 import { DetailSection } from '@/components/ui/DetailSection';
+import { TechTag } from '@/components/ui/TechTag';
 
 interface ProjectPreviewProps {
   project: ProjectItem;
@@ -51,12 +52,7 @@ export const ProjectPreview = ({ project }: ProjectPreviewProps) => {
       {technologies && technologies.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-6">
           {technologies.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700/50 rounded-lg"
-            >
-              {tech}
-            </span>
+            <TechTag key={tech} name={tech} />
           ))}
         </div>
       )}

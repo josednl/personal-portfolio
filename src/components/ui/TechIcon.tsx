@@ -7,6 +7,7 @@ const TECH_ICON_SRC: Record<string, string> = {
   Express: '/icons/express.svg',
   PostgreSQL: '/icons/postgresql.svg',
   Prisma: '/icons/prisma.svg',
+  'Socket.IO': '/icons/socketio.svg',
   Git: '/icons/git.svg',
   Figma: '/icons/figma.svg',
   'VS Code': '/icons/vscode.svg',
