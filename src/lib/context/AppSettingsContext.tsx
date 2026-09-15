@@ -2,8 +2,15 @@ import { useEffect, useState } from 'react';
 import {
   AppSettingsContext,
   Language,
+  SiteFont,
   Theme,
 } from '@/lib/context/settingsContext';
+
+const FONT_STACKS: Record<Exclude<SiteFont, null>, string> = {
+  archivo: "'Archivo', sans-serif",
+  space: "'Space Grotesk', sans-serif",
+  system: 'system-ui, sans-serif',
+};
 
 export const AppSettingsProvider = ({
   children,
@@ -27,6 +34,13 @@ export const AppSettingsProvider = ({
     return localStorage.getItem('optimizedAnimations') === 'true';
   });
 
+  const [font, setFont] = useState<SiteFont>(() => {
+    const saved = localStorage.getItem('font');
+    return saved === 'archivo' || saved === 'space' || saved === 'system'
+      ? saved
+      : null;
+  });
+
   // apply theme
   useEffect(() => {
     localStorage.setItem('theme', theme);
@@ -43,6 +57,22 @@ export const AppSettingsProvider = ({
     document.documentElement.style.setProperty('font-size', `${fontSize}px`);
     localStorage.setItem('fontSize', fontSize.toString());
   }, [fontSize]);
+
+  // apply font family
+  useEffect(() => {
+    if (font) {
+      const stack = FONT_STACKS[font];
+      document.documentElement.style.setProperty('--font-archivo', stack);
+      document.documentElement.style.setProperty('--font-space', stack);
+      document.documentElement.style.setProperty('--default-font-family', stack);
+      localStorage.setItem('font', font);
+    } else {
+      document.documentElement.style.removeProperty('--font-archivo');
+      document.documentElement.style.removeProperty('--font-space');
+      document.documentElement.style.removeProperty('--default-font-family');
+      localStorage.removeItem('font');
+    }
+  }, [font]);
 
   // apply prefers-reduced-motion
   useEffect(() => {
@@ -76,10 +106,13 @@ export const AppSettingsProvider = ({
     });
   };
 
+  const resetFont = () => setFont(null);
+
   const resetSettings = () => {
     setTheme('light');
     setLanguage('en');
     setFontSize(16);
+    setFont(null);
     setOptimizedAnimations(false);
     localStorage.setItem('optimizedAnimations', 'false');
   };
@@ -94,6 +127,9 @@ export const AppSettingsProvider = ({
         fontSize,
         increaseFont,
         decreaseFont,
+        font,
+        setFont,
+        resetFont,
         optimizedAnimations,
         toggleOptimizedAnimations,
         resetSettings,

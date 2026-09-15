@@ -3,14 +3,16 @@ import {
   Moon,
   Sun,
   Globe,
+  Type,
   ZoomIn,
   ZoomOut,
   RefreshCw,
   ChevronDown,
-  Accessibility,
+  PersonStanding,
 } from 'lucide-react';
 import { useAppSettings } from '@/lib/context/settingsContext';
 import { useTranslation } from '@/lib/hooks/useTranslation';
+import type { SiteFont } from '@/lib/context/settingsContext';
 
 const AccessibilityMenu: React.FC = () => {
   const {
@@ -21,6 +23,9 @@ const AccessibilityMenu: React.FC = () => {
     fontSize,
     increaseFont,
     decreaseFont,
+    font,
+    setFont,
+    resetFont,
     optimizedAnimations,
     toggleOptimizedAnimations,
     resetSettings,
@@ -31,6 +36,7 @@ const AccessibilityMenu: React.FC = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isFontMenuOpen, setIsFontMenuOpen] = useState(false);
 
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -39,6 +45,7 @@ const AccessibilityMenu: React.FC = () => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsMenuOpen(false);
         setIsLanguageMenuOpen(false);
+        setIsFontMenuOpen(false);
       }
     };
 
@@ -48,7 +55,10 @@ const AccessibilityMenu: React.FC = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
-    if (isMenuOpen) setIsLanguageMenuOpen(false);
+    if (isMenuOpen) {
+      setIsLanguageMenuOpen(false);
+      setIsFontMenuOpen(false);
+    }
   };
 
   // Update theme-color meta tag when theme changes
@@ -65,6 +75,29 @@ const AccessibilityMenu: React.FC = () => {
     setIsLanguageMenuOpen(false);
   };
 
+  const handleFontChange = (nextFont: SiteFont, event: React.MouseEvent) => {
+    event.stopPropagation();
+    if (nextFont === null) {
+      resetFont();
+    } else {
+      setFont(nextFont);
+    }
+    setIsFontMenuOpen(false);
+  };
+
+  const getFontLabel = (nextFont: SiteFont) => {
+    switch (nextFont) {
+      case 'archivo':
+        return 'Archivo';
+      case 'space':
+        return 'Space Grotesk';
+      case 'system':
+        return t('fontSystem');
+      default:
+        return t('fontDefault');
+    }
+  };
+
   return (
     <div className="fixed bottom-6 right-6 z-50" ref={menuRef}>
       <button
@@ -74,7 +107,7 @@ const AccessibilityMenu: React.FC = () => {
         aria-controls="accessibility-options"
         title="Accessibility Settings"
       >
-        <Accessibility
+        <PersonStanding
           size={24}
           className="transition-transform duration-200 group-hover:rotate-12"
         />
@@ -115,6 +148,7 @@ const AccessibilityMenu: React.FC = () => {
             className="flex items-center justify-between w-full text-left py-3 px-4 rounded-lg hover:bg-text/5 dark:hover:bg-gray-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             onClick={(e) => {
               e.stopPropagation();
+              setIsFontMenuOpen(false);
               setIsLanguageMenuOpen((prev) => !prev);
             }}
             aria-expanded={isLanguageMenuOpen}
@@ -147,6 +181,61 @@ const AccessibilityMenu: React.FC = () => {
                 onClick={(e) => handleLanguageChange('en', e)}
               >
                 English
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="relative mb-1">
+          <button
+            className="flex items-center justify-between w-full text-left py-3 px-4 rounded-lg hover:bg-text/5 dark:hover:bg-gray-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsLanguageMenuOpen(false);
+              setIsFontMenuOpen((prev) => !prev);
+            }}
+            aria-expanded={isFontMenuOpen}
+            aria-controls="font-menu"
+          >
+            <span className="flex items-center">
+              <Type className="mr-3" size={20} />
+              {getFontLabel(font)}
+            </span>
+            <ChevronDown
+              className={`ml-2 transition-transform ${isFontMenuOpen ? 'rotate-180' : 'rotate-0'}`}
+              size={18}
+            />
+          </button>
+
+          {isFontMenuOpen && (
+            <div
+              id="font-menu"
+              className="absolute left-0 bottom-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 
+                rounded-lg p-4 w-full shadow-lg z-10 origin-bottom scale-y-100"
+            >
+              <button
+                className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 mb-2"
+                onClick={(e) => handleFontChange(null, e)}
+              >
+                {t('fontDefault')}
+              </button>
+              <button
+                className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 mb-2"
+                onClick={(e) => handleFontChange('archivo', e)}
+              >
+                Archivo
+              </button>
+              <button
+                className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200 mb-2"
+                onClick={(e) => handleFontChange('space', e)}
+              >
+                Space Grotesk
+              </button>
+              <button
+                className="w-full text-left py-3 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                onClick={(e) => handleFontChange('system', e)}
+              >
+                {t('fontSystem')}
               </button>
             </div>
           )}

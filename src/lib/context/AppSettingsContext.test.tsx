@@ -11,6 +11,10 @@ const SettingsTester = () => {
       <div data-testid="theme-value">{settings.theme}</div>
       <div data-testid="language-value">{settings.language}</div>
       <div data-testid="font-size-value">{settings.fontSize}</div>
+      <div data-testid="font-value">{settings.font ?? 'default'}</div>
+      <button data-testid="set-font-button" onClick={() => settings.setFont('space')}>
+        Set Space Grotesk
+      </button>
     </div>
   );
 };
@@ -26,6 +30,23 @@ describe('AppSettingsContext', () => {
     expect(screen.getByTestId('theme-value')).toHaveTextContent('light');
     expect(screen.getByTestId('language-value')).toHaveTextContent('en');
     expect(screen.getByTestId('font-size-value')).toHaveTextContent('16');
+    expect(screen.getByTestId('font-value')).toHaveTextContent('default');
+  });
+
+  test('setFont changes the selected font family', () => {
+    render(
+      <AppSettingsProvider>
+        <SettingsTester />
+      </AppSettingsProvider>,
+    );
+
+    expect(screen.getByTestId('font-value')).toHaveTextContent('default');
+
+    act(() => {
+      screen.getByTestId('set-font-button').click();
+    });
+
+    expect(screen.getByTestId('font-value')).toHaveTextContent('space');
   });
 
   test('toggleTheme changes theme from light to dark', () => {

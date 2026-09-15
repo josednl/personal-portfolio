@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 
 export type Theme = 'light' | 'dark';
 export type Language = 'en' | 'es';
+export type SiteFont = 'archivo' | 'space' | 'system' | null;
 
 export interface AppSettingsContextProps {
   theme: Theme;
@@ -13,6 +14,10 @@ export interface AppSettingsContextProps {
   fontSize: number;
   increaseFont: () => void;
   decreaseFont: () => void;
+
+  font: SiteFont;
+  setFont: (font: Exclude<SiteFont, null>) => void;
+  resetFont: () => void;
 
   optimizedAnimations: boolean;
   toggleOptimizedAnimations: () => void;
