@@ -4,8 +4,8 @@
     "name": "José Daniel Agudelo",
     "role": "Full Stack Developer",
     "location": "Remote",
-    "image": "",
-    "cv": "",
+    "image": "/documents/foto_v1.jpg",
+    "cv": "/documents/CV - José Agudelo.pdf",
     "about": [
       "I am a software developer in training, focused on creating clean, efficient, and user-centered digital experiences.",
       "I have knowledge of front-end and back-end development, using modern JavaScript technologies such as React, TypeScript, and Node.js.",
@@ -18,8 +18,8 @@
     "name": "José Daniel Agudelo",
     "role": "Desarrollador Full Stack",
     "location": "Remoto",
-    "image": "",
-    "cv": "",
+    "image": "/documents/foto_v1.jpg",
+    "cv": "/documents/CV - José Agudelo.pdf",
     "about": [
       "Soy un desarrollador de software en formación, enfocado en crear experiencias digitales limpias, eficientes y centradas en el usuario.",
       "Tengo conocimientos en desarrollo FrontEnd y BackEnd, utilizando tecnologías JavaScript modernas como React, TypeScript y Node.js.",

@@ -70,7 +70,7 @@ export const About = () => {
                 {data.cv && (
                   <a
                     href={data.cv}
-                    download
+                    target='_blank'
                     className="inline-block mt-4 px-5 py-2 bg-primary text-white font-semibold rounded-lg shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-colors duration-200"
                   >
                     {t('downloadCV')}
