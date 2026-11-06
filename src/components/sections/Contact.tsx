@@ -4,12 +4,14 @@ import { ContactSkeleton } from '@/components/skeleton/ContactSkeleton';
 import { ContactFooter } from '@/components/ui/ContactFooter';
 import { SectionError } from '@/components/ui/SectionError';
 import { ContactData } from '@/lib/types/contact';
+import { useTranslation } from '@/lib/hooks/useTranslation';
 
 export const Contact = () => {
+  const { t } = useTranslation();
   const { data, loading, error } = useFetchSection<ContactData>('/data/contact.json');
 
   return (
-    <Section id="contact">
+    <Section id="contact" title={t('contactTitle')}>
       {loading && <ContactSkeleton />}
 
       {error && !loading && <SectionError />}

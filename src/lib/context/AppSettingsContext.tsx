@@ -12,14 +12,22 @@ const FONT_STACKS: Record<Exclude<SiteFont, null>, string> = {
   system: 'system-ui, sans-serif',
 };
 
+const getInitialTheme = (): Theme => {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light' || saved === 'dark') return saved;
+
+  return typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+};
+
 export const AppSettingsProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem('theme') as Theme) || 'light',
-  );
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   const [language, setLanguage] = useState<Language>(
     () => (localStorage.getItem('language') as Language) || 'en',
@@ -28,10 +36,6 @@ export const AppSettingsProvider = ({
   const [fontSize, setFontSize] = useState(() => {
     const saved = localStorage.getItem('fontSize');
     return saved ? parseInt(saved, 10) : 16;
-  });
-
-  const [optimizedAnimations, setOptimizedAnimations] = useState(() => {
-    return localStorage.getItem('optimizedAnimations') === 'true';
   });
 
   const [font, setFont] = useState<SiteFont>(() => {
@@ -44,12 +48,19 @@ export const AppSettingsProvider = ({
   // apply theme
   useEffect(() => {
     localStorage.setItem('theme', theme);
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+
+    const root = document.documentElement;
+    root.classList.toggle('dark', theme === 'dark');
+    root.style.colorScheme = theme;
+
+    const meta = document.getElementById('theme-color-meta');
+    meta?.setAttribute('content', theme === 'dark' ? '#0b0f14' : '#f6f7f5');
   }, [theme]);
 
   // apply language
   useEffect(() => {
     localStorage.setItem('language', language);
+    document.documentElement.lang = language;
   }, [language]);
 
   // apply font size
@@ -57,14 +68,6 @@ export const AppSettingsProvider = ({
     document.documentElement.style.setProperty('font-size', `${fontSize}px`);
     localStorage.setItem('fontSize', fontSize.toString());
   }, [fontSize]);
-
-  // apply optimized animations
-  useEffect(() => {
-    document.documentElement.classList.toggle(
-      'optimized-animations',
-      optimizedAnimations,
-    );
-  }, [optimizedAnimations]);
 
   // apply font family
   useEffect(() => {
@@ -111,13 +114,6 @@ export const AppSettingsProvider = ({
   const increaseFont = () => setFontSize((prev) => prev + 2);
   const decreaseFont = () => setFontSize((prev) => Math.max(prev - 2, 12));
 
-  const toggleOptimizedAnimations = () => {
-    setOptimizedAnimations((prev) => {
-      localStorage.setItem('optimizedAnimations', (!prev).toString());
-      return !prev;
-    });
-  };
-
   const resetFont = () => setFont(null);
 
   const resetSettings = () => {
@@ -125,8 +121,6 @@ export const AppSettingsProvider = ({
     setLanguage('en');
     setFontSize(16);
     setFont(null);
-    setOptimizedAnimations(false);
-    localStorage.setItem('optimizedAnimations', 'false');
   };
 
   return (
@@ -142,8 +136,6 @@ export const AppSettingsProvider = ({
         font,
         setFont,
         resetFont,
-        optimizedAnimations,
-        toggleOptimizedAnimations,
         resetSettings,
       }}
     >

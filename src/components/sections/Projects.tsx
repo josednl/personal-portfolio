@@ -26,7 +26,7 @@ export const Projects = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           <nav
             className="hidden lg:block lg:w-72 shrink-0 space-y-1 lg:sticky lg:top-24 lg:self-start"
-            aria-label="Project list"
+            aria-label={t('projectList')}
           >
             {data.items.map((project, index) => (
               <ProjectListItem

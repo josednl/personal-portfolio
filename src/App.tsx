@@ -28,6 +28,7 @@ function AppContent() {
 
   return (
     <PageContainer>
+      <SideNav />
       <About />
       <Skills />
       <Projects />
@@ -36,7 +37,6 @@ function AppContent() {
       <Contact />
 
       <AccessibilityMenu />
-      <SideNav />
     </PageContainer>
   );
 }

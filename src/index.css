@@ -39,12 +39,6 @@
     scroll-behavior: smooth;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-
   body {
     background-color: var(--color-background);
     color: var(--color-text);
@@ -67,18 +61,34 @@
     color: var(--color-text-dark);
   }
 
-  .optimized-animations {
+  .prefers-reduced-motion {
     scroll-behavior: auto;
   }
 
-  .optimized-animations *,
-  .optimized-animations *::before,
-  .optimized-animations *::after {
+  .prefers-reduced-motion *,
+  .prefers-reduced-motion *::before,
+  .prefers-reduced-motion *::after {
     animation-delay: 0ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-delay: 0ms !important;
     transition-duration: 0.01ms !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-delay: 0ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

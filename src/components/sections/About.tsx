@@ -6,6 +6,7 @@ import { AboutSkeleton } from '@/components/skeleton/AboutSkeleton';
 import { SectionError } from '@/components/ui/SectionError';
 import { OptimizedImage } from '@/components/ui/OptimizedImage';
 import { useTranslation } from '@/lib/hooks/useTranslation';
+import { scrollToSection } from '@/lib/navigation';
 
 interface AboutData {
   name: string;
@@ -47,7 +48,10 @@ export const About = () => {
                 </span>
               </div>
 
-              <h1 className="max-w-3xl text-balance font-display text-display font-semibold text-text dark:text-text-dark">
+              <h1
+                tabIndex={-1}
+                className="max-w-3xl text-balance font-display text-display font-semibold text-text focus:outline-none dark:text-text-dark"
+              >
                 {data.name}
               </h1>
 
@@ -58,6 +62,10 @@ export const About = () => {
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href="#projects"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    scrollToSection('projects');
+                  }}
                   className="group inline-flex items-center justify-center gap-2 rounded-control bg-primary px-5 py-3 text-sm font-semibold text-white shadow-soft transition-colors duration-200 hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:translate-y-px"
                 >
                   {t('viewProjects')}

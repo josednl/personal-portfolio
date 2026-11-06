@@ -1,11 +1,41 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/icon3.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Theme color for light and dark mode -->
     <meta name="theme-color" content="#f6f7f5" id="theme-color-meta" />
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const prefersDark =
+            typeof window.matchMedia === 'function' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme =
+            savedTheme === 'light' || savedTheme === 'dark'
+              ? savedTheme
+              : prefersDark
+                ? 'dark'
+                : 'light';
+          const root = document.documentElement;
+          root.classList.toggle('dark', theme === 'dark');
+          root.style.colorScheme = theme;
+
+          const meta = document.getElementById('theme-color-meta');
+          meta?.setAttribute(
+            'content',
+            theme === 'dark' ? '#0b0f14' : '#f6f7f5',
+          );
+
+          const savedLanguage = localStorage.getItem('language');
+          if (savedLanguage === 'en' || savedLanguage === 'es') {
+            root.lang = savedLanguage;
+          }
+        } catch {}
+      })();
+    </script>
     <!-- Google Fonts: Archivo and Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

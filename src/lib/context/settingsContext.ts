@@ -19,9 +19,6 @@ export interface AppSettingsContextProps {
   setFont: (font: Exclude<SiteFont, null>) => void;
   resetFont: () => void;
 
-  optimizedAnimations: boolean;
-  toggleOptimizedAnimations: () => void;
-
   resetSettings: () => void;
 }
 
