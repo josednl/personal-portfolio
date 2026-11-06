@@ -37,15 +37,15 @@ export const ProjectPreview = ({ project }: ProjectPreviewProps) => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="aspect-video w-full overflow-hidden rounded-xl mb-6">
+      <div className="mb-6 aspect-video w-full overflow-hidden rounded-card">
         <ImageCarousel key={project.id} images={images} />
       </div>
 
-      <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 font-archivo mb-3">
+      <h3 className="mb-3 font-display text-2xl font-semibold text-text dark:text-text-dark">
         {title}
       </h3>
 
-      <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-5">
+      <p className="mb-5 max-w-[65ch] leading-relaxed text-text-light dark:text-text-light-dark">
         {description}
       </p>
 
@@ -63,7 +63,7 @@ export const ProjectPreview = ({ project }: ProjectPreviewProps) => {
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-sm font-medium"
+            className="flex items-center gap-2 rounded-control border border-border px-4 py-2.5 text-sm font-medium text-text transition-colors duration-200 hover:bg-background dark:border-border-dark dark:text-text-dark dark:hover:bg-background-dark"
           >
             <Github className="w-4 h-4" />
             GitHub
@@ -74,7 +74,7 @@ export const ProjectPreview = ({ project }: ProjectPreviewProps) => {
             href={demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm"
+            className="flex items-center gap-2 rounded-control bg-primary px-4 py-2.5 text-sm font-medium text-white shadow-soft transition-colors duration-200 hover:bg-primary-hover"
           >
             <ExternalLink className="w-4 h-4" />
             {t('demo')}
@@ -83,10 +83,10 @@ export const ProjectPreview = ({ project }: ProjectPreviewProps) => {
       </div>
 
       {hasExtendedDetails && (
-        <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mt-auto">
+        <div className="mt-auto border-t border-border pt-6 dark:border-border-dark">
           <button
             onClick={() => setDetailsOpen(!detailsOpen)}
-            className="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-gray-100 uppercase tracking-wider hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-text transition-colors duration-200 hover:text-primary dark:text-text-dark dark:hover:text-primary-dark"
           >
             <ChevronDown
               className={`w-4 h-4 transition-transform duration-200 ${

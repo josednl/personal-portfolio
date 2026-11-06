@@ -4,11 +4,11 @@ export const SectionError = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="text-center py-12">
-      <p className="text-red-500 dark:text-red-400 mb-4">{t('loadError')}</p>
+    <div className="py-12 text-center">
+      <p className="mb-4 text-red-500 dark:text-red-400">{t('loadError')}</p>
       <button
         onClick={() => window.location.reload()}
-        className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+        className="rounded-control bg-primary px-4 py-2 text-white transition-colors duration-200 hover:bg-primary-hover"
       >
         {t('retry')}
       </button>

@@ -58,17 +58,29 @@ export const AppSettingsProvider = ({
     localStorage.setItem('fontSize', fontSize.toString());
   }, [fontSize]);
 
+  // apply optimized animations
+  useEffect(() => {
+    document.documentElement.classList.toggle(
+      'optimized-animations',
+      optimizedAnimations,
+    );
+  }, [optimizedAnimations]);
+
   // apply font family
   useEffect(() => {
     if (font) {
       const stack = FONT_STACKS[font];
       document.documentElement.style.setProperty('--font-archivo', stack);
       document.documentElement.style.setProperty('--font-space', stack);
+      document.documentElement.style.setProperty('--font-sans', stack);
+      document.documentElement.style.setProperty('--font-display', stack);
       document.documentElement.style.setProperty('--default-font-family', stack);
       localStorage.setItem('font', font);
     } else {
       document.documentElement.style.removeProperty('--font-archivo');
       document.documentElement.style.removeProperty('--font-space');
+      document.documentElement.style.removeProperty('--font-sans');
+      document.documentElement.style.removeProperty('--font-display');
       document.documentElement.style.removeProperty('--default-font-family');
       localStorage.removeItem('font');
     }

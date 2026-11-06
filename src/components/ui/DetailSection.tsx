@@ -13,7 +13,7 @@ interface DetailSectionProps {
 }
 
 const getIcon = (title: string): ReactNode => {
-  const cls = 'w-3.5 h-3.5 text-primary';
+  const cls = 'w-3.5 h-3.5 text-primary dark:text-primary-dark';
   const t = title.toLowerCase();
   if (t.includes('arch') || t.includes('arquitectura')) return <Cpu className={cls} />;
   if (t.includes('decis') || t.includes('tech')) return <Lightbulb className={cls} />;
@@ -27,17 +27,17 @@ export const DetailSection = ({ title, text }: DetailSectionProps) => {
     <div className="group/section relative pl-8 pb-2">
       <div className="absolute left-2.75 top-7 bottom-0 w-0.5 bg-primary/10 dark:bg-primary/30 group-last/section:bg-transparent" />
 
-      <div className="absolute left-0 top-0 p-1.5 rounded-lg bg-white dark:bg-gray-800 border border-primary/20 dark:border-primary/30 shadow-sm transition-transform">
+      <div className="absolute left-0 top-0 rounded-control border border-primary/20 bg-surface p-1.5 shadow-sm transition-transform dark:border-primary/30 dark:bg-surface-dark">
         {getIcon(title)}
       </div>
 
       <div className="flex flex-col gap-1">
-        <h4 className="text-[11px] font-black text-primary uppercase tracking-[0.15em]">
+        <h4 className="text-[11px] font-black uppercase tracking-[0.15em] text-primary dark:text-primary-dark">
           {title}
         </h4>
 
-        <div className="relative overflow-hidden rounded-xl bg-white/40 dark:bg-gray-900/40 p-3 border border-transparent transition-all group-hover/section:border-primary/20 dark:group-hover/section:border-primary/30 group-hover/section:shadow-sm">
-          <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed relative z-10">
+        <div className="relative overflow-hidden rounded-card border border-transparent bg-surface/70 p-3 transition-[border-color,box-shadow] group-hover/section:border-primary/20 group-hover/section:shadow-sm dark:bg-surface-dark/70 dark:group-hover/section:border-primary/30">
+          <p className="relative z-10 text-sm leading-relaxed text-text-light dark:text-text-light-dark">
             {text}
           </p>
 

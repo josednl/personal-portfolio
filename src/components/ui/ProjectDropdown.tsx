@@ -47,21 +47,21 @@ export const ProjectDropdown = ({
         aria-haspopup="listbox"
         aria-controls="project-dropdown-list"
         aria-label={t('selectProject')}
-        className="w-full flex items-center justify-between gap-2 p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-left shadow-sm hover:border-gray-300 dark:hover:border-gray-600 transition-colors"
+        className="flex w-full items-center justify-between gap-2 rounded-card border border-border bg-surface p-4 text-left shadow-soft transition-colors duration-200 hover:border-primary/40 dark:border-border-dark dark:bg-surface-dark"
       >
-        <span className="text-base font-semibold font-archivo text-gray-900 dark:text-gray-100 truncate">
+        <span className="truncate font-display text-base font-semibold text-text dark:text-text-dark">
           {selectedProject?.title}
         </span>
         <ChevronDown
           size={18}
-          className={`shrink-0 text-gray-500 dark:text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`shrink-0 text-text-light transition-transform duration-200 dark:text-text-light-dark ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
       {isOpen && (
         <ul
           id="project-dropdown-list"
-          className="absolute left-0 right-0 top-full mt-2 max-h-72 overflow-y-auto space-y-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-2 shadow-lg z-20"
+          className="absolute left-0 right-0 top-full z-20 mt-2 max-h-72 space-y-1 overflow-y-auto rounded-card border border-border bg-surface p-2 shadow-soft dark:border-border-dark dark:bg-surface-dark"
         >
           {projects.map((project, index) => (
             <li key={project.id}>

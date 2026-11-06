@@ -88,7 +88,7 @@ export const SideNav = () => {
           >
             <span
               className={`
-                block rounded-full transition-all duration-300
+                block rounded-full transition-[width,height,background-color] duration-300
                 ${isActive
                   ? 'w-3 h-3 bg-primary'
                   : 'w-2 h-2 bg-text/30 dark:bg-white/30 hover:bg-text/50 dark:hover:bg-white/50'
@@ -98,12 +98,12 @@ export const SideNav = () => {
             <span
               className={`
                 absolute right-full mr-3 whitespace-nowrap text-xs font-medium
-                px-2 py-1 rounded-md
-                bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm
-                text-text dark:text-white
-                shadow-sm
-                border border-gray-200 dark:border-gray-700
-                transition-all duration-200
+                rounded-control px-2 py-1
+                bg-surface/95 backdrop-blur-sm dark:bg-surface-dark/95
+                text-text dark:text-text-dark
+                shadow-soft
+                border border-border dark:border-border-dark
+                transition-[opacity,transform] duration-200
                 opacity-0 translate-x-1 pointer-events-none
                 group-hover:opacity-100 group-hover:translate-x-0
               `}

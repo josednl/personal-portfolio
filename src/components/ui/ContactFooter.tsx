@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
-const accentColor = 'text-primary';
+const accentColor = 'text-primary dark:text-primary-dark';
 
 export const ContactFooter = ({ contact }: { contact: ContactData }) => {
   const { t } = useTranslation();
@@ -18,21 +18,21 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
   const { email, phone, location, links } = contact;
 
   return (
-    <footer className="border-t border-gray-300 dark:border-gray-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+    <footer className="border-t border-border dark:border-border-dark">
+      <div className="py-12">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           <div>
-            <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-text-light dark:text-text-light-dark">
               {t('contactInformation')}
             </h4>
 
-            <div className="space-y-3 text-gray-700 dark:text-gray-200">
+            <div className="space-y-3 text-text dark:text-text-dark">
               {email && (
                 <p className="flex items-center">
-                  <Mail className={`w-4 h-4 mr-2 ${accentColor}`} />
+                  <Mail className={`mr-2 h-4 w-4 ${accentColor}`} />
                   <a
                     href={`mailto:${email}`}
-                    className="hover:underline transition-200"
+                    className="transition-colors duration-200 hover:text-primary dark:hover:text-primary-dark"
                   >
                     {email}
                   </a>
@@ -41,10 +41,10 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
 
               {phone && (
                 <p className="flex items-center">
-                  <Phone className={`w-4 h-4 mr-2 ${accentColor}`} />
+                  <Phone className={`mr-2 h-4 w-4 ${accentColor}`} />
                   <a
                     href={`tel:${phone}`}
-                    className="hover:underline transition-200"
+                    className="transition-colors duration-200 hover:text-primary dark:hover:text-primary-dark"
                   >
                     {phone}
                   </a>
@@ -53,7 +53,7 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
 
               {location && (
                 <p className="flex items-center">
-                  <MapPin className={`w-4 h-4 mr-2 ${accentColor}`} />
+                  <MapPin className={`mr-2 h-4 w-4 ${accentColor}`} />
                   <span>{location}</span>
                 </p>
               )}
@@ -62,7 +62,7 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
 
           {links && (
             <div>
-              <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-text-light dark:text-text-light-dark">
                 {t('connectOnline')}
               </h4>
               <div className="flex space-x-5">
@@ -72,9 +72,9 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Profile"
-                    className="text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                    className="text-text-light transition-colors duration-200 hover:text-primary dark:text-text-light-dark dark:hover:text-primary-dark"
                   >
-                    <Github className="w-6 h-6" />
+                    <Github className="h-6 w-6" />
                   </a>
                 )}
 
@@ -84,9 +84,9 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"
-                    className="text-gray-400 hover:text-blue-600 transition-colors"
+                    className="text-text-light transition-colors duration-200 hover:text-primary dark:text-text-light-dark dark:hover:text-primary-dark"
                   >
-                    <Linkedin className="w-6 h-6" />
+                    <Linkedin className="h-6 w-6" />
                   </a>
                 )}
 
@@ -96,9 +96,9 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Twitter/X Profile"
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
+                    className="text-text-light transition-colors duration-200 hover:text-primary dark:text-text-light-dark dark:hover:text-primary-dark"
                   >
-                    <Twitter className="w-6 h-6" />
+                    <Twitter className="h-6 w-6" />
                   </a>
                 )}
 
@@ -108,9 +108,9 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Personal Website"
-                    className="text-gray-400 hover:text-blue-600 transition-colors"
+                    className="text-text-light transition-colors duration-200 hover:text-primary dark:text-text-light-dark dark:hover:text-primary-dark"
                   >
-                    <Globe className="w-6 h-6" />
+                    <Globe className="h-6 w-6" />
                   </a>
                 )}
               </div>
@@ -118,15 +118,15 @@ export const ContactFooter = ({ contact }: { contact: ContactData }) => {
           )}
 
           <div className="md:text-right">
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-xs md:ml-auto">
+            <p className="max-w-xs leading-relaxed text-text-light dark:text-text-light-dark md:ml-auto">
               {t('message')}
             </p>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
-          <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-            &copy; {new Date().getFullYear()} {t('portfolioOwner')} .{' '}
+        <div className="mt-12 border-t border-border pt-8 dark:border-border-dark">
+          <p className="text-center text-sm text-text-light dark:text-text-light-dark">
+            &copy; {new Date().getFullYear()} {t('portfolioOwner')}.{' '}
             {t('rights')}
           </p>
         </div>

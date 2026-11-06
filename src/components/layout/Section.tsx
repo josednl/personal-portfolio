@@ -2,15 +2,23 @@ interface SectionProps {
   id: string;
   title?: string;
   children?: React.ReactNode;
+  className?: string;
 }
 
-export const Section = ({ id, title, children }: SectionProps) => {
+export const Section = ({
+  id,
+  title,
+  children,
+  className = 'my-16 md:my-24',
+}: SectionProps) => {
   return (
-    <section id={id} className="my-16 scroll-mt-16">
-      <h2 className="text-3xl font-semibold mb-6 text-text dark:text-white font-archivo">
-        {title}
-      </h2>
-      <div className="text-text dark:text-text/60">{children}</div>
+    <section id={id} className={`scroll-mt-24 ${className}`}>
+      {title && (
+        <h2 className="mb-8 font-display text-section font-semibold text-text dark:text-text-dark">
+          {title}
+        </h2>
+      )}
+      <div className="text-text dark:text-text-dark/80">{children}</div>
     </section>
   );
 };

@@ -16,17 +16,17 @@ export const ProjectListItem = ({
   return (
     <button
       onClick={onClick}
-      className={`w-full text-left p-4 rounded-xl transition-all duration-200 ${
+      className={`w-full rounded-card p-4 text-left transition-[background-color,border-color,box-shadow] duration-200 ${
         isActive
-          ? 'bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700'
-          : 'hover:bg-white/50 dark:hover:bg-gray-800/50 border border-transparent'
+          ? 'border border-border bg-surface shadow-soft dark:border-border-dark dark:bg-surface-dark'
+          : 'border border-transparent hover:bg-surface/70 dark:hover:bg-surface-dark/70'
       }`}
     >
       <h4
-        className={`text-base font-semibold font-archivo mb-1.5 transition-colors ${
+        className={`mb-1.5 font-display text-base font-semibold transition-colors ${
           isActive
-            ? 'text-blue-600 dark:text-blue-400'
-            : 'text-gray-900 dark:text-gray-100'
+            ? 'text-primary dark:text-primary-dark'
+            : 'text-text dark:text-text-dark'
         }`}
       >
         {title}
@@ -37,18 +37,18 @@ export const ProjectListItem = ({
           {technologies.slice(0, 3).map((tech, index, arr) => (
             <span
               key={tech}
-              className="text-[11px] text-gray-500 dark:text-gray-400"
+              className="text-[11px] text-text-light dark:text-text-light-dark"
             >
               {tech}
               {index < arr.length - 1 && (
-                <span className="ml-1.5 text-gray-300 dark:text-gray-600">
+                <span className="ml-1.5 text-border dark:text-border-dark">
                   /
                 </span>
               )}
             </span>
           ))}
           {technologies.length > 3 && (
-            <span className="text-[11px] text-gray-400 dark:text-gray-500">
+            <span className="text-[11px] text-text-light dark:text-text-light-dark">
               +{technologies.length - 3}
             </span>
           )}

@@ -26,14 +26,16 @@ export class ErrorBoundary extends Component<Props, State> {
         return this.props.fallback;
       }
       return (
-        <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-6">
-          <h2 className="text-2xl font-bold mb-4">Something went wrong.</h2>
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-background p-6 text-text dark:bg-background-dark dark:text-text-dark">
+          <h2 className="mb-4 font-display text-2xl font-bold">
+            Something went wrong.
+          </h2>
           <p className="mb-6">
             Reload the page or try again later if the problem persists.
           </p>
           <button
             onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="rounded-control bg-primary px-4 py-2 text-white transition-colors duration-200 hover:bg-primary-hover"
           >
             Reload Page
           </button>

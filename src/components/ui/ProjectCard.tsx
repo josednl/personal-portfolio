@@ -53,10 +53,10 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
         className={`relative w-full h-full transition-transform duration-700 motion-reduce:transition-none preserve-3d ${flipped ? 'rotate-y-180' : ''}`}
       >
         <div
-          className={`absolute inset-0 backface-hidden border border-transparent rounded-xl p-6 shadow-lg bg-white dark:bg-gray-800 flex flex-col h-full bg-linear-to-b from-white via-gray-50 to-white dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 ${flipped ? 'z-0' : 'z-10'}`}
+          className={`absolute inset-0 flex h-full flex-col rounded-card border border-transparent bg-linear-to-b from-surface to-background p-6 shadow-soft backface-hidden dark:from-surface-dark dark:to-background-dark ${flipped ? 'z-0' : 'z-10'}`}
           style={{ transform: 'translateZ(0px)' }}
         >
-          <div className="aspect-video w-full overflow-hidden rounded-lg shrink-0">
+          <div className="aspect-video w-full shrink-0 overflow-hidden rounded-control">
             <ImageCarousel images={images} />
           </div>
 
@@ -77,7 +77,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
             {isTruncated && !expanded && (
               <button
                 onClick={() => setExpanded(true)}
-                className="text-blue-600 text-sm mt-1 hover:underline w-fit font-medium shrink-0"
+                className="mt-1 w-fit shrink-0 text-sm font-medium text-primary hover:underline dark:text-primary-dark"
               >
                 {t('readMore')}
               </button>
@@ -85,7 +85,7 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
             {expanded && (
               <button
                 onClick={() => setExpanded(false)}
-                className="text-blue-600 text-sm mt-1 hover:underline w-fit font-medium shrink-0"
+                className="mt-1 w-fit shrink-0 text-sm font-medium text-primary hover:underline dark:text-primary-dark"
               >
                 {t('readLess')}
               </button>
@@ -118,18 +118,18 @@ export const ProjectCard = ({ project }: { project: ProjectItem }) => {
         </div>
 
         <div
-          className={`absolute inset-0 backface-hidden border border-transparent rounded-xl p-6 shadow-lg flex flex-col h-full bg-linear-to-b from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-900/20 dark:via-purple-900/20 dark:to-pink-900/20 ${flipped ? 'z-10' : 'z-0'}`}
+          className={`absolute inset-0 flex h-full flex-col rounded-card border border-border bg-surface p-6 shadow-soft backface-hidden dark:border-border-dark dark:bg-surface-dark ${flipped ? 'z-10' : 'z-0'}`}
           style={{ transform: 'rotateY(180deg) translateZ(0px)' }}
         >
           <div className="flex items-center justify-between mb-6 shrink-0">
-            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-300">
+            <h3 className="font-display text-2xl font-bold text-primary dark:text-primary-dark">
               {t('showDetails')}
             </h3>
             <button
               onClick={() => setFlipped(false)}
-              className="p-2 border border-blue-200 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+              className="rounded-control border border-border p-2 text-text transition-colors duration-200 hover:bg-background dark:border-border-dark dark:text-text-dark dark:hover:bg-background-dark"
             >
-              <RotateCw className="w-5 h-5 text-blue-600 dark:text-blue-300" />
+              <RotateCw className="h-5 w-5 text-primary dark:text-primary-dark" />
             </button>
           </div>
 
@@ -178,9 +178,9 @@ const ActionButtons = ({
     {hasExtendedDetails && (
       <button
         onClick={() => setFlipped(!flipped)}
-        className="p-2 border border-blue-200 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+        className="rounded-control border border-border p-2 text-text transition-colors duration-200 hover:bg-background dark:border-border-dark dark:text-text-dark dark:hover:bg-background-dark"
       >
-        <RotateCw className="w-5 h-5 text-blue-600 dark:text-blue-300" />
+        <RotateCw className="h-5 w-5 text-primary dark:text-primary-dark" />
       </button>
     )}
     {githubUrl && (
@@ -188,7 +188,7 @@ const ActionButtons = ({
         href={githubUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="p-2 border border-gray-300 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+        className="rounded-control border border-border p-2 text-text transition-colors duration-200 hover:bg-background dark:border-border-dark dark:text-text-dark dark:hover:bg-background-dark"
       >
         <Github className="w-5 h-5" />
       </a>
@@ -198,7 +198,7 @@ const ActionButtons = ({
         href={demoUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 shadow-md transition-all"
+        className="flex items-center gap-2 rounded-control bg-primary px-4 py-2 text-sm text-white shadow-soft transition-colors duration-200 hover:bg-primary-hover"
       >
         <ChevronsLeftRightEllipsis className="w-4 h-4" /> {t('demo')}
       </a>

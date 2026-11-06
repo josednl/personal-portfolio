@@ -5,43 +5,43 @@ export const ProjectsSkeleton = () => {
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div
             key={i}
-            className={`p-4 rounded-xl ${
+            className={`rounded-card p-4 ${
               i === 1
-                ? 'bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700'
+                ? 'border border-border bg-surface shadow-soft dark:border-border-dark dark:bg-surface-dark'
                 : ''
             }`}
           >
-            <div className="h-4 w-3/4 bg-gray-300 dark:bg-gray-700 rounded mb-2" />
+            <div className="mb-2 h-4 w-3/4 rounded bg-border dark:bg-border-dark" />
             <div className="flex gap-1.5">
-              <div className="h-3 w-12 bg-gray-200 dark:bg-gray-600 rounded" />
-              <div className="h-3 w-10 bg-gray-200 dark:bg-gray-600 rounded" />
-              <div className="h-3 w-8 bg-gray-200 dark:bg-gray-600 rounded" />
+              <div className="h-3 w-12 rounded bg-border dark:bg-border-dark" />
+              <div className="h-3 w-10 rounded bg-border dark:bg-border-dark" />
+              <div className="h-3 w-8 rounded bg-border dark:bg-border-dark" />
             </div>
           </div>
         ))}
       </div>
 
-      <div className="flex-1 min-w-0">
-        <div className="aspect-video w-full bg-gray-300 dark:bg-gray-700 rounded-xl mb-6" />
+      <div className="min-w-0 flex-1">
+        <div className="mb-6 aspect-video w-full rounded-card bg-border dark:bg-border-dark" />
 
-        <div className="h-7 w-48 bg-gray-300 dark:bg-gray-700 rounded mb-3" />
+        <div className="mb-3 h-7 w-48 rounded bg-border dark:bg-border-dark" />
 
-        <div className="space-y-2 mb-5">
-          <div className="h-4 w-full bg-gray-200 dark:bg-gray-600 rounded" />
-          <div className="h-4 w-full bg-gray-200 dark:bg-gray-600 rounded" />
-          <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-600 rounded" />
+        <div className="mb-5 space-y-2">
+          <div className="h-4 w-full rounded bg-border dark:bg-border-dark" />
+          <div className="h-4 w-full rounded bg-border dark:bg-border-dark" />
+          <div className="h-4 w-3/4 rounded bg-border dark:bg-border-dark" />
         </div>
 
-        <div className="flex gap-2 mb-6">
-          <div className="h-6 w-16 bg-gray-200 dark:bg-gray-600 rounded-lg" />
-          <div className="h-6 w-20 bg-gray-200 dark:bg-gray-600 rounded-lg" />
-          <div className="h-6 w-14 bg-gray-200 dark:bg-gray-600 rounded-lg" />
-          <div className="h-6 w-18 bg-gray-200 dark:bg-gray-600 rounded-lg" />
+        <div className="mb-6 flex gap-2">
+          <div className="h-6 w-16 rounded-full bg-border dark:bg-border-dark" />
+          <div className="h-6 w-20 rounded-full bg-border dark:bg-border-dark" />
+          <div className="h-6 w-14 rounded-full bg-border dark:bg-border-dark" />
+          <div className="h-6 w-18 rounded-full bg-border dark:bg-border-dark" />
         </div>
 
         <div className="flex gap-3">
-          <div className="h-10 w-28 bg-gray-300 dark:bg-gray-700 rounded-lg" />
-          <div className="h-10 w-24 bg-blue-600 rounded-lg" />
+          <div className="h-10 w-28 rounded-control bg-border dark:bg-border-dark" />
+          <div className="h-10 w-24 rounded-control bg-primary" />
         </div>
       </div>
     </div>

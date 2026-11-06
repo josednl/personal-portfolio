@@ -40,7 +40,7 @@ const ImageModal = ({
       <button
         onClick={onClose}
         aria-label={t('closeView')}
-        className="fixed top-6 right-6 z-130 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-all border border-white/20 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
+        className="fixed top-6 right-6 z-130 p-3 rounded-full bg-black/60 text-white hover:bg-black/80 transition-[background-color,transform] border border-white/20 shadow-2xl backdrop-blur-md hover:scale-110 active:scale-95"
       >
         <X className="w-6 h-6" />
       </button>
@@ -49,7 +49,7 @@ const ImageModal = ({
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-130 flex items-center gap-4 animate-in fade-in zoom-in duration-300">
           <button
             onClick={(e) => { e.stopPropagation(); onPrev(); }}
-            className="p-3 rounded-full bg-black/60 text-white hover:bg-blue-600 transition-all border border-white/10 shadow-xl backdrop-blur-md active:scale-90"
+            className="p-3 rounded-full bg-black/60 text-white hover:bg-primary transition-[background-color,transform] border border-white/10 shadow-xl backdrop-blur-md active:scale-90"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -62,7 +62,7 @@ const ImageModal = ({
 
           <button
             onClick={(e) => { e.stopPropagation(); onNext(); }}
-            className="p-3 rounded-full bg-black/60 text-white hover:bg-blue-600 transition-all border border-white/10 shadow-xl backdrop-blur-md active:scale-90"
+            className="p-3 rounded-full bg-black/60 text-white hover:bg-primary transition-[background-color,transform] border border-white/10 shadow-xl backdrop-blur-md active:scale-90"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -78,7 +78,7 @@ const ImageModal = ({
           alt={`${t('expandedImage')} ${currentIndex + 1}`}
           width={1600}
           height={900}
-          className="object-contain max-h-[70vh] md:max-h-[80vh] w-auto h-auto select-none rounded-sm shadow-2xl transition-all duration-500"
+          className="object-contain max-h-[70vh] md:max-h-[80vh] w-auto h-auto select-none rounded-control shadow-2xl transition-[opacity,transform] duration-500"
         />
       </div>
     </div>
@@ -105,14 +105,14 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
 
   if (!hasImages)
     return (
-      <div className="h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded-lg text-gray-400 italic">
+      <div className="flex h-full items-center justify-center rounded-card bg-border text-text-light italic dark:bg-surface-dark dark:text-text-light-dark">
         {t('noImagesAvailable')}
       </div>
     );
 
   return (
     <>
-      <div className="relative group w-full h-full overflow-hidden rounded-lg bg-gray-200 dark:bg-gray-900 shadow-sm border border-black/5 dark:border-white/5">
+      <div className="group relative h-full w-full overflow-hidden rounded-card border border-black/5 bg-border shadow-soft dark:border-white/5 dark:bg-background-dark">
         <div
           className="flex h-full transition-transform duration-500 ease-out motion-reduce:transition-none"
           style={{ transform: `translateX(-${index * 100}%)` }}
@@ -151,9 +151,9 @@ export const ImageCarousel = ({ images }: ImageCarouselProps) => {
                 <button
                   key={i}
                   onClick={(e) => { e.stopPropagation(); setIndex(i); }}
-                  className={`h-2 rounded-full transition-all shadow-md border border-black/10 ${
+                  className={`h-2 rounded-full transition-[width,background-color] shadow-md border border-black/10 ${
                     i === index
-                      ? 'w-6 bg-blue-500'
+                      ? 'w-6 bg-primary'
                       : 'w-2 bg-white/80 dark:bg-gray-400/70 hover:bg-white'
                   }`}
                   aria-label={`Go to image ${i + 1}`}

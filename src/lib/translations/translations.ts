@@ -3,6 +3,9 @@ export const translations = {
     portfolioOwner: 'José',
     portfolioTitle: 'Portfolio',
     aboutTitle: 'About Me',
+    heroTagline:
+      'I build clean, reliable web experiences with React, TypeScript, and Node.js.',
+    viewProjects: 'View projects',
     contactTitle: 'Contact',
     educationTitle: 'Education',
     skillsTitle: 'Tech Stack',
@@ -55,6 +58,9 @@ export const translations = {
     portfolioOwner: 'José',
     portfolioTitle: 'Portafolio',
     aboutTitle: 'Sobre Mí',
+    heroTagline:
+      'Construyo experiencias web limpias y confiables con React, TypeScript y Node.js.',
+    viewProjects: 'Ver proyectos',
     contactTitle: 'Contacto',
     educationTitle: 'Educación',
     skillsTitle: 'Stack Tecnológico',

@@ -5,16 +5,107 @@
 
 @theme {
   --color-primary: #2563eb;
-  --color-secondary: #3b82f6;
-  --color-cta: #f97316;
-  --color-background: #f8fafc;
-  --color-text: #1e293b;
-  --color-text-light: #64748b;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-dark: #60a5fa;
+  --color-background: #f6f7f5;
+  --color-background-dark: #0b0f14;
+  --color-surface: #fdfdfc;
+  --color-surface-dark: #111827;
+  --color-text: #111827;
+  --color-text-dark: #e5e7eb;
+  --color-text-light: #5b6472;
+  --color-text-light-dark: #94a3b8;
+  --color-border: #e2e5e9;
+  --color-border-dark: #1f2937;
   --font-archivo: 'Archivo', sans-serif;
   --font-space: 'Space Grotesk', sans-serif;
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --text-display: clamp(2.75rem, 7vw, 4.5rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.045em;
+  --text-section: clamp(1.75rem, 3vw, 2.25rem);
+  --text-section--line-height: 1.1;
+  --text-section--letter-spacing: -0.03em;
+  --radius-control: 0.625rem;
+  --radius-card: 0.875rem;
+  --shadow-soft:
+    0 1px 2px rgb(15 23 42 / 0.04),
+    0 16px 40px -20px rgb(15 23 42 / 0.25);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .dark body {
+    background-color: var(--color-background-dark);
+    color: var(--color-text-dark);
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-primary) 22%, transparent);
+    color: var(--color-text);
+  }
+
+  .dark ::selection {
+    color: var(--color-text-dark);
+  }
+
+  .optimized-animations {
+    scroll-behavior: auto;
+  }
+
+  .optimized-animations *,
+  .optimized-animations *::before,
+  .optimized-animations *::after {
+    animation-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(17 24 39 / 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(17 24 39 / 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      black 20%,
+      transparent 80%
+    );
+    mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      black 20%,
+      transparent 80%
+    );
+  }
+
+  .dark .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(226 232 240 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(226 232 240 / 0.06) 1px, transparent 1px);
+  }
+
   .perspective-1000 {
     perspective: 1000px;
   }

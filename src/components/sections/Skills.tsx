@@ -19,7 +19,7 @@ export const Skills = () => {
       {!loading && !error && data && (
         <>
           {data.description && (
-            <p className="mt-3 mb-6 text-sm text-text-light dark:text-text-light/90">
+            <p className="mb-6 mt-3 max-w-[65ch] text-sm text-text-light dark:text-text-light-dark">
               {data.description}
             </p>
           )}
