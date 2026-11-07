@@ -7,7 +7,7 @@ export const PageContainer = ({ children }: { children: React.ReactNode }) => {
     <main
       id="main-content"
       tabIndex={-1}
-      className="relative w-full min-h-[100dvh] overflow-x-clip bg-background focus:outline-none dark:bg-background-dark"
+      className="relative w-full min-h-dvh overflow-x-clip bg-background focus:outline-none dark:bg-background-dark"
     >
       <a
         href="#main-content"
@@ -21,7 +21,7 @@ export const PageContainer = ({ children }: { children: React.ReactNode }) => {
         className="bg-grid pointer-events-none absolute inset-0 -z-10"
       />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-3 text-text dark:text-text-dark">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-5 py-3 text-text dark:text-text-dark sm:px-6 lg:px-8">
         {children}
       </div>
 
