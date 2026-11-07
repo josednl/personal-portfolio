@@ -2,7 +2,7 @@ import { Section } from '../layout/Section';
 import { useFetchSection } from '@/lib/hooks/useFetchSection';
 import { EducationSkeleton } from '@/components/skeleton/EducationSkeleton';
 import { SectionError } from '@/components/ui/SectionError';
-import { EducationCard } from '@/components/ui/EducationCard';
+import { EducationRow } from '@/components/ui/EducationRow';
 import { EducationData } from '@/lib/types/education';
 import { useTranslation } from '@/lib/hooks/useTranslation';
 
@@ -19,11 +19,11 @@ export const Education = () => {
       {error && !loading && <SectionError />}
 
       {!loading && !error && data && (
-        <div className="space-y-10">
+        <ol className="divide-y divide-border border-t border-border dark:divide-border-dark dark:border-border-dark">
           {data.items.map((item) => (
-            <EducationCard key={item.id} item={item} />
+            <EducationRow key={item.id} item={item} />
           ))}
-        </div>
+        </ol>
       )}
     </Section>
   );

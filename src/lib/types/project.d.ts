@@ -3,6 +3,7 @@ export interface ProjectItem {
   title: string;
   description: string;
   images: string[];
+  featured?: boolean;
   demoUrl?: string;
   githubUrl?: string;
   technologies?: string[];

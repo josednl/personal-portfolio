@@ -1,49 +1,34 @@
 export const ContactSkeleton = () => {
   return (
-    <footer className="border-t border-gray-300 dark:border-gray-700 animate-pulse motion-reduce:animate-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
-          <div>
-            <div className="h-4 w-32 bg-gray-300 dark:bg-gray-700 rounded mb-4" />
-
-            <div className="flex items-center mb-3">
-              <div className="w-4 h-4 rounded bg-gray-300 dark:bg-gray-700 mr-2" />
-              <div className="h-4 w-40 bg-gray-300 dark:bg-gray-700 rounded" />
-            </div>
-
-            <div className="flex items-center mb-3">
-              <div className="w-4 h-4 rounded bg-gray-300 dark:bg-gray-700 mr-2" />
-              <div className="h-4 w-32 bg-gray-300 dark:bg-gray-700 rounded" />
-            </div>
-
-            <div className="flex items-center">
-              <div className="w-4 h-4 rounded bg-gray-300 dark:bg-gray-700 mr-2" />
-              <div className="h-4 w-28 bg-gray-300 dark:bg-gray-700 rounded" />
-            </div>
+    <footer className="animate-pulse border-t border-border pt-10 motion-reduce:animate-none dark:border-border-dark md:pt-14">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+        <div>
+          <div className="h-3 w-24 rounded bg-border dark:bg-border-dark" />
+          <div className="mt-5 space-y-3">
+            <div className="h-10 w-72 max-w-full rounded bg-border dark:bg-border-dark" />
+            <div className="h-10 w-56 max-w-full rounded bg-border dark:bg-border-dark" />
           </div>
-
-          <div>
-            <div className="h-4 w-28 bg-gray-300 dark:bg-gray-700 rounded mb-4" />
-
-            <div className="flex space-x-5">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-6 h-6 rounded bg-gray-300 dark:bg-gray-700"
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="md:text-right">
-            <div className="h-4 w-48 bg-gray-300 dark:bg-gray-700 rounded mb-2 md:ml-auto" />
-            <div className="h-4 w-40 bg-gray-300 dark:bg-gray-700 rounded md:ml-auto" />
+          <div className="mt-5 space-y-2">
+            <div className="h-4 w-full max-w-md rounded bg-border dark:bg-border-dark" />
+            <div className="h-4 w-2/3 max-w-sm rounded bg-border dark:bg-border-dark" />
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-100 dark:border-gray-700">
-          <div className="h-4 w-40 bg-gray-300 dark:bg-gray-700 rounded mx-auto" />
+        <div className="flex flex-col gap-6 lg:items-end">
+          <div className="h-14 w-full rounded-control bg-primary sm:w-72" />
+          <div className="flex flex-col gap-3 lg:items-end">
+            <div className="h-3 w-28 rounded bg-border dark:bg-border-dark" />
+            <div className="flex gap-2">
+              <div className="h-9 w-24 rounded-control bg-border dark:bg-border-dark" />
+              <div className="h-9 w-28 rounded-control bg-border dark:bg-border-dark" />
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 dark:border-border-dark sm:flex-row sm:items-center sm:justify-between">
+        <div className="h-4 w-28 rounded bg-border dark:bg-border-dark" />
+        <div className="h-4 w-48 rounded bg-border dark:bg-border-dark" />
       </div>
     </footer>
   );

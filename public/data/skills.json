@@ -1,38 +1,46 @@
 {
   "en": {
     "title": "Tech Stack",
-    "description": "The tech stack I use for my work.",
-    "items": [
-      "React",
-      "TailwindCSS",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "Prisma",
-      "Git",
-      "VS Code",
-      "Vite",
-      "JavaScript",
-      "TypeScript",
-      "OpenCode"
+    "description": "The tools and technologies I use to build complete web products, from interface to persistence.",
+    "groups": [
+      {
+        "id": "frontend",
+        "items": ["React", "TypeScript", "JavaScript", "TailwindCSS", "Vite"]
+      },
+      {
+        "id": "backend",
+        "items": ["Node.js", "Express", "Socket.IO"]
+      },
+      {
+        "id": "data",
+        "items": ["PostgreSQL", "Prisma"]
+      },
+      {
+        "id": "tools",
+        "items": ["Git", "VS Code", "OpenCode"]
+      }
     ]
   },
   "es": {
     "title": "Stack Tecnológico",
-    "description": "El stack tecnológico que utilizo para mis proyectos.",
-    "items": [
-      "React",
-      "TailwindCSS",
-      "Node.js",
-      "Express",
-      "PostgreSQL",
-      "Prisma",
-      "Git",
-      "VS Code",
-      "Vite",
-      "JavaScript",
-      "TypeScript",
-      "OpenCode"
+    "description": "Las herramientas y tecnologías que uso para construir productos web completos, desde la interfaz hasta la persistencia.",
+    "groups": [
+      {
+        "id": "frontend",
+        "items": ["React", "TypeScript", "JavaScript", "TailwindCSS", "Vite"]
+      },
+      {
+        "id": "backend",
+        "items": ["Node.js", "Express", "Socket.IO"]
+      },
+      {
+        "id": "data",
+        "items": ["PostgreSQL", "Prisma"]
+      },
+      {
+        "id": "tools",
+        "items": ["Git", "VS Code", "OpenCode"]
+      }
     ]
   }
 }

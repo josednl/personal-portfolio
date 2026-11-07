@@ -72,6 +72,7 @@
       {
         "id": "project-4",
         "title": "Messaging App",
+        "featured": true,
         "description": "A full-stack messaging application where users can authenticate, manage profiles, and exchange messages in direct and group conversations. Built as a pnpm-workspace monorepo with a clean-architecture Express API, a React/Vite client, and shared validation and types.",
         "images": [
           "/projects-screenshots/project-4/project4-1.png",
@@ -172,6 +173,7 @@
       {
         "id": "project-4",
         "title": "Aplicación de Mensajería",
+        "featured": true,
         "description": "Una aplicación de mensajería full stack donde los usuarios pueden autenticarse, gestionar sus perfiles e intercambiar mensajes en conversaciones directas y grupales. Construida como un monorepo de pnpm workspaces con una API Express de arquitectura limpia, un cliente React/Vite y validación y tipos compartidos.",
         "images": [
           "/projects-screenshots/project-4/project4-1.png",
