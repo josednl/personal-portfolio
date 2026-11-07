@@ -77,7 +77,7 @@ export const About = () => {
                 {data.cv && (
                   <a
                     href={data.cv}
-                    download
+                    target='_blank'
                     className="inline-flex items-center justify-center gap-2 rounded-control border border-border bg-surface px-5 py-3 text-sm font-semibold text-text transition-colors duration-200 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:translate-y-px dark:border-border-dark dark:bg-surface-dark dark:text-text-dark dark:hover:text-primary-dark"
                   >
                     <Download className="h-4 w-4" aria-hidden="true" />

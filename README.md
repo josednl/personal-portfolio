@@ -2,8 +2,6 @@
 
 ## Description
 
-![Project Screenshot](src/assets//Project_Screenshot.png)
-
 This project is a personal portfolio developed with React, TypeScript, and Vite, designed as a central space to showcase my projects, experience, and professional approach. The application is built with a modern stack that prioritizes performance, simplicity, and maintainability.
 
 ---
@@ -16,26 +14,12 @@ This project is a personal portfolio developed with React, TypeScript, and Vite,
 - TailwindCSS 4
 - ESLint & Prettier
 
-## Installation
+## Available Scripts
 
-1. Clone the repository
-
-```bash
-git clone https://github.com/josednl/personal-portfolio
-cd personal-portfolio
-```
-
-2. Install dependencies
-
-```bash
-npm install
-```
-
-3. Start the development server
-
-```bash
-npm run dev
-```
-
-> [!NOTE]
-> Feel free to customize the content, adjust the layout, or expand the functionality. You can use this project as a starting point or template for your own personal portfolio.
+- `npm run dev` – start the development server
+- `npm run build` – build for production
+- `npm run preview` – preview the production build
+- `npm run lint` – run ESLint
+- `npm run typecheck` – run TypeScript type checking
+- `npm run format` – format source files with Prettier
+- `npm run test` – run the test suite with Vitest
